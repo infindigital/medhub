@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MedHub · Direction B · Precision Tech</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+/* ============ DIRECTION B TOKENS ============ */
+:root{
+  --c-ink:#0B0F14; --c-bg:#F2F4F7; --c-surface:#FFFFFF; --c-tile:#E9EDF2; --c-muted:#4F5967; --c-line:#DDE2E8; --c-border-input:#7C8694;
+  --c-ultra:#3338E8; --c-ultra-soft:#E6E7FD; --c-mint:#7BE3C3; --c-mint-deep:#0B6E55;
+  --c-night:#0E1320; --c-night-2:#171E30; --c-night-muted:#A6AFBF;
+  --c-sale:#C4302B; --c-ok:#0B6E55; --c-warn:#8A5A00; --c-wa:#25D366;
+  --font-display:'Bricolage Grotesque',system-ui,sans-serif; --font-sans:'Inter',system-ui,sans-serif; --font-mono:'JetBrains Mono',ui-monospace,monospace;
+  --fs-display:clamp(46px,7vw,112px); --fs-h1:clamp(36px,5vw,72px); --fs-h2:clamp(30px,3.6vw,52px);
+  --fs-h3:clamp(20px,1.8vw,26px); --fs-lead:clamp(17px,1.3vw,20px); --fs-body:16px;
+  --r-sm:12px; --r-md:20px; --r-lg:28px; --r-pill:999px;
+  --sh-1:0 1px 1px rgb(11 15 20/.04),0 12px 32px -16px rgb(29 35 90/.22);
+  --sh-2:0 30px 80px -30px rgb(29 35 90/.35);
+  --glow:radial-gradient(60% 55% at 50% 45%,#DDE0FF 0%,rgb(221 224 255/0) 70%);
+  --t-fast:140ms; --t-base:220ms; --t-slow:480ms; --ease:cubic-bezier(.16,1,.3,1);
+  --container:1360px; --gutter:clamp(16px,3.5vw,36px);
+}
+@media (prefers-reduced-motion:reduce){:root{--t-fast:0ms;--t-base:0ms;--t-slow:0ms}}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--c-bg);color:var(--c-ink);font:400 var(--fs-body)/1.6 var(--font-sans);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:var(--c-ultra)}
+:focus-visible{outline:2px solid var(--c-ultra);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--container);margin:0 auto;padding:0 var(--gutter)}
+.section{padding:clamp(48px,7vw,104px) 0}
+.mono{font-family:var(--font-mono);font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--c-muted)}
+.h2{font-family:var(--font-display);font-size:var(--fs-h2);font-weight:600;letter-spacing:-.03em;line-height:1.02;margin:.25em 0 .5em}
+.lead{font-size:var(--fs-lead);color:var(--c-muted);max-width:58ch}
+.label{font-size:13px;color:var(--c-muted)}
+.grid{display:grid;gap:clamp(12px,1.4vw,18px)}
+.note{font-size:13px;color:var(--c-muted);background:var(--c-surface);border:1px solid var(--c-line);border-radius:var(--r-sm);padding:12px 14px;margin-top:18px;max-width:78ch}
+.hl{background:linear-gradient(transparent 62%,var(--c-mint) 62% 92%,transparent 92%);padding:0 .06em}
+
+.board-head{background:var(--c-night);color:#fff;padding:26px 0}
+.board-head .wrap{display:flex;flex-wrap:wrap;gap:10px 32px;justify-content:space-between;align-items:baseline}
+.board-head b{font-family:var(--font-mono);font-size:13px;letter-spacing:.06em}.board-head span{font-size:14px;color:var(--c-night-muted)}
+
+/* ============ BUTTONS ============ */
+.btn{--h:48px;display:inline-flex;align-items:center;gap:10px;height:var(--h);padding:0 22px;border-radius:var(--r-pill);font:600 15px/1 var(--font-sans);text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform var(--t-base) var(--ease),background var(--t-base) var(--ease),box-shadow var(--t-base) var(--ease)}
+.btn svg{width:16px;height:16px;transition:transform var(--t-base) var(--ease)}
+.btn:hover{transform:translateY(-2px)}.btn:active{transform:scale(.98)}
+.btn:hover svg{transform:translateX(3px)}
+.btn--primary{background:var(--c-ultra);color:#fff;box-shadow:0 8px 20px -10px rgb(51 56 232/.7)}
+.btn--dark{background:var(--c-ink);color:#fff}
+.btn--secondary{background:var(--c-surface);color:var(--c-ink);border-color:var(--c-line)}
+.btn--soft{background:var(--c-ultra-soft);color:var(--c-ultra)}
+.btn--ghost{background:none;color:var(--c-ultra);padding:0;height:auto}
+.btn--wa{background:var(--c-wa);color:var(--c-ink)}
+.btn--sm{--h:38px;padding:0 16px;font-size:14px}.btn--lg{--h:56px;padding:0 28px;font-size:16px}
+.btn--icon{width:44px;padding:0;justify-content:center;background:var(--c-surface);border-color:var(--c-line);color:var(--c-ink)}
+
+/* ============ HERO (BENTO) ============ */
+.hero{padding:clamp(20px,3vw,36px) 0 clamp(40px,5vw,72px)}
+.bento{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:minmax(120px,auto);gap:14px}
+.cell{background:var(--c-surface);border:1px solid var(--c-line);border-radius:var(--r-lg);padding:clamp(20px,2.4vw,32px);position:relative;overflow:hidden}
+.cell--head{grid-column:span 7;grid-row:span 3;display:flex;flex-direction:column;justify-content:space-between}
+.cell--product{grid-column:span 5;grid-row:span 3;background:var(--c-surface) var(--glow);display:flex;flex-direction:column;justify-content:space-between}
+.cell--product img{width:72%;margin:0 auto;mix-blend-mode:multiply;animation:float 7s var(--ease) infinite alternate}
+@keyframes float{from{transform:translateY(0)}to{transform:translateY(-10px)}}
+@media (prefers-reduced-motion:reduce){.cell--product img{animation:none}}
+.cell--stat{grid-column:span 4;display:flex;flex-direction:column;justify-content:space-between;gap:12px}
+.cell--dark{background:var(--c-night);border-color:var(--c-night);color:#fff}.cell--dark .mono{color:var(--c-night-muted)}
+.display{font-family:var(--font-display);font-size:var(--fs-display);font-weight:600;letter-spacing:-.032em;line-height:.98;margin:.15em 0 .3em}
+.actions{display:flex;flex-wrap:wrap;gap:10px}
+.spec{justify-self:start;width:max-content;display:inline-flex;gap:6px;align-items:center;font-family:var(--font-mono);font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;background:var(--c-bg);border:1px solid var(--c-line);border-radius:var(--r-pill);padding:6px 10px;color:var(--c-ink)}
+.spec--mint{background:var(--c-mint);border-color:transparent}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--c-ok)}
+.big{font-family:var(--font-display);font-size:clamp(26px,2.4vw,34px);font-weight:600;letter-spacing:-.03em;line-height:1.1}
+.tbc{font-family:var(--font-mono);font-size:10.5px;color:var(--c-warn);background:#FFF4DB;border-radius:6px;padding:2px 6px;text-transform:uppercase}
+
+/* ============ SWATCHES / TYPE ============ */
+.swatches{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.sw{border-radius:var(--r-md);overflow:hidden;background:var(--c-surface);border:1px solid var(--c-line)}
+.sw i{display:block;height:92px}.sw div{padding:12px 14px;font-size:13px}.sw b{display:block;font-size:14px}
+.type-row{display:grid;grid-template-columns:170px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid var(--c-line);align-items:baseline}
+.tokens{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.token-card{background:var(--c-surface);border:1px solid var(--c-line);border-radius:var(--r-md);padding:20px}
+.radius-demo{display:flex;gap:12px;margin-top:12px}.radius-demo i{width:48px;height:48px;background:var(--c-tile);border:1px solid var(--c-line)}
+
+/* ============ PRODUCT CARD ============ */
+.cards{grid-template-columns:repeat(4,1fr)}
+.card{position:relative;background:var(--c-surface);border:1px solid var(--c-line);border-radius:var(--r-lg);padding:10px;display:flex;flex-direction:column;transition:box-shadow var(--t-base) var(--ease),transform var(--t-base) var(--ease)}
+.card:hover{box-shadow:var(--sh-1);transform:translateY(-4px)}
+.card__media{aspect-ratio:1;border-radius:calc(var(--r-lg) - 8px);background:var(--c-tile);display:grid;place-items:center;overflow:hidden;position:relative}
+.card__media::before{content:"";position:absolute;inset:0;background:var(--glow);opacity:0;transition:opacity var(--t-slow) var(--ease)}
+.card:hover .card__media::before{opacity:1}
+.card__media img{position:relative;width:76%;mix-blend-mode:multiply;transition:transform var(--t-slow) var(--ease)}
+.card:hover .card__media img{transform:scale(1.06) rotate(-1.5deg)}
+.card__badges{position:absolute;top:20px;left:20px;display:flex;gap:6px;z-index:1}
+.badge{font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;padding:5px 9px;border-radius:var(--r-pill);background:var(--c-surface);color:var(--c-ink)}
+.badge--sale{background:var(--c-sale);color:#fff}.badge--rent{background:var(--c-ultra);color:#fff}
+.card__body{padding:14px 10px 8px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card__title{font-family:var(--font-display);font-size:18px;font-weight:600;letter-spacing:-.015em;line-height:1.2;margin:0}
+.card__title a{color:inherit;text-decoration:none}.card__title a::after{content:"";position:absolute;inset:0}
+.card__row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:auto;padding-top:10px}
+.price{font-family:var(--font-display);font-weight:600;font-size:20px;letter-spacing:-.02em}
+.price del{font-family:var(--font-sans);color:var(--c-muted);font-weight:400;font-size:13px;margin-left:6px}.price small{font-family:var(--font-sans);font-weight:400;font-size:13px;color:var(--c-muted)}
+.stock{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--c-ok);display:flex;gap:6px;align-items:center}
+.stock::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.card__go{position:relative;z-index:1;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--c-ink);color:#fff;transition:background var(--t-base) var(--ease)}
+.card:hover .card__go{background:var(--c-ultra)}
+.card__go svg{width:16px;height:16px}
+.card__cta-text{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+
+/* ============ CATEGORY EXPLORER ============ */
+.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:16px;scroll-snap-type:x mandatory}
+.chip{flex:none;scroll-snap-align:start;border:1px solid var(--c-line);background:var(--c-surface);border-radius:var(--r-pill);padding:10px 16px;font-weight:500;font-size:14.5px;display:flex;gap:8px;align-items:center}
+.chip small{font-family:var(--font-mono);font-size:11px;color:var(--c-muted)}
+.chip[aria-pressed="true"]{background:var(--c-ink);color:#fff;border-color:var(--c-ink)}.chip[aria-pressed="true"] small{color:var(--c-night-muted)}
+.cat-bento{grid-template-columns:repeat(12,1fr)}
+.cat{grid-column:span 3;min-height:240px;border-radius:var(--r-lg);background:var(--c-surface);border:1px solid var(--c-line);padding:20px;display:flex;flex-direction:column;justify-content:space-between;text-decoration:none;color:var(--c-ink);position:relative;overflow:hidden;transition:border-color var(--t-base) var(--ease)}
+.cat:hover{border-color:var(--c-ultra)}
+.cat h3{font-family:var(--font-display);font-size:var(--fs-h3);font-weight:600;letter-spacing:-.02em;margin:6px 0 0;position:relative;z-index:1}
+.cat img{position:absolute;right:-6%;bottom:-8%;width:62%;mix-blend-mode:multiply;transition:transform var(--t-slow) var(--ease)}
+.cat:hover img{transform:translateY(-8px)}
+.cat--wide{grid-column:span 6;background:var(--c-surface) var(--glow)}
+.cat--night{background:var(--c-night);border-color:var(--c-night);color:#fff}.cat--night .mono{color:var(--c-night-muted)}
+
+/* ============ NAV / MEGA ============ */
+.nav-shell{background:var(--c-surface);border:1px solid var(--c-line);border-radius:var(--r-lg);padding:8px}
+.nav__bar{display:flex;align-items:center;gap:8px;padding:6px 6px 6px 16px}
+.logo{font-family:var(--font-display);font-weight:700;font-size:22px;letter-spacing:-.04em}.logo i{font-style:normal;color:var(--c-ultra)}
+.nav__links{display:flex;gap:2px;margin-left:18px;font-size:14.5px;font-weight:500}.nav__links span{padding:9px 13px;border-radius:var(--r-pill)}
+.nav__links span.is-open{background:var(--c-ultra-soft);color:var(--c-ultra)}
+.nav__tools{margin-left:auto;display:flex;gap:6px}
+.mega{margin-top:8px;border-radius:calc(var(--r-lg) - 6px);background:var(--c-bg);padding:14px;display:grid;grid-template-columns:repeat(4,1fr) 1.3fr;gap:10px}
+.mega a{display:flex;flex-direction:column;gap:4px;background:var(--c-surface);border-radius:var(--r-md);padding:16px;text-decoration:none;color:var(--c-ink);border:1px solid transparent;transition:border-color var(--t-fast) var(--ease)}
+.mega a:hover{border-color:var(--c-ultra)}.mega b{font-family:var(--font-display);font-size:17px;font-weight:600}
+.mega__feature{grid-row:span 2;background:var(--c-night) !important;color:#fff !important;justify-content:space-between}
+.mega__feature img{border-radius:14px;width:100%;aspect-ratio:1.4;object-fit:contain;background:#fff}
+
+/* ============ FORMS / FAQ / CTA ============ */
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:start}
+.form{grid-template-columns:1fr 1fr}
+.field{display:grid;gap:6px}.field label{font-size:14px;font-weight:600}
+.field input,.field select,.field textarea{height:52px;border:1px solid var(--c-border-input);border-radius:var(--r-sm);padding:0 16px;background:var(--c-surface);font-size:16px}
+.field textarea{height:120px;padding:14px 16px}
+.field input:focus,.field select:focus,.field textarea:focus{outline:3px solid var(--c-ultra-soft);border-color:var(--c-ultra)}
+.field .err{font-size:13px;color:var(--c-sale)}.field--err input{border-color:var(--c-sale)}
+.full{grid-column:1/-1}
+.crumbs{display:flex;flex-wrap:wrap;gap:6px;font-size:13px}.crumbs a,.crumbs span{background:var(--c-surface);border:1px solid var(--c-line);border-radius:var(--r-pill);padding:5px 12px;color:var(--c-muted);text-decoration:none}.crumbs span{color:var(--c-ink)}
+.faq{display:grid;gap:10px}
+.faq details{background:var(--c-surface);border:1px solid var(--c-line);border-radius:var(--r-md);padding:0 20px;transition:border-color var(--t-base) var(--ease)}
+.faq details[open]{border-color:var(--c-ultra)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0;font-family:var(--font-display);font-weight:600;font-size:18px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";width:28px;height:28px;flex:none;border-radius:50%;background:var(--c-bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 6l4 4 4-4' fill='none' stroke='%230B0F14' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E") center/14px no-repeat;transition:transform var(--t-base) var(--ease)}
+.faq details[open] summary::after{transform:rotate(180deg)}
+.faq details p{margin:0 0 18px;color:var(--c-muted)}
+.cta{background:var(--c-night);color:#fff;border-radius:var(--r-lg);padding:clamp(28px,5vw,64px);position:relative;overflow:hidden}
+.cta::before{content:"";position:absolute;width:560px;height:560px;right:-140px;top:-220px;background:radial-gradient(circle,rgb(51 56 232/.55),rgb(51 56 232/0) 65%)}
+.cta > *{position:relative}.cta .h2{max-width:16ch;margin-top:8px}
+.cta .btn--secondary{background:transparent;color:#fff;border-color:#2C3550}
+.phone{width:min(390px,100%);border-radius:40px;background:var(--c-bg);border:8px solid var(--c-night);overflow:hidden;box-shadow:var(--sh-2)}
+.phone__bar{display:flex;align-items:center;justify-content:space-between;margin:10px;padding:6px 6px 6px 14px;background:var(--c-surface);border:1px solid var(--c-line);border-radius:var(--r-pill)}
+.phone__bar .tools{display:flex;gap:4px}.phone__bar .btn--icon{width:40px;height:40px;--h:40px;border:0;background:var(--c-bg)}
+.phone__body{padding:10px 10px 18px;display:grid;gap:10px}
+.phone .display{font-size:46px}
+
+.split > *,.bento > *{min-width:0}
+.reveal{opacity:0;transform:translateY(16px) scale(.99);transition:opacity var(--t-slow) var(--ease),transform var(--t-slow) var(--ease)}
+.reveal.is-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
+
+@media (max-width:1024px){.cards{grid-template-columns:repeat(2,1fr)}.cell--head,.cell--product{grid-column:1/-1}.cell--stat{grid-column:span 6}.cat{grid-column:span 6}.cat--wide{grid-column:1/-1}.mega{grid-template-columns:1fr 1fr}.nav__links{display:none}}
+@media (max-width:768px){.split,.form{grid-template-columns:1fr}.cell--stat{grid-column:1/-1}.cat{grid-column:1/-1}.type-row{grid-template-columns:1fr}}
+@media (max-width:480px){.cards{grid-template-columns:1fr}.nav__tools .btn--wa,.nav__tools .btn--dark{display:none}.mega{grid-template-columns:1fr}.mega__feature{grid-row:auto}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="arr" viewBox="0 0 16 16"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="search" viewBox="0 0 20 20"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m14 14 4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+  <symbol id="bag" viewBox="0 0 20 20"><path d="M4 7h12l-1 10H5L4 7Zm3 0a3 3 0 0 1 6 0" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+  <symbol id="menu" viewBox="0 0 20 20"><path d="M3 7h14M3 13h14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+  <symbol id="plus" viewBox="0 0 16 16"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+</svg>
+
+<div class="board-head"><div class="wrap"><b>MEDHUB · MOOD BOARD · DIRECTION B — PRECISION TECH</b><span>Concept only · real products &amp; prices from medhub.ae (25 Sep 2026) · not a final page</span></div></div>
+
+<!-- HERO (BENTO) -->
+<section class="hero"><div class="wrap">
+  <div class="nav-shell" style="margin-bottom:14px"><div class="nav__bar"><span class="logo">med<i>hub</i></span>
+    <div class="nav__links"><span>Medical Equipment</span><span>Respiratory</span><span>Oxygen Therapy</span><span>Sleep Care</span><span>Rental</span><span>Services</span><span>About</span><span>Contact</span></div>
+    <div class="nav__tools"><button class="btn btn--icon" aria-label="Search"><svg><use href="#search"/></svg></button><button class="btn btn--icon" aria-label="Cart"><svg><use href="#bag"/></svg></button><a class="btn btn--dark btn--sm" href="#" style="--h:44px">WhatsApp</a></div></div></div>
+
+  <div class="bento">
+    <div class="cell cell--head reveal">
+      <span class="mono">Medical equipment · Dubai, UAE</span>
+      <h1 class="display">Medical equipment in Dubai, <span class="hl">engineered</span> around you.</h1>
+      <div>
+        <p class="lead">Oxygen, sleep and patient-care equipment from recognised brands, to buy or rent, with delivery across the UAE.</p>
+        <div class="actions" style="margin-top:22px"><a class="btn btn--primary btn--lg" href="#">Explore Medical Equipment <svg><use href="#arr"/></svg></a><a class="btn btn--secondary btn--lg" href="#">Medical Equipment Rental</a></div>
+      </div>
+    </div>
+    <div class="cell cell--product reveal">
+      <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap"><span class="spec"><span class="dot"></span>In stock</span><span class="spec">Portable oxygen</span></div>
+      <img src="img/rove6.png" width="595" height="595" alt="Inogen Rove 6 portable oxygen concentrator">
+      <div style="display:flex;justify-content:space-between;align-items:end;gap:12px"><div><span class="mono">Inogen</span><div class="big">Rove 6</div></div><div class="big">AED 9,399</div></div>
+    </div>
+    <div class="cell cell--stat reveal"><span class="mono">Delivery</span><div class="big">UAE-wide · AED 25</div><span class="tbc" style="align-self:start">site-sourced · confirm</span></div>
+    <div class="cell cell--stat cell--dark reveal"><span class="mono">Rental</span><div class="big">Rent monthly, not forever.</div><a class="btn btn--primary btn--sm" href="#" style="align-self:start">See rental range <svg><use href="#arr"/></svg></a></div>
+    <div class="cell cell--stat reveal"><span class="mono">Showroom</span><div class="big">Port Saeed, Deira</div><a class="btn btn--ghost" href="#">Visit &amp; directions <svg><use href="#arr"/></svg></a></div>
+  </div>
+</div></section>
+
+<!-- CONCEPT -->
+<section class="section" style="padding-top:0"><div class="wrap split">
+  <div><span class="mono">The idea</span><h2 class="h2">A medical-tech product company, <span class="hl">not a catalogue.</span></h2></div>
+  <div><p class="lead" style="margin-top:34px">Cool porcelain surfaces, graphite type and a confident ultramarine present MedHub like the device makers it stocks. Bento grids break information into scannable modules. Monospace "spec" labels give a precise, instrument-like tone, and a mint highlight adds the human, Gen-Z note. Dubai shows up through "night" sections (deep navy with an ultramarine glow), which carry the rental and contact moments.</p>
+  <p class="note">Why it can suit MedHub: it plays to <b>device</b> products (concentrators, CPAP, monitors), and the modular bento pattern suits a catalogue where categories are small (1–25 products each).</p></div>
+</div></section>
+
+<!-- PALETTE -->
+<section class="section" style="padding-top:0"><div class="wrap">
+  <span class="mono">Colour</span><h2 class="h2">Porcelain, graphite, ultramarine.</h2>
+  <div class="grid swatches">
+    <div class="sw"><i style="background:#0B0F14"></i><div><b>Graphite</b>#0B0F14 · text 17.4:1</div></div>
+    <div class="sw"><i style="background:#F2F4F7"></i><div><b>Porcelain</b>#F2F4F7 · page</div></div>
+    <div class="sw"><i style="background:#E9EDF2"></i><div><b>Tile</b>#E9EDF2 · media</div></div>
+    <div class="sw"><i style="background:#4F5967"></i><div><b>Slate</b>#4F5967 · 6.4:1</div></div>
+    <div class="sw"><i style="background:#3338E8"></i><div><b>Ultramarine</b>#3338E8 · white text 7.3:1</div></div>
+    <div class="sw"><i style="background:#E6E7FD"></i><div><b>Ultra soft</b>#E6E7FD · states</div></div>
+    <div class="sw"><i style="background:#7BE3C3"></i><div><b>Mint</b>#7BE3C3 · highlight, ink 12.5:1</div></div>
+    <div class="sw"><i style="background:#0E1320"></i><div><b>Night</b>#0E1320 · dark sections</div></div>
+  </div>
+</div></section>
+
+<!-- TYPE -->
+<section class="section" style="padding-top:0"><div class="wrap">
+  <span class="mono">Typography</span><h2 class="h2">Bricolage Grotesque · Inter · JetBrains Mono</h2>
+  <div class="type-row"><span class="mono">Display · 112/0.96</span><span class="display" style="margin:0">Breathe <span class="hl">easier.</span></span></div>
+  <div class="type-row"><span class="mono">H1 · 72</span><span style="font-family:var(--font-display);font-size:var(--fs-h1);font-weight:600;letter-spacing:-.035em;line-height:1">CPAP Machines in Dubai</span></div>
+  <div class="type-row"><span class="mono">H2 · 52</span><span class="h2" style="margin:0">How to choose a mask</span></div>
+  <div class="type-row"><span class="mono">H3 · 26</span><span style="font-family:var(--font-display);font-size:var(--fs-h3);font-weight:600">Nasal pillow masks</span></div>
+  <div class="type-row"><span class="mono">Lead · Inter 20</span><span class="lead">Auto CPAP machines adjust pressure through the night.</span></div>
+  <div class="type-row"><span class="mono">Body · Inter 16/1.6</span><span>Compare models, see live prices and stock, then buy online or rent monthly. Inter carries all body text and UI for maximum legibility at small sizes.</span></div>
+  <div class="type-row"><span class="mono">Spec · Mono 12</span><span class="spec">5L flow</span></div>
+</div></section>
+
+<!-- TOKENS + BUTTONS -->
+<section class="section" style="padding-top:0"><div class="wrap">
+  <span class="mono">System</span><h2 class="h2">Rounded, modular, soft depth.</h2>
+  <div class="grid tokens">
+    <div class="token-card"><b>Radius</b><div class="radius-demo"><i style="border-radius:12px"></i><i style="border-radius:20px"></i><i style="border-radius:28px"></i><i style="border-radius:999px"></i></div><p class="label">12 controls · 20 cards · 28 tiles · pill buttons &amp; chips.</p></div>
+    <div class="token-card" style="box-shadow:var(--sh-1)"><b>Shadow 1</b><p class="label">Tinted (blue-violet) hover depth.</p></div>
+    <div class="token-card" style="box-shadow:var(--sh-2)"><b>Shadow 2</b><p class="label">Mega menu, drawer, dialogs.</p></div>
+    <div class="token-card" style="background:var(--c-surface) var(--glow)"><b>Glow</b><p class="label">Radial product light behind hero and hovered products. The only gradient.</p></div>
+    <div class="token-card"><b>Motion</b><p class="label">140 / 220 / 480 ms · expo-out. Slow float on the hero product (off under reduced-motion).</p></div>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:24px">
+    <a class="btn btn--primary" href="#">Shop medical equipment <svg><use href="#arr"/></svg></a>
+    <a class="btn btn--dark" href="#">Rent equipment <svg><use href="#arr"/></svg></a>
+    <a class="btn btn--secondary" href="#">Request a quote</a>
+    <a class="btn btn--soft" href="#">Compare masks</a>
+    <a class="btn btn--wa" href="#">WhatsApp us</a>
+    <a class="btn btn--ghost" href="#">View all <svg><use href="#arr"/></svg></a>
+  </div>
+</div></section>
+
+<!-- PRODUCT CARDS -->
+<section class="section" style="padding-top:0"><div class="wrap">
+  <span class="mono">Product cards</span><h2 class="h2">Product first. Price you can read from across the room.</h2>
+  <div class="grid cards">
+    <article class="card"><div class="card__media"><img src="img/dreamstation-bipap.png" width="520" height="390" alt="Philips DreamStation Auto BiPAP" loading="lazy"></div><div class="card__badges"><span class="badge badge--sale">Sale</span></div>
+      <div class="card__body"><span class="mono">Auto BiPAP · Philips</span><h3 class="card__title"><a href="#">Philips DreamStation Auto BiPAP with Humidifier and Mask</a></h3>
+      <div class="card__row"><div><div class="price">AED 6,250<del>AED 8,000</del></div><span class="stock">In stock</span></div><span class="card__go" aria-hidden="true"><svg><use href="#arr"/></svg></span></div><span class="card__cta-text">View product</span></div></article>
+    <article class="card"><div class="card__media"><img src="img/yuwell-8f5a.jpg" width="595" height="595" alt="Yuwell 8F-5A oxygen concentrator" loading="lazy"></div>
+      <div class="card__body"><span class="mono">Oxygen Concentrator · Yuwell</span><h3 class="card__title"><a href="#">Yuwell 8F-5A Oxygen Concentrator 5L</a></h3>
+      <div class="card__row"><div><div class="price">AED 2,300</div><span class="stock">In stock</span></div><span class="card__go" aria-hidden="true"><svg><use href="#arr"/></svg></span></div></div></article>
+    <article class="card"><div class="card__media"><img src="img/everflo.jpg" width="500" height="500" alt="Philips Everflo 5 litre oxygen concentrator" loading="lazy"></div><div class="card__badges"><span class="badge badge--rent">Rental</span></div>
+      <div class="card__body"><span class="mono">Rental</span><h3 class="card__title"><a href="#">Philips Everflo 5 Ltr Oxygen Concentrator (Rental Per Month)</a></h3>
+      <div class="card__row"><div><div class="price">AED 500 <small>/ month</small></div><span class="stock">Available</span></div><span class="card__go" aria-hidden="true"><svg><use href="#arr"/></svg></span></div></div></article>
+    <article class="card"><div class="card__media"><img src="img/airfit-n30i.jpg" width="250" height="250" alt="ResMed AirFit N30i nasal pillow mask" loading="lazy"></div>
+      <div class="card__body"><span class="mono">CPAP/BiPAP Masks · ResMed</span><h3 class="card__title"><a href="#">Resmed Airfit N30i Nasal Pillow Mask</a></h3>
+      <div class="card__row"><div><div class="price">AED 750</div><span class="stock">In stock</span></div><button class="btn btn--primary btn--sm" style="position:relative;z-index:1"><svg><use href="#plus"/></svg>Add</button></div></div></article>
+  </div>
+  <p class="note">The round arrow button means "View product" (D7). It is the card's accessible link text and the whole card is clickable. The 4th card shows the shop variant with "Add to cart". No quick view (D8). The masks' live images are 250×250, so a larger rendering will look soft until better images are supplied.</p>
+</div></section>
+
+<!-- CATEGORY EXPLORER -->
+<section class="section" style="padding-top:0"><div class="wrap">
+  <span class="mono">Category explorer</span><h2 class="h2">Pick a need. We'll narrow it down.</h2>
+  <div class="chips" role="group" aria-label="Departments">
+    <button class="chip" aria-pressed="true">All <small>202</small></button><button class="chip" aria-pressed="false">Oxygen <small>18</small></button><button class="chip" aria-pressed="false">Sleep care</button><button class="chip" aria-pressed="false">Hospital beds <small>15</small></button><button class="chip" aria-pressed="false">Monitoring <small>18</small></button><button class="chip" aria-pressed="false">Supplies</button><button class="chip" aria-pressed="false">Rental <small>13</small></button>
+  </div>
+  <div class="grid cat-bento">
+    <a class="cat cat--wide" href="#"><div><span class="mono">18 products</span><h3>Oxygen Therapy</h3></div><span class="btn btn--secondary btn--sm" style="align-self:start;position:relative;z-index:1">Explore <svg><use href="#arr"/></svg></span><img src="img/rove6.png" alt="" loading="lazy" style="width:44%"></a>
+    <a class="cat" href="#"><div><span class="mono">CPAP · BiPAP</span><h3>Sleep Care</h3></div><img src="img/dreamstation-bipap.png" alt="" loading="lazy"></a>
+    <a class="cat cat--night" href="#"><div><span class="mono">13 items · monthly</span><h3>Rental</h3></div><span class="btn btn--primary btn--sm" style="align-self:start">Rent <svg><use href="#arr"/></svg></span></a>
+    <a class="cat" href="#"><div><span class="mono">15 products</span><h3>Hospital Beds</h3></div><img src="img/bed-v6v.png" alt="" loading="lazy" style="width:78%"></a>
+    <a class="cat" href="#"><div><span class="mono">18 products</span><h3>Monitoring</h3></div><img src="img/rad97.jpg" alt="" loading="lazy" style="width:70%;bottom:6%"></a>
+    <a class="cat" href="#"><div><span class="mono">Masks · parts</span><h3>CPAP Masks</h3></div><img src="img/airfit-f20.jpg" alt="" loading="lazy" style="width:54%"></a>
+    <a class="cat" href="#"><div><span class="mono">Travel</span><h3>Travel CPAP</h3></div><img src="img/bmc-m1.jpeg" alt="" loading="lazy" style="width:58%"></a>
+  </div>
+  <p class="note">Counts shown are live single-category counts. Departments that group several categories show no count (products can sit in more than one category). In the build, every name, count and link is resolved live from WooCommerce.</p>
+</div></section>
+
+<!-- MEGA MENU -->
+<section class="section" style="padding-top:0"><div class="wrap">
+  <span class="mono">Navigation</span><h2 class="h2">Mega menu as a panel of modules.</h2>
+  <div class="nav-shell">
+    <div class="nav__bar"><span class="logo">med<i>hub</i></span><div class="nav__links"><span>Medical Equipment</span><span>Respiratory</span><span>Oxygen Therapy</span><span class="is-open">Sleep Care</span><span>Rental</span><span>Services</span></div><div class="nav__tools"><button class="btn btn--icon" aria-label="Search"><svg><use href="#search"/></svg></button><button class="btn btn--icon" aria-label="Cart"><svg><use href="#bag"/></svg></button></div></div>
+    <div class="mega">
+      <a href="#"><span class="mono">3 products</span><b>Auto CPAP</b></a><a href="#"><span class="mono">2 products</span><b>CPAP</b></a><a href="#"><span class="mono">1 product</span><b>Travel CPAP</b></a><a href="#"><span class="mono">13 products</span><b>CPAP/BiPAP Masks</b></a>
+      <a href="#" class="mega__feature"><img src="img/bmc-m1.jpeg" alt="" width="200" height="140"><div><span class="mono" style="color:var(--c-night-muted)">Travel CPAP</span><b>BMC M1 Mini Portable Auto CPAP</b><br><span style="color:var(--c-night-muted);font-size:14px">AED 3,900</span></div></a>
+      <a href="#"><span class="mono">3 products</span><b>BiPAP</b></a><a href="#"><span class="mono">2 products</span><b>Auto BiPAP</b></a><a href="#"><span class="mono">11 products</span><b>Accessories</b></a><a href="#"><span class="mono">6 products</span><b>Sleep Support</b></a>
+    </div>
+  </div>
+</div></section>
+
+<!-- FORMS + FAQ -->
+<section class="section" style="padding-top:0"><div class="wrap split">
+  <div><span class="mono">Forms</span><h2 class="h2">Big targets. Clear errors.</h2>
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="#">Home</a><a href="#">Sleep Care</a><a href="#">CPAP Machines</a><span>BMC M1 Mini</span></nav>
+    <form class="grid form" style="margin-top:20px" onsubmit="return false">
+      <div class="field"><label for="b-name">Full name</label><input id="b-name" autocomplete="name"></div>
+      <div class="field field--err"><label for="b-phone">Mobile number</label><input id="b-phone" inputmode="tel" aria-describedby="b-err" value="05"><span class="err" id="b-err">Enter a UAE mobile number, e.g. 05X XXX XXXX.</span></div>
+      <div class="field full"><label for="b-need">What do you need?</label><select id="b-need"><option>Buy equipment</option><option>Rent equipment</option><option>Service / repair</option></select></div>
+      <div class="field full"><label for="b-msg">Message</label><textarea id="b-msg"></textarea></div>
+      <div class="full"><button class="btn btn--primary">Send enquiry <svg><use href="#arr"/></svg></button></div>
+    </form></div>
+  <div><span class="mono">Accordion</span><h2 class="h2">Questions</h2>
+    <div class="faq">
+      <details open><summary>How much is delivery?</summary><p>Standard delivery within the UAE is AED 25, according to the current delivery policy. <span class="tbc">site-sourced · confirm</span></p></details>
+      <details><summary>Can I rent instead of buying?</summary><p>Selected equipment, such as oxygen concentrators, CPAP machines and beds, is available on monthly rental.</p></details>
+      <details><summary>Do you deliver outside the UAE?</summary><p>International delivery is not available at the moment, per the delivery policy.</p></details>
+    </div></div>
+</div></section>
+
+<!-- CTA + MOBILE -->
+<section class="section" style="padding-top:0"><div class="wrap split">
+  <div class="cta"><span class="mono" style="color:var(--c-night-muted)">Not sure what fits?</span><h2 class="h2">Talk to MedHub before you buy.</h2><div class="actions"><a class="btn btn--primary btn--lg" href="#">Shop equipment <svg><use href="#arr"/></svg></a><a class="btn btn--secondary btn--lg" href="#">Contact MedHub</a></div></div>
+  <div class="phone">
+    <div class="phone__bar"><span class="logo" style="font-size:19px">med<i>hub</i></span><div class="tools"><button class="btn btn--icon" aria-label="Search"><svg><use href="#search"/></svg></button><button class="btn btn--icon" aria-label="Cart"><svg><use href="#bag"/></svg></button><button class="btn btn--icon" aria-label="Menu"><svg><use href="#menu"/></svg></button></div></div>
+    <div class="phone__body">
+      <div class="cell"><span class="mono">Dubai, UAE</span><h2 class="display">Equipment, <span class="hl">engineered</span> around you.</h2><a class="btn btn--primary" href="#" style="width:100%;justify-content:center">Explore equipment</a></div>
+      <div class="cell cell--product" style="min-height:0"><img src="img/rove6.png" alt="Inogen Rove 6" loading="lazy" style="width:56%"><div style="display:flex;justify-content:space-between"><b>Inogen Rove 6</b><b>AED 9,399</b></div></div>
+    </div>
+  </div>
+</div></section>
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>{document.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed','false'));c.setAttribute('aria-pressed','true')}));
+</script>
+</body>
+</html>

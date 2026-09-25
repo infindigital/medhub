@@ -1,0 +1,14 @@
+/*
+Theme Name:        MedHub
+Theme URI:         https://medhub.ae/
+Description:       Custom lightweight WooCommerce theme for MedHub. Presentation layer only: products, orders, checkout (Telr) and SEO (Rank Math) remain handled by WooCommerce and plugins. Styles live in assets/dist/, not in this file.
+Author:            Infin Digital
+Version:           0.1.0
+Requires at least: 6.5
+Tested up to:      6.9
+Requires PHP:      8.1
+WC requires at least: 9.6
+WC tested up to:   10.7
+Text Domain:       medhub
+License:           Proprietary
+*/

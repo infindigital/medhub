@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# NEVER commit site backups or database dumps – they contain real customer data (PII)
+backups/
+*.sql
+*.sql.gz
+*.wpress
+*.zip
+*.tar
+*.tar.gz
+
+# Local environment / secrets
+.env
+.env.*
+wp-config-local.php
+*.log
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/*
+!.vscode/extensions.json
+
+# Scratch
+tmp/

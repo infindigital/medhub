@@ -1,0 +1,10 @@
+/*
+ * base.css – loaded on every page.
+ * Layer order is declared once here so later bundles (shop.css, product.css …)
+ * can add to any layer without specificity fights.
+ */
+@layer reset, tokens, base, layout, components, utilities;
+
+@import './tokens/tokens.css' layer(tokens);
+@import './base/reset.css' layer(reset);
+@import './base/a11y.css' layer(utilities);

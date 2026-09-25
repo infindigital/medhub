@@ -1,0 +1,16 @@
+{
+  "name": "medhub-theme-build",
+  "private": true,
+  "description": "Build tooling for the MedHub WordPress theme (esbuild only).",
+  "type": "module",
+  "scripts": {
+    "build": "node tooling/build.mjs",
+    "watch": "node tooling/build.mjs --watch"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

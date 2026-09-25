@@ -1,0 +1,48 @@
+/*
+ * Design tokens.
+ *
+ * DIRECTION NOT CHOSEN YET – colour and type values are intentionally neutral.
+ * Once Mood Board A or B is approved, its tokens replace this block.
+ * Structural tokens (spacing, breakpoints, motion) are direction-independent.
+ */
+:root {
+	/* Colour – placeholders */
+	--c-bg: #ffffff;
+	--c-text: #111111;
+	--c-focus: #1a5fb4;
+
+	/* Type – placeholders */
+	--font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+	/* Spacing (4-pt scale) */
+	--s-1: 4px;
+	--s-2: 8px;
+	--s-3: 12px;
+	--s-4: 16px;
+	--s-5: 24px;
+	--s-6: 32px;
+	--s-7: 48px;
+	--s-8: 64px;
+	--s-9: 96px;
+	--s-10: 128px;
+
+	/* Layout */
+	--container: 1320px;
+	--container-wide: 1600px;
+	--container-prose: 720px;
+	--gutter: clamp(16px, 4vw, 40px);
+
+	/* Motion */
+	--t-fast: 150ms;
+	--t-base: 240ms;
+	--t-slow: 420ms;
+	--ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	:root {
+		--t-fast: 0ms;
+		--t-base: 0ms;
+		--t-slow: 0ms;
+	}
+}
