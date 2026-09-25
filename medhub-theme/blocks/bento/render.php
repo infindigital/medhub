@@ -28,7 +28,7 @@ $uid = wp_unique_id( 'bento-' );
 			)
 		);
 		?>
-		<div class="bento" data-reveal-group>
+		<div class="bento<?php echo 'cards' === $attributes['layout'] ? ' bento--cards' : ''; ?>" data-reveal-group>
 			<?php echo $content; // phpcs:ignore WordPress.Security.EscapeOutput -- rendered blocks. ?>
 		</div>
 	</div>

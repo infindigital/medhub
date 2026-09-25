@@ -1,0 +1,18 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "medhub/contact",
+	"title": "Contact details & form",
+	"category": "medhub",
+	"icon": "email",
+	"description": "Contact details from the theme's business settings (only confirmed details show on the live site) and the form from the configured form plugin.",
+	"attributes": {
+		"heading": { "type": "string", "default": "" },
+		"lead": { "type": "string", "default": "" },
+		"formHeading": { "type": "string", "default": "" },
+		"formLead": { "type": "string", "default": "" }
+	},
+	"supports": { "html": false, "anchor": true, "multiple": false },
+	"editorScript": "medhub-blocks-editor",
+	"render": "file:./render.php"
+}

@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "medhub/products",
+	"title": "Product grid",
+	"category": "medhub",
+	"icon": "grid-view",
+	"description": "Live products from one or more WooCommerce categories (and/or a brand). In-stock items first. Links to the first category.",
+	"attributes": {
+		"eyebrow": { "type": "string", "default": "" },
+		"heading": { "type": "string", "default": "" },
+		"lead": { "type": "string", "default": "" },
+		"categories": { "type": "string", "default": "" },
+		"brand": { "type": "string", "default": "" },
+		"limit": { "type": "number", "default": 8 },
+		"linkLabel": { "type": "string", "default": "" }
+	},
+	"supports": { "html": false, "anchor": true },
+	"editorScript": "medhub-blocks-editor",
+	"render": "file:./render.php"
+}

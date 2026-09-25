@@ -12,6 +12,7 @@
  *   visual   – optional product slug for the department image; otherwise the most
  *              expensive in-stock product with an image is used
  *   tagline  – short editorial line (UI microcopy, not SEO content)
+ *   post_categories – blog category slugs whose guides relate to this department
  *
  * @package MedHub
  */
@@ -27,6 +28,7 @@ return array(
 		'hub'     => array( 'term' => 'oxygen-concentrator' ),
 		'guides'  => array( 'oxygen-concentrator-in-dubai', 'portable-oxygen-machine-in-dubai', 'oxygen-machine-in-dubai' ),
 		'visual'  => 'inogen-rove-6-portable-oxygen-concentrator',
+		'post_categories' => array( 'oxygen-machine' ),
 	),
 
 	'sleep'        => array(
@@ -34,8 +36,9 @@ return array(
 		'tagline' => 'CPAP, BiPAP, masks and accessories',
 		'terms'   => array( 'auto-cpap-machine', 'cpap', 'travel-cpap-machine', 'bipap', 'auto-bipap-machine', 'buy-cpap-bipap-masks', 'cpap-bipap-accessories', 'sleep-support-comfort-solutions' ),
 		'hub'     => array( 'page' => 'cpap-in-dubai' ),
-		'guides'  => array( 'cpap-in-dubai', 'bipap-in-dubai' ),
+		'guides'  => array( 'sleep-apnea-machine-in-dubai', 'cpap-in-dubai', 'bipap-in-dubai' ),
 		'visual'  => 'philips-dreamstation-auto-bipap-with-humidifier-and-mask',
+		'post_categories' => array( 'cpap-and-bipap' ),
 	),
 
 	'respiratory'  => array(

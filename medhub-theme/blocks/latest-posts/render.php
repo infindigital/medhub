@@ -15,6 +15,7 @@ $posts = get_posts(
 		'post_status'         => 'publish',
 		'ignore_sticky_posts' => true,
 		'suppress_filters'    => false,
+		'category_name'       => sanitize_title( $attributes['category'] ),
 	)
 );
 
@@ -25,6 +26,10 @@ if ( ! $posts ) {
 $uid      = wp_unique_id( 'posts-' );
 $blog_id  = (int) get_option( 'page_for_posts' );
 $blog_url = $blog_id ? get_permalink( $blog_id ) : '';
+$cat_term = $attributes['category'] ? get_category_by_slug( sanitize_title( $attributes['category'] ) ) : null;
+if ( $cat_term ) {
+	$blog_url = get_category_link( $cat_term );
+}
 ?>
 <section <?php echo get_block_wrapper_attributes( array( 'class' => 'section journal' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?> aria-labelledby="<?php echo esc_attr( $uid ); ?>">
 	<div class="container">

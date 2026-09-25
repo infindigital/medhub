@@ -5,14 +5,33 @@
 	"title": "Latest guides",
 	"category": "medhub",
 	"icon": "welcome-write-blog",
-	"description": "Editorial layout of the latest blog posts (one large, two compact).",
+	"description": "Editorial layout of the latest blog posts (one large, two compact). Optional: a post category slug.",
 	"attributes": {
-		"eyebrow": { "type": "string", "default": "" },
-		"heading": { "type": "string", "default": "" },
-		"lead": { "type": "string", "default": "" },
-		"count": { "type": "number", "default": 3 }
+		"eyebrow": {
+			"type": "string",
+			"default": ""
+		},
+		"heading": {
+			"type": "string",
+			"default": ""
+		},
+		"lead": {
+			"type": "string",
+			"default": ""
+		},
+		"count": {
+			"type": "number",
+			"default": 3
+		},
+		"category": {
+			"type": "string",
+			"default": ""
+		}
 	},
-	"supports": { "html": false, "anchor": true },
+	"supports": {
+		"html": false,
+		"anchor": true
+	},
 	"editorScript": "medhub-blocks-editor",
 	"render": "file:./render.php"
 }

@@ -15,4 +15,6 @@
 @import './components/header.css' layer(components);
 @import './components/footer.css' layer(components);
 @import './components/forms.css' layer(components);
+@import './components/breadcrumb.css' layer(components);
+@import './components/subnav.css' layer(components);
 @import './base/a11y.css' layer(utilities);

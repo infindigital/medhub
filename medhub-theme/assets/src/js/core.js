@@ -11,6 +11,7 @@ import { initRails } from './modules/rail.js';
 import { initReveal } from './modules/reveal.js';
 import { initShop } from './modules/shop.js';
 import { initProduct } from './modules/product.js';
+import { initDevForm } from './modules/devform.js';
 
 document.documentElement.classList.add('js');
 
@@ -23,3 +24,4 @@ initRails();
 initReveal();
 initShop();
 initProduct();
+initDevForm();

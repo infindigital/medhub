@@ -1,0 +1,40 @@
+/* ---------- Sub-navigation chips (archives, blog) ---------- */
+/* Sibling categories / departments: one scrollable row of chips. */
+.subnav {
+	margin-top: var(--s-6);
+}
+
+.subnav__list {
+	display: flex;
+	gap: var(--s-2);
+	margin-inline: calc(var(--gutter) * -1);
+	padding-inline: var(--gutter);
+	overflow-x: auto;
+	scrollbar-width: none;
+}
+
+.subnav__list::-webkit-scrollbar {
+	display: none;
+}
+
+.subnav .chip {
+	flex: none;
+	gap: var(--s-2);
+	white-space: nowrap;
+}
+
+.chip small {
+	font-size: 0.75rem;
+	color: var(--c-muted);
+	font-variant-numeric: tabular-nums;
+}
+
+.chip.is-current {
+	background: var(--c-ink);
+	border-color: var(--c-ink);
+	color: var(--c-paper);
+}
+
+.chip.is-current small {
+	color: var(--c-on-dark-muted);
+}

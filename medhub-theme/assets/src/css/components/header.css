@@ -592,3 +592,22 @@ dialog::backdrop {
 html:has(dialog[open]) {
 	overflow: hidden;
 }
+
+/* Very small phones (≤ 359px): slightly smaller logo and tighter spacing. */
+@media (max-width: 359px) {
+	.site-header__bar {
+		gap: var(--s-2);
+	}
+
+	.logo__img {
+		height: 1.625rem;
+	}
+
+	.site-header__tools {
+		gap: 0;
+	}
+
+	.site-header__tools .icon-btn {
+		width: 2.625rem;
+	}
+}

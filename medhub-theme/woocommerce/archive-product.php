@@ -148,6 +148,14 @@ $medhub_is_brand = is_tax( 'product_brand' );
 		</div>
 	</div>
 
+	<?php
+	// Landing sections for this category/brand, edited in WordPress (Products › Category content).
+	$medhub_extra = $medhub_term instanceof WP_Term ? medhub_render_term_content( $medhub_term ) : '';
+	if ( $medhub_extra ) {
+		echo '<div class="term-content">' . $medhub_extra . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput -- rendered blocks.
+	}
+	?>
+
 	<?php if ( $medhub_desc['more'] || $medhub_below || $medhub_subnav['guides'] ) : ?>
 		<section class="archive-more" aria-labelledby="archive-more-title">
 			<div class="container archive-more__grid">

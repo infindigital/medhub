@@ -65,7 +65,7 @@ $whatsapp  = medhub_business( 'whatsapp' );
 				);
 			}
 			if ( $contact ) {
-				echo medhub_button( array( 'label' => __( 'Request a quote', 'medhub' ), 'url' => get_permalink( $contact ), 'variant' => $whatsapp ? 'secondary' : 'primary', 'size' => 'lg' ) ); // phpcs:ignore WordPress.Security.EscapeOutput
+				echo medhub_button( array( 'label' => __( 'Request a quote', 'medhub' ), 'url' => add_query_arg( 'product', rawurlencode( $product->get_name() ), get_permalink( $contact ) ), 'variant' => $whatsapp ? 'secondary' : 'primary', 'size' => 'lg' ) ); // phpcs:ignore WordPress.Security.EscapeOutput
 			}
 		}
 		?>

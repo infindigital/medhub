@@ -1,0 +1,169 @@
+/* ---------- Page header (prose pages, landing pages without a hero) ---------- */
+.page-head {
+	padding-block: var(--s-4) clamp(var(--s-6), 4vw, var(--s-8));
+}
+
+.page-head__title {
+	font-size: var(--fs-h1);
+	line-height: 1.04;
+	letter-spacing: var(--tracking-display);
+	max-width: 22ch;
+}
+
+.page-head__meta {
+	margin-top: var(--s-4);
+	font-size: 0.875rem;
+	color: var(--c-muted);
+}
+
+.site-main--prose .page-head {
+	border-bottom: 1px solid var(--c-line);
+	margin-bottom: clamp(var(--s-6), 4vw, var(--s-8));
+}
+
+/* ---------- Reading layout (+ optional sticky table of contents) ---------- */
+.reading {
+	display: grid;
+	gap: var(--s-6);
+}
+
+@media (min-width: 1024px) {
+	.reading--toc {
+		grid-template-columns: 15rem minmax(0, 1fr);
+		gap: var(--s-9);
+		align-items: start;
+	}
+
+	.reading--toc .toc {
+		position: sticky;
+		top: calc(var(--header-h) + var(--s-5));
+		max-height: calc(100vh - var(--header-h) - var(--s-7));
+		overflow-y: auto;
+	}
+}
+
+.toc {
+	padding: var(--s-5);
+	border: 1px solid var(--c-line);
+	border-radius: var(--r-md);
+	background: var(--c-surface);
+}
+
+.toc__title {
+	margin-bottom: var(--s-3);
+	font-size: var(--fs-eyebrow);
+	font-weight: 600;
+	letter-spacing: var(--tracking-eyebrow);
+	text-transform: uppercase;
+	color: var(--c-muted);
+}
+
+.toc__list {
+	display: grid;
+	gap: var(--s-1);
+	margin: 0;
+	padding-left: 1.1rem;
+	font-size: 0.9375rem;
+}
+
+.toc__list a {
+	display: inline-block;
+	padding-block: 0.25rem;
+	color: var(--c-ink);
+	text-decoration: none;
+}
+
+.toc__list a:hover {
+	color: var(--c-teal);
+	text-decoration: underline;
+}
+
+@media (max-width: 1023px) {
+	.toc__list {
+		max-height: 12rem;
+		overflow-y: auto;
+	}
+}
+
+.reading__body {
+	font-size: 1.0625rem;
+	line-height: 1.7;
+}
+
+.reading__body h2 {
+	scroll-margin-top: calc(var(--header-h) + var(--s-5));
+	font-size: var(--fs-h3);
+	padding-top: var(--s-3);
+}
+
+.reading__body a {
+	overflow-wrap: anywhere;
+}
+
+/* ---------- Search forms inside pages ---------- */
+.inline-search {
+	display: flex;
+	gap: var(--s-2);
+	max-width: 36rem;
+	margin-top: var(--s-5);
+}
+
+.inline-search .field-input {
+	flex: 1;
+	min-width: 0;
+}
+
+.empty-note {
+	padding: var(--s-7);
+	border: 1px dashed var(--c-line-strong);
+	border-radius: var(--r-lg);
+	color: var(--c-muted);
+}
+
+/* ---------- 404 ---------- */
+.not-found {
+	padding-block: var(--s-9);
+	max-width: 48rem;
+}
+
+.not-found__title {
+	font-size: var(--fs-h1);
+	line-height: 1.04;
+	letter-spacing: var(--tracking-display);
+}
+
+.not-found__lead {
+	margin-top: var(--s-4);
+	font-size: var(--fs-lead);
+	color: var(--c-muted);
+}
+
+.not-found__links {
+	margin-top: var(--s-6);
+	padding: 0;
+	list-style: none;
+}
+
+/* ---------- WooCommerce utility pages (until step 2G) ---------- */
+.site-main--woo .page-title {
+	padding-block: var(--s-6) var(--s-5);
+	font-size: var(--fs-h1);
+}
+
+/* Grid children may not grow past the viewport (long TOC labels, wide tables). */
+.reading > * {
+	min-width: 0;
+}
+
+.reading__body table {
+	display: block;
+	width: max-content;
+	max-width: 100%;
+	overflow-x: auto;
+}
+
+.reading__body figure,
+.reading__body .wp-block-table {
+	max-width: 100%;
+	overflow-x: auto;
+}

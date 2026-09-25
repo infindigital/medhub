@@ -1,0 +1,6 @@
+/* pages.css – standard pages (policies), blog, articles, contact, search, 404. */
+@layer reset, tokens, base, layout, components, utilities;
+
+@import './pages/reading.css' layer(components);
+@import './pages/blog.css' layer(components);
+@import './pages/contact.css' layer(components);

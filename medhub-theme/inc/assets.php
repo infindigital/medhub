@@ -39,8 +39,13 @@ add_action(
 	static function () {
 		wp_enqueue_style( 'medhub-base', MEDHUB_URI . '/assets/dist/css/base.css', array(), medhub_asset_version( 'css/base.css' ) );
 
-		if ( is_front_page() ) {
-			medhub_enqueue_css( 'home', 'home.css' );
+		// Block section styles: anywhere MedHub blocks can appear.
+		if ( is_front_page() || is_page() || is_singular( 'post' ) || is_home() || is_archive() || is_search() || is_404() ) {
+			medhub_enqueue_css( 'blocks', 'blocks.css' );
+		}
+
+		if ( is_home() || is_category() || is_tag() || is_date() || is_author() || is_singular( 'post' ) || ( is_search() && 'product' !== get_query_var( 'post_type' ) ) || is_page() || is_404() ) {
+			medhub_enqueue_css( 'pages', 'pages.css' );
 		}
 
 		if ( function_exists( 'is_woocommerce' ) ) {
@@ -78,7 +83,8 @@ add_action(
 			return;
 		}
 		wp_enqueue_style( 'medhub-editor-base', MEDHUB_URI . '/assets/dist/css/base.css', array(), medhub_asset_version( 'css/base.css' ) );
-		wp_enqueue_style( 'medhub-editor-home', MEDHUB_URI . '/assets/dist/css/home.css', array( 'medhub-editor-base' ), medhub_asset_version( 'css/home.css' ) );
+		wp_enqueue_style( 'medhub-editor-home', MEDHUB_URI . '/assets/dist/css/blocks.css', array( 'medhub-editor-base' ), medhub_asset_version( 'css/blocks.css' ) );
+		wp_enqueue_style( 'medhub-editor-pages', MEDHUB_URI . '/assets/dist/css/pages.css', array( 'medhub-editor-base' ), medhub_asset_version( 'css/pages.css' ) );
 		wp_add_inline_style( 'medhub-editor-home', '.medhub-editor-block .hero__actions a,.medhub-editor-block .btn{pointer-events:none}.medhub-editor-label{font:600 12px/1.4 var(--font-sans);letter-spacing:.08em;text-transform:uppercase;color:var(--c-muted);margin:0 0 8px}' );
 	}
 );

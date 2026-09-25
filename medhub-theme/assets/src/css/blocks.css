@@ -1,4 +1,4 @@
-/* home.css – homepage sections (front page only). */
+/* blocks.css – MedHub block sections (homepage, landing pages, category content, posts). */
 @layer reset, tokens, base, layout, components, utilities;
 
 @import './sections/hero.css' layer(components);
@@ -11,3 +11,4 @@
 @import './sections/journal.css' layer(components);
 @import './sections/faq.css' layer(components);
 @import './sections/cta.css' layer(components);
+@import './sections/landing.css' layer(components);

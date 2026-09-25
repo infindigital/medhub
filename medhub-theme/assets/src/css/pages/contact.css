@@ -1,0 +1,240 @@
+/* ---------- Contact block ---------- */
+.contact__grid {
+	display: grid;
+	gap: var(--s-7);
+}
+
+@media (min-width: 1024px) {
+	.contact__grid {
+		grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+		gap: var(--s-9);
+		align-items: start;
+	}
+}
+
+.contact__heading,
+.contact__form-title {
+	font-size: var(--fs-h2);
+}
+
+.contact__lead,
+.contact__form-lead {
+	margin-top: var(--s-3);
+	color: var(--c-muted);
+	font-size: var(--fs-lead);
+}
+
+.contact__list {
+	display: grid;
+	gap: var(--s-3);
+	margin: var(--s-6) 0;
+	padding: 0;
+	list-style: none;
+}
+
+.contact-item {
+	display: flex;
+	gap: var(--s-4);
+	padding: var(--s-5);
+	border: 1px solid var(--c-line);
+	border-radius: var(--r-md);
+	background: var(--c-surface);
+}
+
+.contact-item__icon {
+	display: grid;
+	flex: none;
+	place-items: center;
+	width: 2.75rem;
+	height: 2.75rem;
+	border-radius: 50%;
+	background: var(--c-aqua-soft);
+	color: var(--c-teal);
+}
+
+.contact-item__icon .icon {
+	width: 1.25rem;
+	height: 1.25rem;
+}
+
+.contact-item__body {
+	display: grid;
+	gap: var(--s-1);
+	min-width: 0;
+}
+
+.contact-item__label {
+	font-size: var(--fs-eyebrow);
+	font-weight: 600;
+	letter-spacing: var(--tracking-eyebrow);
+	text-transform: uppercase;
+	color: var(--c-muted);
+}
+
+.contact-item a {
+	font-weight: 600;
+	font-size: 1.0625rem;
+	color: var(--c-ink);
+}
+
+.contact__form {
+	padding: clamp(var(--s-5), 4vw, var(--s-8));
+	border-radius: var(--r-lg);
+	background: var(--c-surface);
+	border: 1px solid var(--c-line);
+}
+
+.contact__form-fallback {
+	margin-top: var(--s-4);
+	color: var(--c-muted);
+}
+
+/* ---------- Enquiry form (dev form + styling for the real form plugin) ---------- */
+.enquiry-form {
+	display: grid;
+	gap: var(--s-5);
+	margin-top: var(--s-5);
+}
+
+.enquiry-form__grid {
+	display: grid;
+	gap: var(--s-4);
+}
+
+@media (min-width: 640px) {
+	.enquiry-form__grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.field--full {
+		grid-column: 1 / -1;
+	}
+}
+
+.field {
+	display: grid;
+	gap: var(--s-2);
+	min-width: 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.field label,
+.field legend {
+	padding: 0;
+	font-size: 0.9375rem;
+	font-weight: 600;
+}
+
+.field-input {
+	width: 100%;
+	min-height: 3.25rem;
+	font-size: 1rem;
+}
+
+textarea.field-input {
+	min-height: 8rem;
+	padding-block: 0.75rem;
+	resize: vertical;
+}
+
+.field-hint {
+	font-size: 0.8125rem;
+	color: var(--c-muted);
+}
+
+.choice-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--s-2);
+}
+
+.choice {
+	position: relative;
+}
+
+.choice input {
+	position: absolute;
+	opacity: 0;
+	inset: 0;
+	cursor: pointer;
+}
+
+.choice span {
+	display: inline-flex;
+	align-items: center;
+	min-height: 2.75rem;
+	padding: 0 1.125rem;
+	border: 1px solid var(--c-border-input);
+	border-radius: var(--r-pill);
+	background: var(--c-surface);
+	font-size: 0.9375rem;
+	font-weight: 500;
+	transition: background-color var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
+}
+
+.choice input:checked + span {
+	background: var(--c-ink);
+	border-color: var(--c-ink);
+	color: var(--c-paper);
+}
+
+.choice input:focus-visible + span {
+	outline: 2px solid var(--c-focus);
+	outline-offset: 2px;
+}
+
+.enquiry-form .btn {
+	justify-self: start;
+}
+
+@media (max-width: 479px) {
+	.enquiry-form .btn {
+		justify-self: stretch;
+	}
+}
+
+.enquiry-form__status:empty {
+	display: none;
+}
+
+.enquiry-form__status {
+	padding: var(--s-4);
+	border-radius: var(--r-sm);
+	background: #fff4db;
+	color: var(--c-warn);
+}
+
+.dev-note {
+	padding: var(--s-3) var(--s-4);
+	border-left: 3px solid var(--c-warn);
+	border-radius: var(--r-xs);
+	background: #fff4db;
+	color: var(--c-warn);
+	font-size: 0.875rem;
+}
+
+/* Real form plugins inherit the same field styling. */
+.form-provider input:not([type='checkbox'], [type='radio'], [type='submit']),
+.form-provider select,
+.form-provider textarea {
+	width: 100%;
+	min-height: 3.25rem;
+	padding: 0 0.875rem;
+	border: 1px solid var(--c-border-input);
+	border-radius: var(--r-sm);
+	background: var(--c-surface);
+	font-size: 1rem;
+}
+
+.form-provider [type='submit'] {
+	min-height: 3.5rem;
+	padding: 0 1.75rem;
+	border: 0;
+	border-radius: var(--r-sm);
+	background: var(--c-ink);
+	color: var(--c-paper);
+	font-weight: 600;
+	cursor: pointer;
+}

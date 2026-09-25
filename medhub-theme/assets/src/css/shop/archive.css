@@ -1,45 +1,3 @@
-/* ---------- Breadcrumb ---------- */
-.breadcrumb {
-	padding-block: var(--s-4);
-	font-size: 0.8125rem;
-	color: var(--c-muted);
-}
-
-.breadcrumb ol {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 0.25rem 0.5rem;
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-
-.breadcrumb li + li::before {
-	content: '/';
-	margin-right: 0.5rem;
-	color: var(--c-line-strong);
-}
-
-.breadcrumb a {
-	color: var(--c-muted);
-	text-decoration: none;
-}
-
-.breadcrumb a:hover {
-	color: var(--c-ink);
-	text-decoration: underline;
-}
-
-/* Rank Math breadcrumb markup */
-.breadcrumb .rank-math-breadcrumb p {
-	margin: 0;
-}
-
-.breadcrumb .separator {
-	margin-inline: 0.375rem;
-	color: var(--c-line-strong);
-}
-
 /* ---------- Archive header ---------- */
 .archive-head {
 	padding-bottom: clamp(var(--s-5), 3vw, var(--s-7));
@@ -90,46 +48,6 @@
 	object-fit: contain;
 }
 
-/* Sibling categories / departments: one scrollable row of chips. */
-.subnav {
-	margin-top: var(--s-6);
-}
-
-.subnav__list {
-	display: flex;
-	gap: var(--s-2);
-	margin-inline: calc(var(--gutter) * -1);
-	padding-inline: var(--gutter);
-	overflow-x: auto;
-	scrollbar-width: none;
-}
-
-.subnav__list::-webkit-scrollbar {
-	display: none;
-}
-
-.subnav .chip {
-	flex: none;
-	gap: var(--s-2);
-	white-space: nowrap;
-}
-
-.chip small {
-	font-size: 0.75rem;
-	color: var(--c-muted);
-	font-variant-numeric: tabular-nums;
-}
-
-.chip.is-current {
-	background: var(--c-ink);
-	border-color: var(--c-ink);
-	color: var(--c-paper);
-}
-
-.chip.is-current small {
-	color: var(--c-on-dark-muted);
-}
-
 /* ---------- Body: filters + results ---------- */
 .archive-body {
 	display: grid;
@@ -167,6 +85,26 @@
 	display: flex;
 	align-items: center;
 	gap: var(--s-2);
+	min-width: 0;
+}
+
+.toolbar__actions select.orderby {
+	max-width: 100%;
+}
+
+@media (max-width: 399px) {
+	.toolbar__actions {
+		width: 100%;
+	}
+
+	.toolbar__actions .woocommerce-ordering {
+		flex: 1;
+		min-width: 0;
+	}
+
+	.toolbar__actions select.orderby {
+		width: 100%;
+	}
 }
 
 .toolbar__actions .woocommerce-ordering {

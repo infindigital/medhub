@@ -1,0 +1,18 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "medhub/link-cards",
+	"title": "Link cards",
+	"category": "medhub",
+	"icon": "admin-links",
+	"description": "Internal-link cards. One link per line: category:slug, brand:slug, page:path, post:slug or product:slug – optionally followed by | Custom label. Names, counts and images are resolved live; missing items are skipped.",
+	"attributes": {
+		"eyebrow": { "type": "string", "default": "" },
+		"heading": { "type": "string", "default": "" },
+		"lead": { "type": "string", "default": "" },
+		"items": { "type": "string", "default": "" }
+	},
+	"supports": { "html": false, "anchor": true },
+	"editorScript": "medhub-blocks-editor",
+	"render": "file:./render.php"
+}

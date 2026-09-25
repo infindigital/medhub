@@ -50,11 +50,19 @@ function medhub_collect_faq_items( array $blocks ): array {
 add_filter(
 	'rank_math/json_ld',
 	static function ( $data ) {
-		if ( ! is_singular() ) {
-			return $data;
+		$object = get_queried_object();
+		$post   = null;
+		$url    = '';
+
+		if ( is_singular() && $object instanceof WP_Post ) {
+			$post = $object;
+			$url  = get_permalink( $post );
+		} elseif ( $object instanceof WP_Term && function_exists( 'medhub_get_term_content' ) && ( is_tax( 'product_cat' ) || is_tax( 'product_brand' ) ) ) {
+			// Category/brand pages: FAQs from their Category content entry (rendered on the page).
+			$post = medhub_get_term_content( $object );
+			$url  = get_term_link( $object );
 		}
 
-		$post = get_queried_object();
 		if ( ! $post instanceof WP_Post || ! has_block( 'medhub/faq', $post ) ) {
 			return $data;
 		}
@@ -66,7 +74,7 @@ add_filter(
 
 		$data['medhub-faq'] = array(
 			'@type'      => 'FAQPage',
-			'@id'        => get_permalink( $post ) . '#faq',
+			'@id'        => $url . '#faq',
 			'mainEntity' => array_map(
 				static fn( $item ) => array(
 					'@type'          => 'Question',
