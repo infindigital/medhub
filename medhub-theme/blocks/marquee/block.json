@@ -1,0 +1,16 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "medhub/marquee",
+	"title": "Marquee",
+	"category": "medhub",
+	"icon": "leftright",
+	"description": "Slow scrolling strip of live departments or brands (links). Pauses on hover/focus; static with reduced motion. Source: departments or brands.",
+	"attributes": {
+		"source": { "type": "string", "default": "departments" },
+		"label": { "type": "string", "default": "" }
+	},
+	"supports": { "html": false, "anchor": true },
+	"editorScript": "medhub-blocks-editor",
+	"render": "file:./render.php"
+}

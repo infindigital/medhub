@@ -1,0 +1,238 @@
+/* ---------- Site-wide interaction layer ---------- */
+
+/* Scroll progress bar (pure CSS, scroll-driven animation where supported). */
+@supports (animation-timeline: scroll()) {
+	@media (prefers-reduced-motion: no-preference) {
+		body::before {
+			content: '';
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: calc(var(--z-header) + 1);
+			height: 3px;
+			background: linear-gradient(90deg, var(--c-teal), var(--c-aqua-2));
+			transform-origin: 0 50%;
+			transform: scaleX(0);
+			animation: medhub-progress linear both;
+			animation-timeline: scroll(root);
+			pointer-events: none;
+		}
+	}
+}
+
+@keyframes medhub-progress {
+	to {
+		transform: scaleX(1);
+	}
+}
+
+/* Cursor spotlight: JS sets --mx/--my on hovered cards (fine pointers only). */
+.has-spotlight {
+	position: relative;
+	isolation: isolate;
+}
+
+.has-spotlight::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	border-radius: inherit;
+	background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 50%), rgb(167 232 216 / 0.28), transparent 55%);
+	opacity: 0;
+	transition: opacity var(--t-slow) var(--ease);
+	pointer-events: none;
+}
+
+.has-spotlight.is-lit::after {
+	opacity: 1;
+}
+
+.has-spotlight > * {
+	position: relative;
+	z-index: 1;
+}
+
+/* Dark surfaces get a brighter aqua light. */
+.tile--dark.has-spotlight::after,
+.is-dark.has-spotlight::after,
+.cta__panel.has-spotlight::after {
+	background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgb(167 232 216 / 0.18), transparent 60%);
+}
+
+/* Subtle 3D tilt on tiles (JS sets --rx/--ry). */
+.has-tilt {
+	transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+	transition: transform 0.5s var(--ease);
+}
+
+.has-tilt.is-lit {
+	transition-duration: 0.12s;
+}
+
+/* Magnetic buttons (JS sets --tx/--ty). */
+[data-magnetic] {
+	translate: var(--tx, 0) var(--ty, 0);
+	transition:
+		translate 0.3s var(--ease),
+		transform var(--t-base) var(--ease),
+		background-color var(--t-base) var(--ease),
+		color var(--t-base) var(--ease);
+}
+
+/* Counters keep their width while counting. */
+[data-count-to] {
+	font-variant-numeric: tabular-nums;
+}
+
+/* Scroll-driven entrances for section titles and tile images (no JS). */
+@supports (animation-timeline: view()) {
+	@media (prefers-reduced-motion: no-preference) {
+		.section-head__title,
+		.archive-head__title,
+		.blog-head__title {
+			animation: medhub-title-in linear both;
+			animation-timeline: view();
+			animation-range: entry 0% entry 60%;
+		}
+
+		.tile__img,
+		.link-card__media img {
+			animation: medhub-parallax linear both;
+			animation-timeline: view();
+			animation-range: cover;
+		}
+
+		.pcard__media {
+			animation: medhub-card-in linear both;
+			animation-timeline: view();
+			animation-range: entry 0% entry 50%;
+		}
+	}
+}
+
+@keyframes medhub-title-in {
+	from {
+		opacity: 0;
+		clip-path: inset(0 0 100% 0);
+		transform: translateY(24px);
+	}
+	to {
+		opacity: 1;
+		clip-path: inset(0 0 -20% 0);
+		transform: none;
+	}
+}
+
+@keyframes medhub-parallax {
+	from {
+		translate: 0 18px;
+	}
+	to {
+		translate: 0 -18px;
+	}
+}
+
+@keyframes medhub-card-in {
+	from {
+		clip-path: inset(12% 12% 12% 12% round var(--r-md));
+	}
+	to {
+		clip-path: inset(0 0 0 0 round 0);
+	}
+}
+
+/* ---------- Marquee ---------- */
+.marquee {
+	overflow: hidden;
+	padding-block: var(--s-5);
+	border-block: 1px solid var(--c-line);
+	background: var(--c-ink);
+	color: var(--c-on-dark);
+	mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.marquee__track {
+	display: flex;
+	width: max-content;
+}
+
+.marquee__list {
+	display: flex;
+	flex: none;
+	gap: 0;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.marquee__item {
+	display: inline-flex;
+	align-items: flex-start;
+	gap: 0.25rem;
+	padding: 0 clamp(1.5rem, 3vw, 2.75rem);
+	color: var(--c-on-dark);
+	font-size: clamp(1.5rem, 1rem + 2vw, 2.75rem);
+	font-weight: 600;
+	letter-spacing: -0.03em;
+	line-height: 1.1;
+	text-decoration: none;
+	white-space: nowrap;
+	transition: color var(--t-base) var(--ease);
+}
+
+.marquee__item::before {
+	content: '✦';
+	margin-right: clamp(1.5rem, 3vw, 2.75rem);
+	margin-left: calc(clamp(1.5rem, 3vw, 2.75rem) * -1);
+	color: var(--c-aqua);
+	font-size: 0.5em;
+	align-self: center;
+}
+
+.marquee__item sup {
+	font-size: 0.4em;
+	font-weight: 500;
+	color: var(--c-on-dark-muted);
+	margin-top: 0.3em;
+}
+
+.marquee__item:hover,
+.marquee__item:focus-visible {
+	color: var(--c-aqua);
+}
+
+.marquee__item:hover {
+	font-family: var(--font-accent);
+	font-style: italic;
+	font-weight: 400;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.marquee__track {
+		animation: medhub-marquee 40s linear infinite;
+	}
+
+	.marquee:hover .marquee__track,
+	.marquee:focus-within .marquee__track {
+		animation-play-state: paused;
+	}
+}
+
+@keyframes medhub-marquee {
+	to {
+		transform: translateX(-50%);
+	}
+}
+
+/* Reduced motion: a static, scrollable row instead. */
+@media (prefers-reduced-motion: reduce) {
+	.marquee {
+		overflow-x: auto;
+	}
+
+	.marquee__list[aria-hidden='true'] {
+		display: none;
+	}
+}

@@ -19,6 +19,30 @@ function medhub_accent_text( string $text ): string {
 }
 
 /**
+ * Headline split into words for the reveal animation (*accent* words keep the serif <em>).
+ * Each word is wrapped so CSS can stagger it; screen readers read the plain sentence.
+ *
+ * @param string $text Plain text from a block attribute.
+ */
+function medhub_reveal_words( string $text ): string {
+	$parts = preg_split( '/(\*.+?\*)/u', $text, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY );
+	$html  = '';
+	$i     = 0;
+
+	foreach ( $parts as $part ) {
+		$accent = (bool) preg_match( '/^\*(.+)\*$/u', $part, $m );
+		$words  = preg_split( '/\s+/u', trim( $accent ? $m[1] : $part ), -1, PREG_SPLIT_NO_EMPTY );
+		$chunk  = '';
+		foreach ( $words as $word ) {
+			$chunk .= '<span class="word"><span style="--i:' . $i++ . '">' . esc_html( $word ) . '</span></span> ';
+		}
+		$html .= $accent ? '<em>' . trim( $chunk ) . '</em> ' : $chunk;
+	}
+
+	return trim( $html );
+}
+
+/**
  * Site-relative or absolute URL from a block attribute ("/shop/" → home URL based).
  *
  * @param string $url Attribute value.

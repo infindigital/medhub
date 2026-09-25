@@ -1,7 +1,7 @@
 /* Self-hosted fonts (SIL OFL). Latin subsets only. */
 @font-face {
 	font-family: 'Geist';
-	src: url('../fonts/geist-latin-var.woff2') format('woff2');
+	src: url('../../fonts/geist-latin-var.woff2') format('woff2');
 	font-weight: 100 900;
 	font-style: normal;
 	font-display: swap;
@@ -9,7 +9,7 @@
 
 @font-face {
 	font-family: 'Instrument Serif';
-	src: url('../fonts/instrument-serif-italic-latin.woff2') format('woff2');
+	src: url('../../fonts/instrument-serif-italic-latin.woff2') format('woff2');
 	font-weight: 400;
 	font-style: italic;
 	font-display: swap;

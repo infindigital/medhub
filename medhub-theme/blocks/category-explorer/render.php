@@ -41,7 +41,7 @@ $heading_id = wp_unique_id( 'explorer-' );
 							<?php endif; ?>
 						</div>
 						<div class="tile__foot">
-							<span class="tile__count"><?php echo esc_html( medhub_count_label( $dept['count'] ) ); ?></span>
+							<span class="tile__count"><span data-count-to="<?php echo (int) $dept['count']; ?>"><?php echo esc_html( number_format_i18n( $dept['count'] ) ); ?></span> <?php echo esc_html( _n( 'product', 'products', $dept['count'], 'medhub' ) ); ?></span>
 							<span class="tile__arrow"><?php echo medhub_icon( 'arrow' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span>
 						</div>
 						<?php

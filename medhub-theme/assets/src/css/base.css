@@ -17,4 +17,5 @@
 @import './components/forms.css' layer(components);
 @import './components/breadcrumb.css' layer(components);
 @import './components/subnav.css' layer(components);
+@import './components/interactive.css' layer(components);
 @import './base/a11y.css' layer(utilities);

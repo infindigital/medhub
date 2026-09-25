@@ -27,3 +27,14 @@ sandbox/wp.sh eval-file "$(pwd -W)/tooling/sandbox/seed.php" home      # reset h
 
 ## Deleting the sandbox
 Stop the server and delete `sandbox/`. Nothing else depends on it.
+
+## Static HTML copy (VS Code "Go Live")
+
+`node tooling/export/export-html.mjs` (with `sandbox/serve.sh` running) writes a static copy of the
+sandbox into the project root: `index.html`, `<page>.html`, `product/`, `product-category/`, `brand/`,
+`category/` and `assets/`. Stop the sandbox server afterwards; click **Go Live** in VS Code (or open
+`index.html`) to browse it. All links are relative.
+
+- Generated files are listed in `.static-export.json` and replaced on each export; they are committed so the repo opens with Go Live.
+- Cart, checkout, account, search suggestions, filters/sorting, add-to-cart and forms need WordPress
+  and do not work in the static copy. The theme in `medhub-theme/` is still the real frontend.

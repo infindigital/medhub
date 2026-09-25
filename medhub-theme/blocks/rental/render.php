@@ -45,7 +45,7 @@ $uid = wp_unique_id( 'rental-' );
 				)
 			);
 			?>
-			<p class="rental__count"><span><?php echo esc_html( number_format_i18n( $term->count ) ); ?></span> <?php esc_html_e( 'items available to rent by the month', 'medhub' ); ?></p>
+			<p class="rental__count"><span data-count-to="<?php echo (int) $term->count; ?>"><?php echo esc_html( number_format_i18n( $term->count ) ); ?></span> <?php esc_html_e( 'items available to rent by the month', 'medhub' ); ?></p>
 			<?php
 			echo medhub_button( // phpcs:ignore WordPress.Security.EscapeOutput
 				array(

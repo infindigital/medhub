@@ -12,6 +12,7 @@ import { initReveal } from './modules/reveal.js';
 import { initShop } from './modules/shop.js';
 import { initProduct } from './modules/product.js';
 import { initDevForm } from './modules/devform.js';
+import { initInteractive } from './modules/interactive.js';
 
 document.documentElement.classList.add('js');
 
@@ -25,3 +26,4 @@ initReveal();
 initShop();
 initProduct();
 initDevForm();
+initInteractive();

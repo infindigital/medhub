@@ -1,0 +1,498 @@
+/* ---------- Interactive hero ---------- */
+.hero--interactive {
+	position: relative;
+	overflow: clip;
+}
+
+/* Ambient aurora behind the whole hero: two soft colour fields drifting slowly. */
+.hero--interactive::before,
+.hero--interactive::after {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	border-radius: 50%;
+	filter: blur(60px);
+	opacity: 0.55;
+	pointer-events: none;
+}
+
+.hero--interactive::before {
+	width: 38rem;
+	height: 38rem;
+	right: -8rem;
+	top: -10rem;
+	background: radial-gradient(circle, rgb(167 232 216 / 0.55), transparent 65%);
+}
+
+.hero--interactive::after {
+	width: 30rem;
+	height: 30rem;
+	left: -10rem;
+	bottom: -14rem;
+	background: radial-gradient(circle, rgb(232 225 211 / 0.9), transparent 65%);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.hero--interactive::before {
+		animation: medhub-drift 18s ease-in-out infinite alternate;
+	}
+
+	.hero--interactive::after {
+		animation: medhub-drift 22s ease-in-out infinite alternate-reverse;
+	}
+}
+
+@keyframes medhub-drift {
+	to {
+		transform: translate(-4rem, 3rem) scale(1.1);
+	}
+}
+
+/* Eyebrow live dot */
+.hero__eyebrow {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.625rem;
+	padding: 0.375rem 0.875rem 0.375rem 0.625rem;
+	border: 1px solid var(--c-line);
+	border-radius: var(--r-pill);
+	background: rgb(255 255 255 / 0.6);
+	backdrop-filter: blur(6px);
+}
+
+.hero__pulse {
+	position: relative;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: var(--c-teal);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.hero__pulse::after {
+		content: '';
+		position: absolute;
+		inset: -4px;
+		border-radius: 50%;
+		border: 2px solid var(--c-teal);
+		animation: medhub-ping 2s var(--ease) infinite;
+	}
+}
+
+@keyframes medhub-ping {
+	from {
+		transform: scale(0.5);
+		opacity: 0.8;
+	}
+	to {
+		transform: scale(1.8);
+		opacity: 0;
+	}
+}
+
+/* Word-by-word headline reveal */
+.hero__title .word {
+	display: inline-block;
+	overflow: hidden;
+	vertical-align: top;
+	padding-bottom: 0.12em;
+	margin-bottom: -0.12em;
+}
+
+.hero__title .word > span {
+	display: inline-block;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.hero__title .word > span {
+		animation: medhub-word 0.9s var(--ease) both;
+		animation-delay: calc(0.15s + var(--i) * 70ms);
+	}
+
+	.hero__lead,
+	.hero__actions {
+		animation: medhub-up 0.9s var(--ease) both;
+		animation-delay: 0.55s;
+	}
+
+	.hero__actions {
+		animation-delay: 0.7s;
+	}
+
+	.hero__visual {
+		animation: medhub-pop 1.1s var(--ease) both;
+		animation-delay: 0.2s;
+	}
+}
+
+@keyframes medhub-word {
+	from {
+		transform: translateY(110%) rotate(4deg);
+	}
+}
+
+@keyframes medhub-up {
+	from {
+		opacity: 0;
+		transform: translateY(16px);
+	}
+}
+
+@keyframes medhub-pop {
+	from {
+		opacity: 0;
+		transform: scale(0.94) translateY(20px);
+	}
+}
+
+/* Visual: 3D tilt container (JS sets --rx/--ry and --px/--py for parallax) */
+.hero--interactive .hero__visual {
+	perspective: 1200px;
+}
+
+.hero--interactive .hero__arch {
+	position: relative;
+	isolation: isolate;
+	transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+	transform-style: preserve-3d;
+	transition: transform 0.6s var(--ease);
+	will-change: transform;
+}
+
+.hero__visual.is-pointer .hero__arch {
+	transition-duration: 0.12s;
+}
+
+/* Cursor-following glow inside the arch */
+.hero__glow {
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 40%), rgb(255 255 255 / 0.85), transparent 60%);
+	opacity: 0.8;
+	transition: opacity var(--t-slow) var(--ease);
+	pointer-events: none;
+}
+
+/* Orbit rings */
+.hero__orbit {
+	position: absolute;
+	left: 50%;
+	top: 46%;
+	z-index: 0;
+	width: 78%;
+	aspect-ratio: 1;
+	border: 1px dashed rgb(10 110 98 / 0.28);
+	border-radius: 50%;
+	transform: translate(-50%, -50%) translate(calc(var(--px, 0) * 8px), calc(var(--py, 0) * 8px));
+	pointer-events: none;
+}
+
+.hero__orbit--inner {
+	width: 56%;
+	border-style: solid;
+	border-color: rgb(255 255 255 / 0.7);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.hero__orbit::after {
+		content: '';
+		position: absolute;
+		top: -5px;
+		left: 50%;
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+		background: var(--c-teal);
+		box-shadow: 0 0 0 6px rgb(10 110 98 / 0.12);
+		translate: -50% 0;
+	}
+
+	.hero__orbit {
+		animation: medhub-spin 28s linear infinite;
+	}
+
+	.hero__orbit--inner {
+		animation-duration: 40s;
+		animation-direction: reverse;
+	}
+
+	.hero__orbit--inner::after {
+		background: var(--c-aqua-2);
+		box-shadow: 0 0 0 6px rgb(143 220 201 / 0.25);
+	}
+}
+
+@keyframes medhub-spin {
+	to {
+		rotate: 360deg;
+	}
+}
+
+/* Product slides (crossfade + lift) */
+.hero__slide {
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	display: grid;
+	place-items: center;
+	opacity: 0;
+	mix-blend-mode: multiply; /* white product backgrounds melt into the sand arch */
+	transform: translate(calc(var(--px, 0) * 18px), calc(var(--py, 0) * 18px)) scale(0.92);
+	transition:
+		opacity 0.7s var(--ease),
+		transform 0.9s var(--ease);
+	pointer-events: none;
+}
+
+.hero__slide.is-active {
+	opacity: 1;
+	transform: translate(calc(var(--px, 0) * 18px), calc(var(--py, 0) * 18px)) scale(1);
+}
+
+.hero--interactive .hero__img {
+	width: 70%;
+	max-height: 78%;
+	object-fit: contain;
+	animation: none;
+	transform: none;
+	mix-blend-mode: normal;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.hero__slide.is-active .hero__img {
+		animation: medhub-float 7s var(--ease) infinite alternate;
+	}
+}
+
+/* Floating fact chips */
+.hero__float {
+	position: absolute;
+	z-index: 3;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.5rem 0.875rem;
+	border: 1px solid rgb(255 255 255 / 0.8);
+	border-radius: var(--r-pill);
+	background: rgb(255 255 255 / 0.82);
+	backdrop-filter: blur(8px);
+	box-shadow: var(--sh-1);
+	font-size: 0.8125rem;
+	font-weight: 600;
+	white-space: nowrap;
+	transform: translate(calc(var(--px, 0) * 26px), calc(var(--py, 0) * 26px));
+	transition: transform 0.5s var(--ease);
+}
+
+.hero__float .icon {
+	width: 1rem;
+	height: 1rem;
+	color: var(--c-teal);
+}
+
+.hero__float--0 {
+	top: 16%;
+	left: -1.5rem;
+}
+
+.hero__float--1 {
+	top: 38%;
+	right: -1.25rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.hero__float {
+		animation: medhub-bob 5s ease-in-out infinite alternate;
+	}
+
+	.hero__float--1 {
+		animation-delay: -2.5s;
+	}
+}
+
+@keyframes medhub-bob {
+	to {
+		translate: 0 -8px;
+	}
+}
+
+@media (max-width: 599px) {
+	.hero__float--0 {
+		left: 0.5rem;
+		top: 1rem;
+	}
+
+	.hero__float--1 {
+		display: none;
+	}
+}
+
+/* Product chip that follows the active slide */
+.hero__chips {
+	position: absolute;
+	inset-inline: clamp(0.75rem, 3vw, 1.25rem);
+	bottom: clamp(0.75rem, 3vw, 1.25rem);
+	z-index: 3;
+	display: grid;
+}
+
+.hero__chips .hero__chip-link {
+	grid-area: 1 / 1;
+	opacity: 0;
+	transform: translateY(10px);
+	transition:
+		opacity var(--t-slow) var(--ease),
+		transform var(--t-slow) var(--ease);
+	pointer-events: none;
+}
+
+.hero__chips .hero__chip-link.is-active {
+	opacity: 1;
+	transform: none;
+	pointer-events: auto;
+}
+
+.hero__chips .hero__chip-link.is-active:hover {
+	transform: translateY(-2px);
+}
+
+/* Controls */
+.hero__controls {
+	position: absolute;
+	top: 1.25rem;
+	right: 1.25rem;
+	z-index: 3;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.375rem 0.5rem;
+	border-radius: var(--r-pill);
+	background: rgb(255 255 255 / 0.75);
+	backdrop-filter: blur(8px);
+}
+
+.hero__dots {
+	display: flex;
+	gap: 0.25rem;
+}
+
+.hero__dot {
+	position: relative;
+	width: 1.5rem;
+	height: 1.5rem;
+	display: grid;
+	place-items: center;
+}
+
+.hero__dot::before {
+	content: '';
+	width: 0.5rem;
+	height: 0.5rem;
+	border-radius: var(--r-pill);
+	background: var(--c-line-strong);
+	transition: width var(--t-base) var(--ease), background-color var(--t-base) var(--ease);
+}
+
+.hero__dot[aria-current='true']::before {
+	width: 1.25rem;
+	background: var(--c-ink);
+}
+
+.hero__pause {
+	display: grid;
+	place-items: center;
+	width: 1.75rem;
+	height: 1.75rem;
+	border-radius: 50%;
+	background: var(--c-ink);
+}
+
+.hero__pause-icon {
+	width: 8px;
+	height: 9px;
+	border-inline: 2.5px solid var(--c-paper);
+}
+
+.hero__pause[aria-pressed='true'] .hero__pause-icon {
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 5px 0 5px 8px;
+	border-color: transparent transparent transparent var(--c-paper);
+	margin-left: 2px;
+}
+
+/* Scroll: the visual eases back as the page scrolls (where supported). */
+@supports (animation-timeline: scroll()) {
+	@media (prefers-reduced-motion: no-preference) {
+		.hero--interactive .hero__visual {
+			animation:
+				medhub-pop 1.1s var(--ease) both,
+				medhub-hero-scroll linear both;
+			animation-timeline: auto, scroll();
+			animation-range: normal, 0 70vh;
+		}
+	}
+}
+
+@keyframes medhub-hero-scroll {
+	to {
+		transform: translateY(8%) scale(0.94);
+		opacity: 0.6;
+	}
+}
+
+/* ---------- Fit the hero to one screen (desktop / laptop) ----------
+ * Sized from BOTH viewport width and height, so short-but-wide screens
+ * (e.g. 1920×870 laptops) keep the whole hero above the fold.
+ */
+@media (min-width: 900px) {
+	.hero--interactive {
+		display: flex;
+		align-items: center;
+		min-height: calc(100svh - var(--header-h));
+		padding-block: clamp(1.25rem, 3.5vh, 3rem);
+	}
+
+	.hero--interactive .hero__grid {
+		width: 100%;
+		align-items: center;
+		gap: clamp(2rem, 4vw, 5rem);
+	}
+
+	.hero--interactive .hero__title {
+		font-size: clamp(2.5rem, min(5.4vw, 8.2svh), 5.5rem);
+		margin-bottom: clamp(0.75rem, 2.2vh, 1.5rem);
+	}
+
+	.hero--interactive .hero__eyebrow {
+		margin-bottom: clamp(0.75rem, 2vh, 1.25rem);
+	}
+
+	.hero--interactive .hero__lead {
+		font-size: clamp(1rem, min(1.35vw, 2.3svh), 1.3125rem);
+	}
+
+	.hero--interactive .hero__actions {
+		margin-top: clamp(1rem, 3vh, 2rem);
+	}
+
+	/* The arch never exceeds the space left under the header. */
+	.hero--interactive .hero__visual {
+		width: 100%;
+		max-width: min(34rem, calc((100svh - var(--header-h) - 5rem) * 0.87));
+		justify-self: end;
+	}
+}
+
+/* Very short windows: slightly tighter still. */
+@media (min-width: 900px) and (max-height: 760px) {
+	.hero--interactive .hero__title {
+		font-size: clamp(2.25rem, min(5vw, 7.4svh), 4.5rem);
+	}
+
+	.hero__float--1 {
+		display: none;
+	}
+}

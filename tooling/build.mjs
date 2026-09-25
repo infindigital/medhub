@@ -35,7 +35,7 @@ const configs = [
 		entryPoints: entries('css', '.css'),
 		outdir: join(root, 'dist', 'css'),
 		// Fonts/icons are referenced by URL and copied as-is, never inlined.
-		external: ['../fonts/*', '../icons/*', '../images/*'],
+		external: ['../../fonts/*', '../../icons/*', '../../images/*', '../fonts/*', '../icons/*', '../images/*'],
 		target: ['chrome111', 'safari16.4', 'firefox115'],
 	},
 	{
