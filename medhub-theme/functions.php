@@ -29,12 +29,19 @@ $medhub_modules = array(
 	'inc/assets.php',
 	'inc/blocks.php',
 	'inc/seo/faq-schema.php',
+	'inc/seo/robots.php',
 	'inc/dev.php',
 );
 
 // Hooks into WooCommerce only when it is active.
 if ( class_exists( 'WooCommerce' ) ) {
 	$medhub_modules[] = 'inc/woocommerce/support.php';
+	$medhub_modules[] = 'inc/woocommerce/archive.php';
+	$medhub_modules[] = 'inc/woocommerce/single.php';
+}
+
+if ( is_admin() ) {
+	$medhub_modules[] = 'inc/admin/term-fields.php';
 }
 
 foreach ( $medhub_modules as $medhub_module ) {

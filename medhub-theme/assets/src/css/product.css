@@ -1,0 +1,7 @@
+/* product.css – single product page (loaded after shop.css). */
+@layer reset, tokens, base, layout, components, utilities;
+
+@import './product/layout.css' layer(components);
+@import './product/gallery.css' layer(components);
+@import './product/buy-box.css' layer(components);
+@import './product/details.css' layer(components);

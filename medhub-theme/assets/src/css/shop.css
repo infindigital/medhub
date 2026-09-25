@@ -1,0 +1,5 @@
+/* shop.css – shop, category, brand and product-search archives (+ shared by product pages). */
+@layer reset, tokens, base, layout, components, utilities;
+
+@import './shop/archive.css' layer(components);
+@import './shop/filters.css' layer(components);

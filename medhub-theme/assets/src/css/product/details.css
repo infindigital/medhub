@@ -1,0 +1,61 @@
+/* ---------- Product tabs as accordion ---------- */
+.product-tabs {
+	border-top: 1px solid var(--c-line);
+}
+
+.product-tabs__item {
+	border-bottom: 1px solid var(--c-line);
+}
+
+.product-tabs__title {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--s-5);
+	min-height: 4.25rem;
+	font-size: 1.25rem;
+	font-weight: 600;
+	letter-spacing: -0.015em;
+	list-style: none;
+	cursor: pointer;
+}
+
+.product-tabs__title::-webkit-details-marker {
+	display: none;
+}
+
+.product-tabs__title::after {
+	content: '';
+	flex: none;
+	width: 2rem;
+	height: 2rem;
+	border-radius: 50%;
+	background:
+		linear-gradient(var(--c-ink), var(--c-ink)) center / 12px 1.5px no-repeat,
+		linear-gradient(var(--c-ink), var(--c-ink)) center / 1.5px 12px no-repeat,
+		var(--c-sand-2);
+	transition: transform var(--t-base) var(--ease);
+}
+
+.product-tabs__item[open] .product-tabs__title::after {
+	transform: rotate(45deg);
+}
+
+.product-tabs__panel {
+	padding-bottom: var(--s-6);
+}
+
+/* WooCommerce repeats the tab title as an H2 inside the description panel. */
+.product-tabs__panel > h2:first-child {
+	display: none;
+}
+
+.fact-list {
+	padding-left: 1.25rem;
+}
+
+.fact-links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--s-4);
+}

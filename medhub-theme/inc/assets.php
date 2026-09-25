@@ -43,6 +43,16 @@ add_action(
 			medhub_enqueue_css( 'home', 'home.css' );
 		}
 
+		if ( function_exists( 'is_woocommerce' ) ) {
+			if ( is_shop() || is_product_taxonomy() || ( is_search() && 'product' === get_query_var( 'post_type' ) ) ) {
+				medhub_enqueue_css( 'shop', 'shop.css' );
+			}
+			if ( is_product() ) {
+				medhub_enqueue_css( 'shop', 'shop.css' );
+				medhub_enqueue_css( 'product', 'product.css' );
+			}
+		}
+
 		wp_enqueue_script_module( 'medhub-core', MEDHUB_URI . '/assets/dist/js/core.js', array(), medhub_asset_version( 'js/core.js' ) );
 	}
 );

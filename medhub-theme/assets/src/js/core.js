@@ -9,6 +9,8 @@ import { initSearch } from './modules/search.js';
 import { initTabs } from './modules/tabs.js';
 import { initRails } from './modules/rail.js';
 import { initReveal } from './modules/reveal.js';
+import { initShop } from './modules/shop.js';
+import { initProduct } from './modules/product.js';
 
 document.documentElement.classList.add('js');
 
@@ -19,3 +21,5 @@ initSearch();
 initTabs();
 initRails();
 initReveal();
+initShop();
+initProduct();

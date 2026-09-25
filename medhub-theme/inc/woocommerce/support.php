@@ -8,17 +8,13 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * WooCommerce's own stylesheets are kept on shop, cart, checkout and account pages
- * (restyled in steps 2E–2G) and skipped everywhere else, where the theme renders
- * its own product markup.
+ * WooCommerce's own stylesheets are kept only on cart, checkout and account pages
+ * (restyled in step 2G). Shop, category and product pages use the theme's styles.
  */
 add_filter(
 	'woocommerce_enqueue_styles',
 	static function ( $styles ) {
-		if ( is_woocommerce() || is_cart() || is_checkout() || is_account_page() ) {
-			return $styles;
-		}
-		return array();
+		return ( is_cart() || is_checkout() || is_account_page() ) ? $styles : array();
 	}
 );
 
