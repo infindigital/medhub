@@ -1,0 +1,22 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "medhub/hero",
+	"title": "Hero",
+	"category": "medhub",
+	"icon": "cover-image",
+	"description": "Page hero with the page H1, intro, two actions and a live product visual. Wrap a word in *asterisks* for the serif accent.",
+	"attributes": {
+		"eyebrow": { "type": "string", "default": "" },
+		"heading": { "type": "string", "default": "" },
+		"lead": { "type": "string", "default": "" },
+		"primaryLabel": { "type": "string", "default": "" },
+		"primaryUrl": { "type": "string", "default": "" },
+		"secondaryLabel": { "type": "string", "default": "" },
+		"secondaryUrl": { "type": "string", "default": "" },
+		"productSlug": { "type": "string", "default": "" }
+	},
+	"supports": { "html": false, "anchor": true, "multiple": false },
+	"editorScript": "medhub-blocks-editor",
+	"render": "file:./render.php"
+}

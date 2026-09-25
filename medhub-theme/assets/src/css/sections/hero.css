@@ -1,0 +1,180 @@
+/* ---------- Hero ---------- */
+.hero {
+	padding-block: clamp(2rem, 1rem + 4vw, 5rem) clamp(3rem, 2rem + 4vw, 6rem);
+}
+
+.hero__grid {
+	display: grid;
+	gap: clamp(2rem, 4vw, 4.5rem);
+	align-items: end;
+}
+
+@media (min-width: 900px) {
+	.hero__grid {
+		grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+	}
+
+	.hero--text .hero__grid {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+.hero__title {
+	font-size: var(--fs-display);
+	line-height: var(--lh-tight);
+	letter-spacing: var(--tracking-display);
+	margin-bottom: var(--s-5);
+}
+
+.hero__lead {
+	max-width: 36rem;
+	font-size: var(--fs-lead);
+	color: var(--c-muted);
+}
+
+.hero__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--s-3);
+	margin-top: var(--s-6);
+}
+
+@media (max-width: 479px) {
+	.hero__actions .btn {
+		width: 100%;
+	}
+}
+
+.hero__visual {
+	position: relative;
+	margin: 0;
+	max-width: 36rem;
+	width: 100%;
+	justify-self: center;
+}
+
+/* Arch silhouette: the one Dubai-architecture cue in the system. */
+.hero__arch {
+	display: grid;
+	place-items: center;
+	aspect-ratio: 4 / 4.6;
+	overflow: hidden;
+	border-radius: 999px 999px var(--r-lg) var(--r-lg);
+	background: radial-gradient(90% 70% at 50% 40%, var(--c-sand-2) 0%, var(--c-sand) 70%);
+}
+
+.hero__img {
+	width: 72%;
+	height: auto;
+	mix-blend-mode: multiply;
+	transform: translateY(2%);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.hero__img {
+		animation: medhub-float 9s var(--ease) infinite alternate;
+	}
+}
+
+@keyframes medhub-float {
+	to {
+		transform: translateY(-2%);
+	}
+}
+
+.hero__chip {
+	position: absolute;
+	inset-inline: clamp(0.75rem, 3vw, 1.25rem);
+	bottom: clamp(0.75rem, 3vw, 1.25rem);
+}
+
+.hero__chip-link {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--s-4);
+	padding: 0.875rem 1rem;
+	border-radius: var(--r-md);
+	background: var(--c-surface);
+	box-shadow: var(--sh-1);
+	color: var(--c-ink);
+	text-decoration: none;
+	transition: transform var(--t-base) var(--ease);
+}
+
+.hero__chip-link:hover {
+	color: var(--c-ink);
+	transform: translateY(-2px);
+}
+
+.hero__chip-main,
+.hero__chip-side {
+	display: grid;
+	gap: 2px;
+	min-width: 0;
+}
+
+.hero__chip-side {
+	justify-items: end;
+	text-align: right;
+}
+
+@media (max-width: 419px) {
+	.hero__chip-link {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: var(--s-2);
+	}
+
+	.hero__chip-main {
+		width: 100%;
+	}
+
+	.hero__chip-side {
+		justify-items: start;
+		text-align: left;
+	}
+}
+
+.hero__chip-cat {
+	font-size: 0.78125rem;
+	color: var(--c-muted);
+}
+
+.hero__chip-name {
+	font-weight: 600;
+	line-height: 1.25;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* ---------- Trust bar ---------- */
+.trust {
+	border-block: 1px solid var(--c-line);
+}
+
+.trust__list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--s-3) var(--s-7);
+	padding-block: var(--s-5);
+}
+
+.trust__item {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--s-3);
+	font-size: 0.9375rem;
+	font-weight: 500;
+}
+
+.trust__item .icon {
+	width: 1.25rem;
+	height: 1.25rem;
+	color: var(--c-teal);
+}
+
+.trust + .section {
+	padding-top: var(--section-y);
+}

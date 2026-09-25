@@ -1,0 +1,18 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "medhub/care-switcher",
+	"title": "Care switcher",
+	"category": "medhub",
+	"icon": "controls-repeat",
+	"description": "Interactive tabs across equipment categories (e.g. CPAP, BiPAP, oxygen). Tab names, intros and products come live from WooCommerce categories.",
+	"attributes": {
+		"eyebrow": { "type": "string", "default": "" },
+		"heading": { "type": "string", "default": "" },
+		"lead": { "type": "string", "default": "" },
+		"categories": { "type": "string", "default": "auto-cpap-machine,bipap,travel-cpap-machine,buy-cpap-bipap-masks,portable-oxygen-concentrator,suction-machine" }
+	},
+	"supports": { "html": false, "anchor": true },
+	"editorScript": "medhub-blocks-editor",
+	"render": "file:./render.php"
+}

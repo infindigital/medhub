@@ -25,3 +25,6 @@ desktop.ini
 
 # Scratch
 tmp/
+
+# Local WordPress sandbox (dev data only, never committed)
+sandbox/

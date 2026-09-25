@@ -1,0 +1,60 @@
+/* ---------- Product showcase + tabs ---------- */
+.showcase__head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: var(--s-4) var(--s-6);
+	margin-bottom: clamp(var(--s-6), 3vw, var(--s-7));
+}
+
+.showcase__head .section-head {
+	margin-bottom: 0;
+	flex: 1 1 28rem;
+}
+
+.tabs__list {
+	display: inline-flex;
+	gap: 0.25rem;
+	padding: 0.25rem;
+	border: 1px solid var(--c-line);
+	border-radius: var(--r-pill);
+	background: var(--c-surface);
+}
+
+.tabs__tab {
+	min-height: 2.5rem;
+	padding: 0 1.125rem;
+	border-radius: var(--r-pill);
+	color: var(--c-muted);
+	font-size: 0.9rem;
+	font-weight: 600;
+	transition: background-color var(--t-base) var(--ease), color var(--t-base) var(--ease);
+}
+
+.tabs__tab:hover {
+	color: var(--c-ink);
+}
+
+.tabs__tab[aria-selected='true'] {
+	background: var(--c-ink);
+	color: var(--c-paper);
+}
+
+.tabs__panel:focus-visible {
+	outline-offset: 8px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.tabs__panel:not([hidden]),
+	.care__panel:not([hidden]) {
+		animation: medhub-panel var(--t-slow) var(--ease);
+	}
+}
+
+@keyframes medhub-panel {
+	from {
+		opacity: 0;
+		transform: translateY(8px);
+	}
+}

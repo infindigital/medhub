@@ -1,0 +1,34 @@
+/* Self-hosted fonts (SIL OFL). Latin subsets only. */
+@font-face {
+	font-family: 'Geist';
+	src: url('../fonts/geist-latin-var.woff2') format('woff2');
+	font-weight: 100 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Instrument Serif';
+	src: url('../fonts/instrument-serif-italic-latin.woff2') format('woff2');
+	font-weight: 400;
+	font-style: italic;
+	font-display: swap;
+}
+
+/* Metric-matched fallbacks keep layout stable while the web fonts load (no CLS). */
+@font-face {
+	font-family: 'Geist Fallback';
+	src: local('Arial');
+	size-adjust: 104%;
+	ascent-override: 92%;
+	descent-override: 22%;
+	line-gap-override: 0%;
+}
+
+@font-face {
+	font-family: 'Instrument Serif Fallback';
+	src: local('Georgia');
+	size-adjust: 88%;
+	ascent-override: 98%;
+	descent-override: 26%;
+}

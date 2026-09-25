@@ -5,24 +5,22 @@
 	box-sizing: border-box;
 }
 
-html {
-	-webkit-text-size-adjust: 100%;
-	text-size-adjust: 100%;
-}
-
 body {
 	margin: 0;
 	min-height: 100vh;
-	background: var(--c-bg);
-	color: var(--c-text);
-	font-family: var(--font-sans);
-	line-height: 1.6;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd {
+h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd, ul, ol {
 	margin: 0;
+}
+
+ul[class],
+ol[class] {
+	padding: 0;
+	list-style: none;
 }
 
 img, picture, svg, video {
@@ -38,10 +36,29 @@ input, button, textarea, select {
 
 button {
 	cursor: pointer;
+	background: none;
+	border: 0;
+	padding: 0;
+}
+
+[hidden] {
+	display: none !important;
+}
+
+dialog {
+	padding: 0;
+	border: 0;
+	max-width: none;
+	max-height: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
 	html {
 		scroll-behavior: smooth;
+	}
+
+	/* Same-origin page transitions where supported (no JS). */
+	@view-transition {
+		navigation: auto;
 	}
 }

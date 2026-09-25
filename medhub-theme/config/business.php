@@ -113,6 +113,12 @@ return array(
 		'note'   => 'Q11: not claimed until confirmed.',
 	),
 
+	'medicines_note' => array(
+		'value'  => 'MedHub does not sell medicines.',
+		'status' => 'site-sourced',
+		'source' => 'About page ("NOTE: We are not selling any medicine.").',
+	),
+
 	// Contact form adapter (Q17). Provider: 'wpforms' | 'cf7' | null.
 	// With null, the contact page shows call / WhatsApp / email actions instead of a form.
 	'contact_form' => array(

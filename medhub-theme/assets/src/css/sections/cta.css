@@ -1,0 +1,70 @@
+/* ---------- Closing CTA ---------- */
+.cta__panel {
+	position: relative;
+	display: grid;
+	gap: var(--s-6);
+	padding: clamp(2rem, 1rem + 5vw, 5rem);
+	overflow: hidden;
+	isolation: isolate;
+	border-radius: var(--r-lg);
+	background: var(--c-ink);
+	color: var(--c-on-dark);
+}
+
+/* Subtle aqua glow – the only gradient in the section. */
+.cta__panel::before {
+	content: '';
+	position: absolute;
+	right: -10rem;
+	top: -12rem;
+	z-index: -1;
+	width: 34rem;
+	height: 34rem;
+	border-radius: 50%;
+	background: radial-gradient(circle, rgb(167 232 216 / 0.22), rgb(167 232 216 / 0) 65%);
+}
+
+@media (min-width: 1024px) {
+	.cta__panel {
+		grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+		align-items: end;
+	}
+}
+
+.cta .eyebrow {
+	color: var(--c-on-dark-muted);
+}
+
+.cta__title {
+	font-size: var(--fs-h1);
+	line-height: 1.04;
+	letter-spacing: var(--tracking-display);
+}
+
+.cta__text {
+	margin-top: var(--s-4);
+	max-width: 34rem;
+	font-size: var(--fs-lead);
+	color: var(--c-on-dark-muted);
+}
+
+.cta__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--s-3);
+}
+
+@media (min-width: 1024px) {
+	.cta__actions {
+		justify-content: flex-end;
+	}
+}
+
+.cta .contact-actions {
+	flex-basis: 100%;
+	justify-content: inherit;
+}
+
+.cta .contact-actions .btn--ghost {
+	color: var(--c-aqua);
+}

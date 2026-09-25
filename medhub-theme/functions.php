@@ -18,11 +18,24 @@ define( 'MEDHUB_URI', get_template_directory_uri() );
 
 $medhub_modules = array(
 	'inc/helpers/business.php',
+	'inc/helpers/icons.php',
+	'inc/helpers/template-tags.php',
+	'inc/helpers/departments.php',
+	'inc/woocommerce/products.php',
 	'inc/setup/theme-supports.php',
 	'inc/setup/menus.php',
 	'inc/setup/image-sizes.php',
+	'inc/setup/cleanup.php',
 	'inc/assets.php',
+	'inc/blocks.php',
+	'inc/seo/faq-schema.php',
+	'inc/dev.php',
 );
+
+// Hooks into WooCommerce only when it is active.
+if ( class_exists( 'WooCommerce' ) ) {
+	$medhub_modules[] = 'inc/woocommerce/support.php';
+}
 
 foreach ( $medhub_modules as $medhub_module ) {
 	require_once MEDHUB_DIR . '/' . $medhub_module;

@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "medhub/cta",
+	"title": "Call to action",
+	"category": "medhub",
+	"icon": "megaphone",
+	"description": "Closing call to action. Contact buttons (call / WhatsApp) appear automatically once the business details are confirmed.",
+	"attributes": {
+		"eyebrow": { "type": "string", "default": "" },
+		"heading": { "type": "string", "default": "" },
+		"text": { "type": "string", "default": "" },
+		"primaryLabel": { "type": "string", "default": "" },
+		"primaryUrl": { "type": "string", "default": "" },
+		"secondaryLabel": { "type": "string", "default": "" },
+		"secondaryUrl": { "type": "string", "default": "" }
+	},
+	"supports": { "html": false, "anchor": true },
+	"editorScript": "medhub-blocks-editor",
+	"render": "file:./render.php"
+}

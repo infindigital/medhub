@@ -1,0 +1,13 @@
+/* home.css – homepage sections (front page only). */
+@layer reset, tokens, base, layout, components, utilities;
+
+@import './sections/hero.css' layer(components);
+@import './sections/explorer.css' layer(components);
+@import './sections/showcase.css' layer(components);
+@import './sections/bento.css' layer(components);
+@import './sections/brands.css' layer(components);
+@import './sections/rental.css' layer(components);
+@import './sections/care.css' layer(components);
+@import './sections/journal.css' layer(components);
+@import './sections/faq.css' layer(components);
+@import './sections/cta.css' layer(components);

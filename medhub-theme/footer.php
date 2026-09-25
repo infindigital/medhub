@@ -1,21 +1,18 @@
 <?php
 /**
  * Site footer and document close.
- * The designed footer arrives in step 2D.
  *
  * @package MedHub
  */
 
 defined( 'ABSPATH' ) || exit;
+
+get_template_part( 'template-parts/footer/site-footer' );
+
+// Modal dialogs live after the page content so the DOM (and heading order) starts with the page itself.
+get_template_part( 'template-parts/navigation/drawer', null, array( 'nav' => medhub_navigation() ) );
+get_template_part( 'template-parts/navigation/search' );
+wp_footer();
 ?>
-<footer class="site-footer">
-	<?php
-	$medhub_legal = medhub_business( 'legal_name' );
-	if ( $medhub_legal ) {
-		printf( '<p>&copy; %1$s %2$s</p>', esc_html( gmdate( 'Y' ) ), esc_html( $medhub_legal ) );
-	}
-	?>
-</footer>
-<?php wp_footer(); ?>
 </body>
 </html>

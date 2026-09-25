@@ -1,0 +1,17 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "medhub/bento",
+	"title": "Bento grid",
+	"category": "medhub",
+	"icon": "layout",
+	"description": "Editorial bento grid. Each inner Group block becomes one cell (the first cell is the large one). Add the class \"is-dark\" to a Group for a dark cell.",
+	"attributes": {
+		"eyebrow": { "type": "string", "default": "" },
+		"heading": { "type": "string", "default": "" },
+		"lead": { "type": "string", "default": "" }
+	},
+	"supports": { "html": false, "anchor": true },
+	"editorScript": "medhub-blocks-editor",
+	"render": "file:./render.php"
+}

@@ -1,0 +1,69 @@
+html {
+	-webkit-text-size-adjust: 100%;
+	text-size-adjust: 100%;
+	scroll-padding-top: calc(var(--header-h) + var(--s-4));
+}
+
+body {
+	background: var(--c-paper);
+	color: var(--c-ink);
+	font-family: var(--font-sans);
+	font-size: var(--fs-body);
+	line-height: var(--lh-body);
+	font-feature-settings: 'ss01' on;
+}
+
+h1,
+h2,
+h3,
+h4 {
+	font-weight: 600;
+	line-height: var(--lh-heading);
+	letter-spacing: var(--tracking-heading);
+	text-wrap: balance;
+}
+
+p {
+	text-wrap: pretty;
+}
+
+a {
+	color: var(--c-teal);
+	text-underline-offset: 0.18em;
+	text-decoration-thickness: 1px;
+}
+
+a:hover {
+	color: var(--c-teal-2);
+}
+
+/* The editorial serif accent: *word* in block text becomes <em>. */
+h1 em,
+h2 em,
+h3 em,
+.hero__title em,
+.section-head__title em,
+.cta__title em {
+	font-family: var(--font-accent);
+	font-style: italic;
+	font-weight: 400;
+	letter-spacing: -0.01em;
+}
+
+.eyebrow {
+	margin: 0 0 var(--s-3);
+	font-size: var(--fs-eyebrow);
+	font-weight: 600;
+	letter-spacing: var(--tracking-eyebrow);
+	text-transform: uppercase;
+	color: var(--c-muted);
+}
+
+address {
+	font-style: normal;
+}
+
+::selection {
+	background: var(--c-aqua);
+	color: var(--c-ink);
+}

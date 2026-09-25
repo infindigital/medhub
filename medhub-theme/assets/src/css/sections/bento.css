@@ -1,0 +1,187 @@
+/* ---------- Bento grids (Why MedHub = inner Group blocks; Service facts = generated cells) ---------- */
+.bento {
+	display: grid;
+	gap: clamp(0.75rem, 1.4vw, 1.25rem);
+	counter-reset: bento;
+}
+
+@media (min-width: 700px) {
+	.bento {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (min-width: 1024px) {
+	.bento {
+		grid-template-columns: repeat(12, minmax(0, 1fr));
+	}
+
+	.bento > * {
+		grid-column: span 4;
+	}
+
+	/* Why MedHub: large first cell, then three. */
+	.bento > *:first-child {
+		grid-column: span 6;
+		grid-row: span 2;
+	}
+
+	.bento > *:nth-child(2),
+	.bento > *:nth-child(3) {
+		grid-column: span 3;
+	}
+
+	.bento > *:nth-child(4) {
+		grid-column: span 6;
+	}
+
+	/* Service facts: 5/7 then 7/5. */
+	.bento--facts > *:first-child {
+		grid-column: span 5;
+		grid-row: auto;
+	}
+
+	.bento--facts > *:nth-child(2) {
+		grid-column: span 7;
+	}
+
+	.bento--facts > *:nth-child(3) {
+		grid-column: span 7;
+	}
+
+	.bento--facts > *:nth-child(4) {
+		grid-column: span 5;
+	}
+}
+
+/* Cells (core Group blocks inside medhub/bento, or .bento__cell). */
+.bento > .wp-block-group,
+.bento__cell {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: var(--s-3);
+	min-height: 12rem;
+	padding: clamp(1.25rem, 2.2vw, 2rem);
+	border: 1px solid var(--c-line);
+	border-radius: var(--r-lg);
+	background: var(--c-surface);
+	counter-increment: bento;
+}
+
+.bento > .wp-block-group {
+	justify-content: flex-end;
+}
+
+/* Editorial numbering on the Why MedHub cells (in flow, pushes the copy down). */
+.bento > .wp-block-group::before {
+	content: counter(bento, decimal-leading-zero);
+	margin-bottom: auto;
+	padding-bottom: var(--s-5);
+	font-family: var(--font-accent);
+	font-style: italic;
+	font-size: 1.5rem;
+	line-height: 1;
+	color: var(--c-teal);
+}
+
+.bento > .wp-block-group > * {
+	margin: 0;
+}
+
+.bento .wp-block-heading {
+	font-size: var(--fs-h3);
+	letter-spacing: -0.02em;
+}
+
+.bento > .wp-block-group p {
+	color: var(--c-muted);
+	max-width: 32rem;
+}
+
+.bento > .wp-block-group.is-feature {
+	background: var(--c-sand);
+	border-color: transparent;
+	min-height: 22rem;
+}
+
+.bento > .wp-block-group.is-feature .wp-block-heading {
+	font-size: var(--fs-h2);
+}
+
+.bento > .wp-block-group.is-feature p {
+	font-size: var(--fs-lead);
+}
+
+.bento > .is-dark,
+.bento__cell.is-dark {
+	background: var(--c-ink);
+	border-color: transparent;
+	color: var(--c-on-dark);
+}
+
+.bento > .is-dark p,
+.bento__cell.is-dark .bento__text {
+	color: var(--c-on-dark-muted);
+}
+
+.bento > .is-dark::before {
+	color: var(--c-aqua);
+}
+
+/* Service fact cells. */
+.bento__cell {
+	justify-content: space-between;
+}
+
+.bento__cell .btn {
+	align-self: flex-start;
+}
+
+.bento__kicker {
+	display: flex;
+	align-items: center;
+	gap: var(--s-2);
+	font-size: var(--fs-eyebrow);
+	font-weight: 600;
+	letter-spacing: var(--tracking-eyebrow);
+	text-transform: uppercase;
+	color: var(--c-muted);
+}
+
+.bento__kicker .icon {
+	width: 1.125rem;
+	height: 1.125rem;
+	color: var(--c-teal);
+}
+
+.bento__big {
+	margin-top: auto;
+	font-size: clamp(1.75rem, 1.2rem + 2vw, 3rem);
+	font-weight: 600;
+	line-height: 1.05;
+	letter-spacing: -0.03em;
+}
+
+.bento__text {
+	color: var(--c-muted);
+	max-width: 30rem;
+}
+
+.bento__cell.is-feature {
+	background: var(--c-aqua-soft);
+	border-color: transparent;
+}
+
+.bento__cell.is-feature .bento__big {
+	font-size: clamp(2.5rem, 1.6rem + 3.6vw, 4.75rem);
+}
+
+.bento__cell.is-dark .bento__kicker {
+	color: var(--c-on-dark-muted);
+}
+
+.bento__cell.is-dark .bento__kicker .icon,
+.bento__cell.is-dark .btn--ghost {
+	color: var(--c-aqua);
+}

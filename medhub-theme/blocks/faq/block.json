@@ -1,0 +1,18 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "medhub/faq",
+	"title": "FAQ",
+	"category": "medhub",
+	"icon": "editor-help",
+	"description": "Questions and answers as Details blocks. When Rank Math is active, the visible Q&A is added to its FAQPage schema (never questions that are not on the page).",
+	"attributes": {
+		"eyebrow": { "type": "string", "default": "" },
+		"heading": { "type": "string", "default": "" },
+		"lead": { "type": "string", "default": "" },
+		"schema": { "type": "boolean", "default": true }
+	},
+	"supports": { "html": false, "anchor": true },
+	"editorScript": "medhub-blocks-editor",
+	"render": "file:./render.php"
+}

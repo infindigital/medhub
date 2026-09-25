@@ -1,0 +1,361 @@
+/* ---------- Badges ---------- */
+.badge {
+	display: inline-flex;
+	align-items: center;
+	padding: 4px 8px;
+	border-radius: var(--r-xs);
+	background: var(--c-surface);
+	border: 1px solid var(--c-line);
+	color: var(--c-ink);
+	font-size: 0.71875rem;
+	font-weight: 600;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	line-height: 1.2;
+}
+
+.badge--sale {
+	background: var(--c-sale);
+	border-color: transparent;
+	color: #fff;
+}
+
+.badge--rent {
+	background: var(--c-ink);
+	border-color: transparent;
+	color: var(--c-aqua);
+}
+
+/* ---------- Price ---------- */
+.price {
+	display: inline-flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 0 var(--s-2);
+	font-weight: 600;
+	font-size: 1.0625rem;
+	letter-spacing: -0.01em;
+	font-variant-numeric: tabular-nums;
+	color: var(--c-ink);
+}
+
+.price__was {
+	font-size: 0.875rem;
+	font-weight: 400;
+	color: var(--c-muted);
+}
+
+.price__per {
+	font-size: 0.8125rem;
+	font-weight: 400;
+	color: var(--c-muted);
+}
+
+.price--quote {
+	font-size: 0.9375rem;
+	color: var(--c-teal);
+}
+
+.price .woocommerce-Price-currencySymbol {
+	font-size: 0.8em;
+	font-weight: 500;
+	margin-right: 0.1em;
+}
+
+/* ---------- Stock ---------- */
+.stock {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 0.8125rem;
+	font-weight: 500;
+}
+
+.stock::before {
+	content: '';
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	background: currentColor;
+}
+
+.stock--ok {
+	color: var(--c-ok);
+}
+
+.stock--warn {
+	color: var(--c-warn);
+}
+
+.stock--out {
+	color: var(--c-muted);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.stock--pulse.stock--ok::before {
+		animation: medhub-pulse 2.4s infinite;
+	}
+}
+
+@keyframes medhub-pulse {
+	0% {
+		box-shadow: 0 0 0 0 rgb(31 122 77 / 0.45);
+	}
+	70% {
+		box-shadow: 0 0 0 7px rgb(31 122 77 / 0);
+	}
+	100% {
+		box-shadow: 0 0 0 0 rgb(31 122 77 / 0);
+	}
+}
+
+/* ---------- Product card ---------- */
+.pcard {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	overflow: hidden;
+	border: 1px solid var(--c-line);
+	border-radius: var(--r-md);
+	background: var(--c-surface);
+	color: var(--c-ink);
+	container-type: inline-size;
+	transition:
+		border-color var(--t-base) var(--ease),
+		box-shadow var(--t-base) var(--ease),
+		transform var(--t-base) var(--ease);
+}
+
+.pcard:hover,
+.pcard:focus-within {
+	border-color: var(--c-line-strong);
+	box-shadow: var(--sh-1);
+	transform: translateY(-3px);
+}
+
+.pcard__media {
+	position: relative;
+	aspect-ratio: 1;
+	display: grid;
+	place-items: center;
+	overflow: hidden;
+	background: var(--c-sand-2);
+}
+
+/* Multiply blends white product backgrounds into the sand tile. */
+.pcard__img {
+	width: 78%;
+	height: 78%;
+	object-fit: contain;
+	mix-blend-mode: multiply;
+	transition: transform var(--t-slow) var(--ease);
+}
+
+.pcard:hover .pcard__img {
+	transform: scale(1.05);
+}
+
+.pcard.is-out .pcard__img {
+	opacity: 0.6;
+}
+
+.pcard__badges {
+	position: absolute;
+	top: 0.75rem;
+	left: 0.75rem;
+	display: flex;
+	gap: 6px;
+}
+
+.pcard__body {
+	display: flex;
+	flex-direction: column;
+	gap: 0.375rem;
+	flex: 1;
+	padding: 1rem 1.125rem 1.125rem;
+}
+
+.pcard__meta {
+	font-size: 0.78125rem;
+	color: var(--c-muted);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.pcard__title {
+	font-size: 0.975rem;
+	font-weight: 600;
+	line-height: 1.3;
+	letter-spacing: -0.01em;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.pcard__link {
+	color: inherit;
+	text-decoration: none;
+}
+
+.pcard__link:hover {
+	color: inherit;
+}
+
+/* The whole card is clickable through the title link. */
+.pcard__link::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+}
+
+.pcard__link:focus-visible {
+	outline: none;
+}
+
+.pcard:has(.pcard__link:focus-visible) {
+	outline: 2px solid var(--c-focus);
+	outline-offset: 3px;
+}
+
+.pcard__foot {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	margin-top: auto;
+	padding-top: 0.5rem;
+}
+
+.pcard__cta {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 0.75rem;
+	padding-top: 0.75rem;
+	border-top: 1px solid var(--c-line);
+	font-size: 0.875rem;
+	font-weight: 600;
+	color: var(--c-ink);
+}
+
+.pcard__cta .icon {
+	width: 1rem;
+	height: 1rem;
+	transition: transform var(--t-base) var(--ease);
+}
+
+.pcard:hover .pcard__cta .icon {
+	transform: translateX(4px);
+}
+
+.pcard__action {
+	position: relative;
+	z-index: 2;
+	margin-top: 0.75rem;
+}
+
+@container (max-width: 13rem) {
+	.pcard__body {
+		padding: 0.75rem 0.875rem 0.875rem;
+	}
+
+	.pcard__title {
+		font-size: 0.875rem;
+	}
+
+	.pcard__cta {
+		font-size: 0.8125rem;
+	}
+}
+
+/* ---------- Article card ---------- */
+.acard {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	gap: var(--s-4);
+}
+
+.acard__media {
+	aspect-ratio: 16 / 10;
+	overflow: hidden;
+	border-radius: var(--r-md);
+	background: var(--c-sand);
+}
+
+.acard__img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform var(--t-slow) var(--ease);
+}
+
+.acard:hover .acard__img {
+	transform: scale(1.04);
+}
+
+.acard__meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--s-3);
+	font-size: 0.8125rem;
+	color: var(--c-muted);
+}
+
+.acard__meta span {
+	font-weight: 600;
+	color: var(--c-teal);
+}
+
+.acard__title {
+	margin-top: var(--s-2);
+	font-size: 1.1875rem;
+	line-height: 1.25;
+}
+
+.acard--lead .acard__title {
+	font-size: var(--fs-h3);
+}
+
+.acard__link {
+	color: inherit;
+	text-decoration: none;
+}
+
+.acard__link::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+}
+
+.acard__link:hover {
+	color: inherit;
+}
+
+.acard__excerpt {
+	margin-top: var(--s-3);
+	color: var(--c-muted);
+}
+
+.acard__cta {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--s-2);
+	margin-top: var(--s-4);
+	font-size: 0.875rem;
+	font-weight: 600;
+}
+
+.acard__cta .icon {
+	width: 1rem;
+	height: 1rem;
+	transition: transform var(--t-base) var(--ease);
+}
+
+.acard:hover .acard__cta .icon {
+	transform: translateX(4px);
+}

@@ -1,0 +1,58 @@
+/* ---------- Brands wall ---------- */
+.brands__grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	border-top: 1px solid var(--c-line);
+	border-left: 1px solid var(--c-line);
+}
+
+@media (min-width: 640px) {
+	.brands__grid {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+}
+
+@media (min-width: 1024px) {
+	.brands__grid {
+		grid-template-columns: repeat(6, minmax(0, 1fr));
+	}
+}
+
+.brand-tile {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: var(--s-4);
+	height: 100%;
+	min-height: 7.5rem;
+	padding: var(--s-5) var(--s-4);
+	border-right: 1px solid var(--c-line);
+	border-bottom: 1px solid var(--c-line);
+	color: var(--c-ink);
+	text-decoration: none;
+	transition: background-color var(--t-base) var(--ease);
+}
+
+.brand-tile:hover {
+	background: var(--c-surface);
+	color: var(--c-ink);
+}
+
+.brand-tile__name {
+	font-size: clamp(1.0625rem, 1rem + 0.4vw, 1.3125rem);
+	font-weight: 600;
+	letter-spacing: -0.025em;
+	line-height: 1.15;
+}
+
+.brand-tile__count {
+	font-size: 0.78125rem;
+	color: var(--c-muted);
+}
+
+/* Small screens: the eight brands with the most products; the full list is one tap away in the menu/search. */
+@media (max-width: 639px) {
+	.brands__grid li:nth-child(n + 9) {
+		display: none;
+	}
+}

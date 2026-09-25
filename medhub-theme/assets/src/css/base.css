@@ -1,10 +1,17 @@
 /*
- * base.css – loaded on every page.
- * Layer order is declared once here so later bundles (shop.css, product.css …)
+ * base.css – loaded on every page (tokens, base, layout, shared components).
+ * Layer order is declared once so template bundles (home.css, shop.css …)
  * can add to any layer without specificity fights.
  */
 @layer reset, tokens, base, layout, components, utilities;
 
 @import './tokens/tokens.css' layer(tokens);
 @import './base/reset.css' layer(reset);
+@import './base/fonts.css' layer(base);
+@import './base/typography.css' layer(base);
+@import './layout/layout.css' layer(layout);
+@import './components/buttons.css' layer(components);
+@import './components/commerce.css' layer(components);
+@import './components/header.css' layer(components);
+@import './components/footer.css' layer(components);
 @import './base/a11y.css' layer(utilities);

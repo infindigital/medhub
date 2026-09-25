@@ -1,0 +1,2 @@
+Geist (Vercel) and Instrument Serif (Instrument) are licensed under the SIL Open Font License 1.1.
+https://openfontlicense.org — Latin subsets self-hosted from Google Fonts (downloaded 25 Sep 2026).

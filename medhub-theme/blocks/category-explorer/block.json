@@ -1,0 +1,18 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "medhub/category-explorer",
+	"title": "Category explorer",
+	"category": "medhub",
+	"icon": "grid-view",
+	"description": "Visual department tiles. Names, counts, links and images are live from WooCommerce.",
+	"attributes": {
+		"eyebrow": { "type": "string", "default": "" },
+		"heading": { "type": "string", "default": "" },
+		"lead": { "type": "string", "default": "" },
+		"departments": { "type": "string", "default": "respiratory,oxygen,sleep,hospital,patient-care,monitoring,supplies,rental" }
+	},
+	"supports": { "html": false, "anchor": true },
+	"editorScript": "medhub-blocks-editor",
+	"render": "file:./render.php"
+}

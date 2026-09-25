@@ -22,11 +22,52 @@
 	padding: var(--s-3) var(--s-4);
 	margin: 0;
 	clip: auto;
-	background: var(--c-bg);
-	color: var(--c-text);
+	border-radius: var(--r-sm);
+	background: var(--c-ink);
+	color: var(--c-paper);
+	font-weight: 600;
 }
 
 :focus-visible {
 	outline: 2px solid var(--c-focus);
-	outline-offset: 2px;
+	outline-offset: 3px;
+	border-radius: 2px;
+}
+
+/* Admin-only "to confirm" marker for unverified business details. */
+.medhub-tbc {
+	display: inline-block;
+	margin-left: var(--s-2);
+	padding: 1px 6px;
+	border-radius: var(--r-xs);
+	background: #fff4db;
+	color: var(--c-warn);
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: 0.02em;
+	vertical-align: middle;
+	white-space: nowrap;
+}
+
+.admin-notice {
+	margin-block: var(--s-4);
+	padding: var(--s-3) var(--s-4);
+	border-left: 3px solid var(--c-warn);
+	background: #fff4db;
+	font-size: var(--fs-small);
+}
+
+.dev-ribbon {
+	position: fixed;
+	left: var(--s-3);
+	bottom: var(--s-3);
+	z-index: 90;
+	padding: 6px 10px;
+	border-radius: var(--r-pill);
+	background: var(--c-warn);
+	color: #fff;
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	pointer-events: none;
 }

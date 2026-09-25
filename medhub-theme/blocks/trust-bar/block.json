@@ -1,0 +1,13 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "medhub/trust-bar",
+	"title": "Trust bar",
+	"category": "medhub",
+	"icon": "shield",
+	"description": "Short, verifiable facts (showroom, delivery, rental, payment). Items come from the theme's business settings and only appear once they may be shown.",
+	"attributes": {},
+	"supports": { "html": false, "anchor": true },
+	"editorScript": "medhub-blocks-editor",
+	"render": "file:./render.php"
+}
