@@ -8,15 +8,6 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Whether a post's content is built with MedHub blocks (→ landing layout).
- *
- * @param WP_Post|null $post Post.
- */
-function medhub_has_medhub_blocks( ?WP_Post $post ): bool {
-	return $post instanceof WP_Post && str_contains( $post->post_content, '<!-- wp:medhub/' );
-}
-
-/**
  * Add ids to H2 headings and build a table of contents from them.
  * Only used for long prose (policies, articles); the text is not changed.
  *

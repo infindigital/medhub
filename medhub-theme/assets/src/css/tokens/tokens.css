@@ -1,40 +1,43 @@
 /*
- * Design tokens – Direction A "Clinical Editorial" (approved), with the accent
- * adjusted from lime to aqua so it sits comfortably next to the red MedHub logo.
+ * Design tokens – white & red. The red matches the MedHub logo; ink stays a
+ * neutral near-black so it pairs with the black wordmark.
  *
- * Contrast (WCAG 2.2): ink/paper 15.9 · muted/paper 6.7 · teal/paper 5.5 ·
- * ink/aqua 12.7 · white/teal 6.1 · on-dark-muted/ink 9.7.
+ * Contrast (WCAG 2.2): ink/white 18.4 · muted/white 7.2 · red/white 5.5 ·
+ * white/red 5.5 · ink/blush 13.9 · blush-2/ink 8.4 · on-dark-muted/ink 10.
  */
 :root {
 	/* ---------- Colour ---------- */
-	--c-ink: #0d1b1e;
-	--c-ink-2: #15282c;
-	--c-paper: #f5f3ee;
+	--rgb-ink: 20 20 22;
+	--rgb-red: 208 20 44;
+
+	--c-ink: #141416;
+	--c-ink-2: #232327;
+	--c-paper: #ffffff;
 	--c-surface: #ffffff;
-	--c-sand: #e8e1d3;
-	--c-sand-2: #efe9de;
-	--c-sand-3: #e1d8c6;
-	--c-muted: #4a585b;
-	--c-line: #dcd6ca;
-	--c-line-strong: #c9c1b1;
-	--c-border-input: #7f8a8c;
+	--c-sand: #fbeff0;
+	--c-sand-2: #f8f5f5;
+	--c-sand-3: #f5dfe2;
+	--c-muted: #55575e;
+	--c-line: #ece3e4;
+	--c-line-strong: #dccdcf;
+	--c-border-input: #85878d;
 
-	--c-teal: #0a6e62;
-	--c-teal-2: #075a50;
-	--c-aqua: #a7e8d8;
-	--c-aqua-2: #8fdcc9;
-	--c-aqua-soft: #ddf4ec;
+	--c-red: #d0142c;
+	--c-red-2: #a80f24;
+	--c-blush: #ffd6da;
+	--c-blush-2: #ff8f98;
+	--c-blush-soft: #fff0f1;
 
-	--c-on-dark: #f5f3ee;
-	--c-on-dark-muted: #b9c2c3;
-	--c-dark-line: #2a3a3e;
+	--c-on-dark: #ffffff;
+	--c-on-dark-muted: #c3c3c9;
+	--c-dark-line: #36363c;
 
 	--c-sale: #b3261e;
 	--c-ok: #1f7a4d;
 	--c-warn: #8a5a00;
 	--c-whatsapp: #25d366;
 
-	--c-focus: var(--c-teal);
+	--c-focus: var(--c-red);
 
 	/* ---------- Type ---------- */
 	--font-sans: 'Geist', 'Geist Fallback', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
@@ -68,7 +71,8 @@
 	--s-8: 4rem;
 	--s-9: 6rem;
 	--s-10: 8rem;
-	--section-y: clamp(4rem, 2.5rem + 6vw, 8.5rem);
+	--section-y: clamp(3rem, 2.25rem + 3vw, 5.5rem);
+	--head-gap: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
 
 	/* ---------- Layout ---------- */
 	--container: 82.5rem; /* 1320px */
@@ -83,8 +87,8 @@
 	--r-md: 14px;
 	--r-lg: 22px;
 	--r-pill: 999px;
-	--sh-1: 0 1px 2px rgb(13 27 30 / 0.04), 0 10px 28px -14px rgb(13 27 30 / 0.22);
-	--sh-2: 0 28px 64px -24px rgb(13 27 30 / 0.3);
+	--sh-1: 0 1px 2px rgb(var(--rgb-ink) / 0.04), 0 10px 28px -14px rgb(var(--rgb-ink) / 0.22);
+	--sh-2: 0 28px 64px -24px rgb(var(--rgb-ink) / 0.3);
 
 	/* ---------- Motion ---------- */
 	--t-fast: 150ms;

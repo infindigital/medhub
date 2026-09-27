@@ -114,9 +114,16 @@
 	min-width: 0;
 }
 
+.hero__chip-main {
+	flex: 1 1 auto;
+}
+
+/* The price keeps its full width; only the product name is truncated. */
 .hero__chip-side {
+	flex: none;
 	justify-items: end;
 	text-align: right;
+	white-space: nowrap;
 }
 
 @media (max-width: 419px) {
@@ -172,7 +179,7 @@
 .trust__item .icon {
 	width: 1.25rem;
 	height: 1.25rem;
-	color: var(--c-teal);
+	color: var(--c-red);
 }
 
 .trust + .section {

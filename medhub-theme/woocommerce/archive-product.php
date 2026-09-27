@@ -16,7 +16,6 @@ get_header( 'shop' );
 $medhub_desc    = medhub_archive_description();
 $medhub_subnav  = medhub_archive_subnav();
 $medhub_term    = get_queried_object();
-$medhub_below   = $medhub_term instanceof WP_Term ? (string) get_term_meta( $medhub_term->term_id, 'medhub_below_content', true ) : '';
 $medhub_active  = medhub_active_filters();
 $medhub_is_brand = is_tax( 'product_brand' );
 ?>
@@ -148,26 +147,19 @@ $medhub_is_brand = is_tax( 'product_brand' );
 		</div>
 	</div>
 
-	<?php
-	// Landing sections for this category/brand, edited in WordPress (Products › Category content).
-	$medhub_extra = $medhub_term instanceof WP_Term ? medhub_render_term_content( $medhub_term ) : '';
-	if ( $medhub_extra ) {
-		echo '<div class="term-content">' . $medhub_extra . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput -- rendered blocks.
-	}
-	?>
-
-	<?php if ( $medhub_desc['more'] || $medhub_below || $medhub_subnav['guides'] ) : ?>
-		<section class="archive-more" aria-labelledby="archive-more-title">
+	<?php if ( $medhub_desc['more'] || $medhub_subnav['guides'] ) : ?>
+		<section class="archive-more" aria-label="<?php echo esc_attr( sprintf( /* translators: %s: category or brand name */ __( 'About %s', 'medhub' ), $medhub_term instanceof WP_Term ? $medhub_term->name : __( 'our range', 'medhub' ) ) ); ?>">
 			<div class="container archive-more__grid">
 				<div class="archive-more__copy prose">
-					<h2 id="archive-more-title">
-						<?php
-						/* translators: %s: category or brand name */
-						printf( esc_html__( 'About %s', 'medhub' ), esc_html( $medhub_term instanceof WP_Term ? $medhub_term->name : __( 'our range', 'medhub' ) ) );
-						?>
-					</h2>
+					<?php if ( ! preg_match( '#^s*<h2#i', $medhub_desc['more'] ) ) : // The description may start with its own heading. ?>
+						<h2 id="archive-more-title">
+							<?php
+							/* translators: %s: category or brand name */
+							printf( esc_html__( 'About %s', 'medhub' ), esc_html( $medhub_term instanceof WP_Term ? $medhub_term->name : __( 'our range', 'medhub' ) ) );
+							?>
+						</h2>
+					<?php endif; ?>
 					<?php echo wp_kses_post( $medhub_desc['more'] ); ?>
-					<?php echo wp_kses_post( wpautop( $medhub_below ) ); ?>
 				</div>
 
 				<?php if ( $medhub_subnav['guides'] ) : ?>

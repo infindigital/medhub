@@ -3,7 +3,7 @@
 	position: relative;
 	display: grid;
 	gap: var(--s-6);
-	padding: clamp(2rem, 1rem + 5vw, 5rem);
+	padding: clamp(1.5rem, 1rem + 3.5vw, 4rem);
 	overflow: hidden;
 	isolation: isolate;
 	border-radius: var(--r-lg);
@@ -21,7 +21,7 @@
 	width: 34rem;
 	height: 34rem;
 	border-radius: 50%;
-	background: radial-gradient(circle, rgb(167 232 216 / 0.22), rgb(167 232 216 / 0) 65%);
+	background: radial-gradient(circle, rgb(var(--rgb-red) / 0.22), rgb(var(--rgb-red) / 0) 65%);
 }
 
 @media (min-width: 1024px) {
@@ -66,5 +66,52 @@
 }
 
 .cta .contact-actions .btn--ghost {
-	color: var(--c-aqua);
+	color: var(--c-blush-2);
+}
+
+/* The phone button sits on the dark panel: light outline instead of ink. */
+.cta .contact-actions .btn--secondary {
+	border-color: var(--c-dark-line);
+	color: var(--c-on-dark);
+}
+
+.cta .contact-actions .btn--secondary:hover {
+	border-color: var(--c-on-dark);
+	background: transparent;
+	color: var(--c-on-dark);
+}
+
+/* Phones: full-width, evenly sized actions; contact links on one tidy row. */
+@media (max-width: 639px) {
+	.cta__panel {
+		grid-template-columns: minmax(0, 1fr);
+		gap: var(--s-5);
+	}
+
+	.cta__actions {
+		display: grid;
+		gap: var(--s-2);
+	}
+
+	.cta__actions > .btn {
+		width: 100%;
+	}
+
+	.cta .contact-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--s-2) var(--s-4);
+	}
+
+	.cta .contact-actions .btn:not(.btn--ghost) {
+		flex: 1 1 9rem;
+		min-width: 0;
+		padding-inline: var(--s-2);
+		font-size: 0.875rem;
+	}
+
+	.cta .contact-actions .btn--ghost {
+		flex: 0 0 auto;
+		min-height: 2.25rem;
+	}
 }

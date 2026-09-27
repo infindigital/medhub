@@ -56,6 +56,11 @@ add_action(
 				medhub_enqueue_css( 'shop', 'shop.css' );
 				medhub_enqueue_css( 'product', 'product.css' );
 			}
+			// Cart / checkout / account: loaded after WooCommerce's own CSS, which stays on
+			// these pages (see inc/woocommerce/support.php and checkout.css).
+			if ( ( is_cart() || is_checkout() || is_account_page() ) && file_exists( MEDHUB_DIR . '/assets/dist/css/checkout.css' ) ) {
+				wp_enqueue_style( 'medhub-checkout', MEDHUB_URI . '/assets/dist/css/checkout.css', array( 'medhub-base', 'woocommerce-general' ), medhub_asset_version( 'css/checkout.css' ) );
+			}
 		}
 
 		wp_enqueue_script_module( 'medhub-core', MEDHUB_URI . '/assets/dist/js/core.js', array(), medhub_asset_version( 'js/core.js' ) );

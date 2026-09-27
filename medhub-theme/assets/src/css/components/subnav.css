@@ -30,7 +30,7 @@
 }
 
 .chip.is-current {
-	background: var(--c-ink);
+	background: var(--c-red);
 	border-color: var(--c-ink);
 	color: var(--c-paper);
 }

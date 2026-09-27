@@ -61,7 +61,7 @@
 	display: flex;
 	flex-direction: column;
 	gap: var(--s-3);
-	min-height: 12rem;
+	min-height: 10rem;
 	padding: clamp(1.25rem, 2.2vw, 2rem);
 	border: 1px solid var(--c-line);
 	border-radius: var(--r-lg);
@@ -77,12 +77,12 @@
 .bento > .wp-block-group::before {
 	content: counter(bento, decimal-leading-zero);
 	margin-bottom: auto;
-	padding-bottom: var(--s-5);
+	padding-bottom: var(--s-4);
 	font-family: var(--font-accent);
 	font-style: italic;
 	font-size: 1.5rem;
 	line-height: 1;
-	color: var(--c-teal);
+	color: var(--c-red);
 }
 
 .bento > .wp-block-group > * {
@@ -102,7 +102,7 @@
 .bento > .wp-block-group.is-feature {
 	background: var(--c-sand);
 	border-color: transparent;
-	min-height: 22rem;
+	min-height: 18rem;
 }
 
 .bento > .wp-block-group.is-feature .wp-block-heading {
@@ -126,16 +126,17 @@
 }
 
 .bento > .is-dark::before {
-	color: var(--c-aqua);
+	color: var(--c-blush-2);
 }
 
 /* Service fact cells. */
 .bento__cell {
-	justify-content: space-between;
+	justify-content: flex-start;
 }
 
 .bento__cell .btn {
 	align-self: flex-start;
+	margin-top: auto;
 }
 
 .bento__kicker {
@@ -152,11 +153,11 @@
 .bento__kicker .icon {
 	width: 1.125rem;
 	height: 1.125rem;
-	color: var(--c-teal);
+	color: var(--c-red);
 }
 
 .bento__big {
-	margin-top: auto;
+	margin-top: var(--s-2);
 	font-size: clamp(1.75rem, 1.2rem + 2vw, 3rem);
 	font-weight: 600;
 	line-height: 1.05;
@@ -169,12 +170,16 @@
 }
 
 .bento__cell.is-feature {
-	background: var(--c-aqua-soft);
+	background: var(--c-blush-soft);
 	border-color: transparent;
 }
 
 .bento__cell.is-feature .bento__big {
 	font-size: clamp(2.5rem, 1.6rem + 3.6vw, 4.75rem);
+}
+
+.bento__cell.is-dark .bento__big {
+	color: var(--c-on-dark);
 }
 
 .bento__cell.is-dark .bento__kicker {
@@ -183,5 +188,27 @@
 
 .bento__cell.is-dark .bento__kicker .icon,
 .bento__cell.is-dark .btn--ghost {
-	color: var(--c-aqua);
+	color: var(--c-blush-2);
+}
+
+/* Phones and tablets: cells size to their copy; the number sits just above the heading. */
+@media (max-width: 1023px) {
+	.bento > .wp-block-group,
+	.bento__cell,
+	.bento > .wp-block-group.is-feature {
+		min-height: 0;
+	}
+
+	.bento > .wp-block-group::before {
+		padding-bottom: var(--s-2);
+		font-size: 1.25rem;
+	}
+
+	.bento > .wp-block-group.is-feature .wp-block-heading {
+		font-size: var(--fs-h3);
+	}
+
+	.bento > .wp-block-group.is-feature p {
+		font-size: var(--fs-body);
+	}
 }

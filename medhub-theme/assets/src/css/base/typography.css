@@ -28,13 +28,13 @@ p {
 }
 
 a {
-	color: var(--c-teal);
+	color: var(--c-red);
 	text-underline-offset: 0.18em;
 	text-decoration-thickness: 1px;
 }
 
 a:hover {
-	color: var(--c-teal-2);
+	color: var(--c-red-2);
 }
 
 /* The editorial serif accent: *word* in block text becomes <em>. */
@@ -64,6 +64,6 @@ address {
 }
 
 ::selection {
-	background: var(--c-aqua);
+	background: var(--c-blush);
 	color: var(--c-ink);
 }

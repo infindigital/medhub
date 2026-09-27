@@ -1,11 +1,10 @@
 <?php
 /**
- * FAQPage schema for medhub/faq blocks – added INTO Rank Math's JSON-LD graph.
+ * FAQPage schema, added INTO Rank Math's JSON-LD graph (Rank Math stays the only schema output).
  *
- * - Runs only through Rank Math's `rank_math/json_ld` filter, so without Rank Math
- *   the theme prints no schema at all (Rank Math stays the single source).
- * - Uses only questions/answers that are visibly rendered on the current page.
- * - Skipped if the block's "schema" toggle is off.
+ * Questions come only from FAQs that are visibly rendered:
+ *  - pages/posts: Details blocks inside a Group styled "MedHub: FAQ";
+ *  - category/brand pages: <details><summary> items in the description shown below the products.
  *
  * @package MedHub
  */
@@ -13,37 +12,44 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Collect visible FAQ items from medhub/faq blocks in post content.
+ * Q&A pairs from Details blocks inside "MedHub: FAQ" groups.
  *
  * @param array $blocks Parsed blocks.
+ * @param bool  $in_faq Inside a FAQ group.
  * @return array<int, array{q:string,a:string}>
  */
-function medhub_collect_faq_items( array $blocks ): array {
+function medhub_collect_faq_items( array $blocks, bool $in_faq = false ): array {
 	$items = array();
-
 	foreach ( $blocks as $block ) {
-		if ( 'medhub/faq' === $block['blockName'] ) {
-			if ( isset( $block['attrs']['schema'] ) && false === $block['attrs']['schema'] ) {
-				continue;
-			}
-			foreach ( $block['innerBlocks'] as $inner ) {
-				if ( 'core/details' !== $inner['blockName'] ) {
-					continue;
-				}
-				if ( ! preg_match( '#<summary[^>]*>(.*?)</summary>#s', $inner['innerHTML'], $m ) ) {
-					continue;
-				}
-				$question = trim( wp_strip_all_tags( $m[1] ) );
-				$answer   = trim( wp_strip_all_tags( implode( ' ', array_map( 'render_block', $inner['innerBlocks'] ) ) ) );
-				if ( $question && $answer ) {
-					$items[] = array( 'q' => $question, 'a' => $answer );
-				}
-			}
-		} elseif ( ! empty( $block['innerBlocks'] ) ) {
-			$items = array_merge( $items, medhub_collect_faq_items( $block['innerBlocks'] ) );
+		$here = $in_faq || 'medhub-faq' === medhub_group_style( $block );
+		if ( $here && 'core/details' === $block['blockName'] ) {
+			$items = array_merge( $items, medhub_faq_items_from_html( render_block( $block ) ) );
+			continue;
+		}
+		if ( ! empty( $block['innerBlocks'] ) ) {
+			$items = array_merge( $items, medhub_collect_faq_items( $block['innerBlocks'], $here ) );
 		}
 	}
+	return $items;
+}
 
+/**
+ * Q&A pairs from <details><summary>…</summary>…</details> HTML.
+ *
+ * @param string $html HTML.
+ * @return array<int, array{q:string,a:string}>
+ */
+function medhub_faq_items_from_html( string $html ): array {
+	$items = array();
+	if ( preg_match_all( '#<details\b[^>]*>\s*<summary\b[^>]*>(.*?)</summary>(.*?)</details>#is', $html, $matches, PREG_SET_ORDER ) ) {
+		foreach ( $matches as $m ) {
+			$q = trim( html_entity_decode( wp_strip_all_tags( $m[1] ), ENT_QUOTES ) );
+			$a = trim( preg_replace( '/\s+/', ' ', html_entity_decode( wp_strip_all_tags( $m[2] ), ENT_QUOTES ) ) );
+			if ( $q && $a ) {
+				$items[] = array( 'q' => $q, 'a' => $a );
+			}
+		}
+	}
 	return $items;
 }
 
@@ -51,44 +57,50 @@ add_filter(
 	'rank_math/json_ld',
 	static function ( $data ) {
 		$object = get_queried_object();
-		$post   = null;
+		$items  = array();
 		$url    = '';
 
 		if ( is_singular() && $object instanceof WP_Post ) {
-			$post = $object;
-			$url  = get_permalink( $post );
-		} elseif ( $object instanceof WP_Term && function_exists( 'medhub_get_term_content' ) && ( is_tax( 'product_cat' ) || is_tax( 'product_brand' ) ) ) {
-			// Category/brand pages: FAQs from their Category content entry (rendered on the page).
-			$post = medhub_get_term_content( $object );
-			$url  = get_term_link( $object );
+			$items = medhub_collect_faq_items( parse_blocks( $object->post_content ) );
+			$url   = get_permalink( $object );
+		} elseif ( $object instanceof WP_Term && ( is_tax( 'product_cat' ) || is_tax( 'product_brand' ) ) && function_exists( 'medhub_archive_description' ) ) {
+			// Only the part of the description rendered below the product grid.
+			$items = medhub_faq_items_from_html( medhub_archive_description()['more'] );
+			$url   = get_term_link( $object );
 		}
 
-		if ( ! $post instanceof WP_Post || ! has_block( 'medhub/faq', $post ) ) {
+		if ( ! $items || is_wp_error( $url ) ) {
 			return $data;
 		}
 
-		$items = medhub_collect_faq_items( parse_blocks( $post->post_content ) );
-		if ( ! $items ) {
+		$questions = array_map(
+			static fn( $item ) => array(
+				'@type'          => 'Question',
+				'name'           => $item['q'],
+				'acceptedAnswer' => array(
+					'@type' => 'Answer',
+					'text'  => $item['a'],
+				),
+			),
+			$items
+		);
+
+		// Add FAQPage to Rank Math's own page entity, keeping its type (AboutPage, ContactPage,
+		// CollectionPage…). A separate FAQPage node would be merged by Rank Math, which replaces
+		// the page type with "FAQPage" when the page has no other schema.
+		if ( isset( $data['WebPage'] ) && is_array( $data['WebPage'] ) ) {
+			$data['WebPage']['@type']      = array_values( array_unique( array_merge( (array) ( $data['WebPage']['@type'] ?? 'WebPage' ), array( 'FAQPage' ) ) ) );
+			$data['WebPage']['mainEntity'] = $questions;
 			return $data;
 		}
 
 		$data['medhub-faq'] = array(
 			'@type'      => 'FAQPage',
 			'@id'        => $url . '#faq',
-			'mainEntity' => array_map(
-				static fn( $item ) => array(
-					'@type'          => 'Question',
-					'name'           => $item['q'],
-					'acceptedAnswer' => array(
-						'@type' => 'Answer',
-						'text'  => $item['a'],
-					),
-				),
-				$items
-			),
+			'mainEntity' => $questions,
 		);
 
 		return $data;
 	},
-	20
+	PHP_INT_MAX - 10 // After Rank Math has built and adjusted its graph.
 );

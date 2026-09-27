@@ -1,7 +1,7 @@
 /* ---------- Latest guides ---------- */
 .journal__grid {
 	display: grid;
-	gap: var(--s-7) var(--s-5);
+	gap: var(--s-6) var(--s-5);
 }
 
 @media (min-width: 768px) {
@@ -24,7 +24,13 @@
 @media (min-width: 1100px) {
 	.journal__grid {
 		grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
-		grid-template-rows: auto auto;
+		grid-template-rows: auto 1fr;
+		row-gap: var(--s-5);
+	}
+
+	/* Side guides stack at the top instead of spreading over the lead card height. */
+	.journal__item:not(.journal__item--lead) {
+		align-self: start;
 	}
 
 	.journal__item--lead {
@@ -49,5 +55,33 @@
 
 	.journal__item:not(.journal__item--lead) .acard__cta {
 		margin-top: var(--s-3);
+	}
+}
+
+/* Phones and tablets: the lead guide stays large, the others become compact rows. */
+@media (max-width: 1099px) {
+	.journal__item:not(.journal__item--lead) .acard {
+		display: grid;
+		grid-template-columns: clamp(6rem, 28vw, 10rem) minmax(0, 1fr);
+		gap: var(--s-4);
+		align-items: start;
+	}
+
+	.journal__item:not(.journal__item--lead) .acard__media {
+		aspect-ratio: 1;
+	}
+
+	.journal__item:not(.journal__item--lead) .acard__title {
+		font-size: 1rem;
+	}
+
+	.journal__item:not(.journal__item--lead) .acard__cta {
+		margin-top: var(--s-2);
+	}
+}
+
+@media (max-width: 767px) {
+	.journal__grid {
+		gap: var(--s-5);
 	}
 }

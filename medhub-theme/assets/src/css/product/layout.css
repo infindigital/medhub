@@ -6,7 +6,7 @@
 .product-layout {
 	display: grid;
 	gap: var(--s-6);
-	padding-bottom: var(--s-8);
+	padding-bottom: clamp(2.5rem, 2rem + 2vw, 4rem);
 }
 
 @media (min-width: 1024px) {
@@ -28,7 +28,7 @@
 
 .product-details {
 	max-width: 56rem;
-	padding-bottom: var(--s-8);
+	padding-bottom: clamp(2.5rem, 2rem + 2vw, 4rem);
 }
 
 .product-related {

@@ -1,0 +1,229 @@
+[
+ {
+  "path": "/",
+  "status": 200,
+  "h1": [
+   "Medical equipment in Dubai, chosen with care."
+  ],
+  "words": 1948,
+  "rawShortcodes": [],
+  "elementor": 0,
+  "wooForms": 0,
+  "images": 62
+ },
+ {
+  "path": "/shop/",
+  "status": 200,
+  "h1": [
+   "Shop"
+  ],
+  "words": 374,
+  "rawShortcodes": [],
+  "elementor": 0,
+  "wooForms": 0,
+  "images": 12
+ },
+ {
+  "path": "/compare/",
+  "status": 200,
+  "h1": [
+   "Compare"
+  ],
+  "words": 9,
+  "rawShortcodes": [],
+  "elementor": 0,
+  "wooForms": 0,
+  "images": 0
+ },
+ {
+  "path": "/yith-compare/",
+  "status": 200,
+  "h1": [
+   "Compare"
+  ],
+  "words": 9,
+  "rawShortcodes": [],
+  "elementor": 0,
+  "wooForms": 0,
+  "images": 0
+ },
+ {
+  "path": "/shopping-cart/",
+  "status": 200,
+  "h1": [
+   "Shopping Cart"
+  ],
+  "words": 10,
+  "rawShortcodes": [],
+  "elementor": 0,
+  "wooForms": 0,
+  "images": 0
+ },
+ {
+  "path": "/order-tracking/",
+  "status": 200,
+  "h1": [
+   "Order Tracking"
+  ],
+  "words": 51,
+  "rawShortcodes": [],
+  "elementor": 0,
+  "wooForms": 1,
+  "images": 0
+ },
+ {
+  "path": "/checkout/",
+  "status": 302,
+  "location": "http://medhub.local/shopping-cart/",
+  "h1": [],
+  "words": 1,
+  "rawShortcodes": [],
+  "elementor": 0,
+  "wooForms": 0,
+  "images": 0
+ },
+ {
+  "path": "/my-account/",
+  "status": 200,
+  "h1": [
+   "My account"
+  ],
+  "words": 60,
+  "rawShortcodes": [],
+  "elementor": 0,
+  "wooForms": 3,
+  "images": 0
+ },
+ {
+  "path": "/pulse-oximeter-dubai/",
+  "status": 200,
+  "h1": [
+   "Pulse Oximeter in Dubai: Complete Guide to Health Monitoring Devices for Home Use"
+  ],
+  "words": 1070,
+  "rawShortcodes": [],
+  "elementor": 0,
+  "wooForms": 0,
+  "images": 8
+ },
+ {
+  "path": "/suction-machine-dubai/",
+  "status": 200,
+  "h1": [
+   "Suction Machine in Dubai: Complete Guide to Medical Suction Enteral Feeding Equipment"
+  ],
+  "words": 969,
+  "rawShortcodes": [],
+  "elementor": 0,
+  "wooForms": 0,
+  "images": 4
+ },
+ {
+  "path": "/cpap-masks-dubai/",
+  "status": 200,
+  "h1": [
+   "CPAP Masks Explained: Nasal, Nasal Pillow, and Full-Face: How to Choose the Right Fit"
+  ],
+  "words": 2332,
+  "rawShortcodes": [],
+  "elementor": 0,
+  "wooForms": 0,
+  "images": 9
+ },
+ {
+  "path": "/bipap-in-dubai-modes-explained/",
+  "status": 200,
+  "h1": [
+   "BiPAP Modes Explained: What ST, S, T, and AVAPS Mean on Your Machine"
+  ],
+  "words": 1927,
+  "rawShortcodes": [],
+  "elementor": 0,
+  "wooForms": 0,
+  "images": 12
+ },
+ {
+  "path": "/oxygen-concentrator-in-dubai-how-it-works/",
+  "status": 200,
+  "h1": [
+   "How Does an Oxygen Concentrator Work? Pressure Swing Adsorption Explained"
+  ],
+  "words": 3002,
+  "rawShortcodes": [],
+  "elementor": 0,
+  "wooForms": 0,
+  "images": 9
+ },
+ {
+  "path": "/enteral-feeding-pumps-in-dubai-medhub-uae-supplier/",
+  "status": 200,
+  "h1": [
+   "Enteral Feeding Pumps in Dubai | MedHub UAE Supplier"
+  ],
+  "words": 2007,
+  "rawShortcodes": [],
+  "elementor": 0,
+  "wooForms": 0,
+  "images": 5
+ },
+ {
+  "path": "/device-on-rent/",
+  "status": 200,
+  "h1": [
+   "Elementor #4307"
+  ],
+  "words": 29,
+  "rawShortcodes": [],
+  "elementor": 10,
+  "wooForms": 0,
+  "images": 4
+ },
+ {
+  "path": "/inogen-portable-oxygen-concentrator/",
+  "status": 200,
+  "h1": [
+   "Inogen Portable Oxygen Concentrator"
+  ],
+  "words": 395,
+  "rawShortcodes": [],
+  "elementor": 48,
+  "wooForms": 0,
+  "images": 1
+ },
+ {
+  "path": "/devilbiss-blue-cpap/",
+  "status": 200,
+  "h1": [
+   "DeVilbiss BLUE CPAP"
+  ],
+  "words": 443,
+  "rawShortcodes": [],
+  "elementor": 48,
+  "wooForms": 0,
+  "images": 1
+ },
+ {
+  "path": "/compact-525-oxygen-concentrator/",
+  "status": 200,
+  "h1": [
+   "Compact 525 Oxygen Concentrator"
+  ],
+  "words": 582,
+  "rawShortcodes": [],
+  "elementor": 0,
+  "wooForms": 0,
+  "images": 1
+ },
+ {
+  "path": "/vacuaide-portable-suction-unit/",
+  "status": 200,
+  "h1": [
+   "VacuAide Portable Suction Unit"
+  ],
+  "words": 443,
+  "rawShortcodes": [],
+  "elementor": 48,
+  "wooForms": 0,
+  "images": 1
+ }
+]

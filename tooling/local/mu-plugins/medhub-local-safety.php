@@ -15,15 +15,19 @@
 defined( 'ABSPATH' ) || exit;
 
 /*
- * Hard stop: only act on a local environment whose host is not medhub.ae.
+ * Hard stop: only act when wp-config.php marks this as the local copy
+ * (MEDHUB_LOCAL_COPY + environment "local") and the request is not for medhub.ae.
  * If this file were ever copied to a real server by mistake, it does nothing.
+ *
+ * The database "home" option is deliberately NOT used: straight after a backup
+ * restore it still says https://medhub.ae, and the guard must be on at that moment.
  */
-$medhub_host = (string) wp_parse_url( get_option( 'home' ), PHP_URL_HOST );
+$medhub_request_host = isset( $_SERVER['HTTP_HOST'] ) ? strtolower( (string) $_SERVER['HTTP_HOST'] ) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 
 if (
-	'local' !== wp_get_environment_type()
-	|| '' === $medhub_host
-	|| preg_match( '/(^|\.)medhub\.ae$/i', $medhub_host )
+	! ( defined( 'MEDHUB_LOCAL_COPY' ) && MEDHUB_LOCAL_COPY )
+	|| 'local' !== wp_get_environment_type()
+	|| preg_match( '/(^|\.)medhub\.ae(:\d+)?$/', $medhub_request_host )
 ) {
 	return;
 }
@@ -41,6 +45,7 @@ function medhub_local_blocked_plugin_dirs(): array {
 		'hostinger-reach',                                  // Email marketing.
 		'woocommerce-google-adwords-conversion-tracking-tag', // Pixel Manager: Google Ads / GA4 conversions.
 		'jetpack',                                          // WordPress.com connection + stats.
+		'wp-mail-smtp',                                     // Real SMTP/API mailer credentials: API mailers would bypass PHPMailer (and Mailpit).
 	);
 
 	if ( defined( 'MEDHUB_LOCAL_DISABLE_HFE' ) && MEDHUB_LOCAL_DISABLE_HFE ) {
@@ -109,6 +114,27 @@ add_filter(
 		return ( defined( 'MEDHUB_LOCAL_ALLOW_CRON' ) && MEDHUB_LOCAL_ALLOW_CRON ) ? $pre : array();
 	}
 );
+
+// Action Scheduler (WooCommerce, WPForms, Rank Math…) also runs its queue through an
+// async loopback request on admin page loads, outside WP-Cron. Stop that too.
+if ( ! ( defined( 'MEDHUB_LOCAL_ALLOW_CRON' ) && MEDHUB_LOCAL_ALLOW_CRON ) ) {
+	add_filter( 'action_scheduler_allow_async_request_runner', '__return_false', PHP_INT_MAX );
+	add_filter( 'action_scheduler_queue_runner_concurrent_batches', '__return_zero', PHP_INT_MAX );
+}
+
+/*
+ * 4b. "Super Fast WP" page cache: it caches by URL only, including cart/checkout/account,
+ *     and serves one guest's page to every other guest. Off locally (runtime only, the
+ *     sfwp_options row is not written). Its HTML minify + JS defer stay on so the theme is
+ *     tested under the same conditions as production.
+ */
+$medhub_sfwp = static function ( $opts ) {
+	$opts               = is_array( $opts ) ? $opts : array();
+	$opts['page_cache'] = 0;
+	return $opts;
+};
+add_filter( 'option_sfwp_options', $medhub_sfwp, PHP_INT_MAX );
+add_filter( 'default_option_sfwp_options', $medhub_sfwp, PHP_INT_MAX );
 
 /*
  * 5. Never indexable.

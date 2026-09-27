@@ -13,7 +13,7 @@
 }
 
 .buy-box__meta a {
-	color: var(--c-teal);
+	color: var(--c-red);
 	font-weight: 500;
 	text-decoration: none;
 }
@@ -114,7 +114,7 @@
 	padding: 0 1.75rem;
 	border: 0;
 	border-radius: var(--r-sm);
-	background: var(--c-ink);
+	background: var(--c-red);
 	color: var(--c-paper);
 	font: 600 1rem/1 var(--font-sans);
 	cursor: pointer;
@@ -122,7 +122,7 @@
 }
 
 .buy-box .single_add_to_cart_button:hover {
-	background: var(--c-ink-2);
+	background: var(--c-red-2);
 	transform: translateY(-2px);
 }
 
@@ -164,7 +164,7 @@
 	width: 1.125rem;
 	height: 1.125rem;
 	flex: none;
-	color: var(--c-teal);
+	color: var(--c-red);
 }
 
 .buy-box__sku {
@@ -185,7 +185,7 @@
 	padding: var(--s-3) var(--gutter) calc(var(--s-3) + env(safe-area-inset-bottom));
 	background: var(--c-surface);
 	border-top: 1px solid var(--c-line);
-	box-shadow: 0 -12px 32px -20px rgb(13 27 30 / 0.35);
+	box-shadow: 0 -12px 32px -20px rgb(var(--rgb-ink) / 0.35);
 }
 
 @media (min-width: 1024px) {

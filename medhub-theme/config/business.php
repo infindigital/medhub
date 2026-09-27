@@ -28,26 +28,34 @@ return array(
 
 	'legal_name'   => array(
 		'value'  => 'LIFE CHOICE MEDICAL EQUIPMENT TRADING L.L.C',
-		'status' => 'site-sourced',
+		'status' => 'confirmed',
 		'source' => 'Footer + Rank Math organisation schema.',
 	),
 
 	'phone'        => array(
-		'value'  => null,
-		'status' => 'placeholder',
-		'note'   => 'Q1: four conflicting numbers on the live site (+971 52 814 2931, +971 4 252 3424, +971 4 385 2231, +971 50 255 2219).',
+		'value'  => '+971 52 814 2931',
+		'status' => 'confirmed',
+		'source' => 'Live medhub.ae footer + call links (confirmed by user 26 Sep 2026: "same as live").',
+		'note'   => 'Rank Math schema still says +971 50 255 2219 (Rank Math → Titles & Meta → Local SEO).',
+	),
+
+	// Second number, shown on the contact page only (live contact page: "Mobile: +971 4 252 3424").
+	'phone_alt'    => array(
+		'value'  => '+971 4 252 3424',
+		'status' => 'confirmed',
+		'source' => 'Live /contact-us-medhub/.',
 	),
 
 	'whatsapp'     => array(
-		'value'  => null, // International format without "+", e.g. 9715XXXXXXXX.
-		'status' => 'placeholder',
-		'note'   => 'Q2: the live WhatsApp link uses 971528142931. Awaiting confirmation.',
+		'value'  => '971528142931', // International format without "+".
+		'status' => 'confirmed',
+		'source' => 'Live medhub.ae WhatsApp link (wa.me/971528142931).',
 	),
 
 	'email'        => array(
-		'value'  => null,
-		'status' => 'placeholder',
-		'note'   => 'Q3: the live site shows a Gmail address. Awaiting confirmation.',
+		'value'  => 'lifechoicemed@gmail.com',
+		'status' => 'confirmed',
+		'source' => 'Live medhub.ae footer and contact page.',
 	),
 
 	'address'      => array(
@@ -57,14 +65,14 @@ return array(
 			'locality' => 'Deira, Dubai',
 			'country'  => 'United Arab Emirates',
 		),
-		'status' => 'site-sourced',
-		'note'   => 'Q5: wording and Google Maps / Business Profile link to confirm.',
+		'status' => 'confirmed',
+		'source' => 'Live medhub.ae footer and contact page.',
 	),
 
 	'map_url'      => array(
-		'value'  => null,
-		'status' => 'placeholder',
-		'note'   => 'Q5.',
+		'value'  => 'https://www.google.com/maps/search/?api=1&query=25.258065901688465,55.33272774559436',
+		'status' => 'confirmed',
+		'source' => 'Map pin in the live Rank Math Local SEO schema.',
 	),
 
 	'hours'        => array(
@@ -79,7 +87,7 @@ return array(
 			'instagram' => 'https://www.instagram.com/medhub_uae',
 			'tiktok'    => 'https://www.tiktok.com/@medhub.ae',
 		),
-		'status' => 'site-sourced',
+		'status' => 'confirmed',
 	),
 
 	'delivery'     => array(

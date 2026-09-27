@@ -24,17 +24,17 @@ $medhub_modules = array(
 	'inc/helpers/link-cards.php',
 	'inc/helpers/content.php',
 	'inc/helpers/contact-form.php',
-	'inc/content/term-content.php',
+	'inc/content/sections.php',
+	'inc/content/legacy.php',
 	'inc/woocommerce/products.php',
 	'inc/setup/theme-supports.php',
 	'inc/setup/menus.php',
 	'inc/setup/image-sizes.php',
 	'inc/setup/cleanup.php',
 	'inc/assets.php',
-	'inc/blocks.php',
 	'inc/seo/faq-schema.php',
 	'inc/seo/robots.php',
-	'inc/dev.php',
+	'inc/seo/headings.php',
 );
 
 // Hooks into WooCommerce only when it is active.
@@ -42,10 +42,7 @@ if ( class_exists( 'WooCommerce' ) ) {
 	$medhub_modules[] = 'inc/woocommerce/support.php';
 	$medhub_modules[] = 'inc/woocommerce/archive.php';
 	$medhub_modules[] = 'inc/woocommerce/single.php';
-}
-
-if ( is_admin() ) {
-	$medhub_modules[] = 'inc/admin/term-fields.php';
+	$medhub_modules[] = 'inc/woocommerce/compat.php';
 }
 
 foreach ( $medhub_modules as $medhub_module ) {

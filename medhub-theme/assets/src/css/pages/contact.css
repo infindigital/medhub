@@ -7,7 +7,7 @@
 @media (min-width: 1024px) {
 	.contact__grid {
 		grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
-		gap: var(--s-9);
+		gap: clamp(2rem, 1rem + 4vw, 5rem);
 		align-items: start;
 	}
 }
@@ -48,8 +48,8 @@
 	width: 2.75rem;
 	height: 2.75rem;
 	border-radius: 50%;
-	background: var(--c-aqua-soft);
-	color: var(--c-teal);
+	background: var(--c-blush-soft);
+	color: var(--c-red);
 }
 
 .contact-item__icon .icon {
@@ -175,7 +175,7 @@ textarea.field-input {
 }
 
 .choice input:checked + span {
-	background: var(--c-ink);
+	background: var(--c-red);
 	border-color: var(--c-ink);
 	color: var(--c-paper);
 }
@@ -233,7 +233,7 @@ textarea.field-input {
 	padding: 0 1.75rem;
 	border: 0;
 	border-radius: var(--r-sm);
-	background: var(--c-ink);
+	background: var(--c-red);
 	color: var(--c-paper);
 	font-weight: 600;
 	cursor: pointer;

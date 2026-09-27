@@ -5,7 +5,8 @@
  * The layout is chosen from the content itself, so no page template has to be
  * assigned in the database:
  *   - WooCommerce cart / checkout / account → plain wrapper (styled in step 2G)
- *   - Content built with MedHub blocks        → landing layout (the Hero block prints the H1)
+ *   - Designed pages (config/pages.php, or content starting with a level-1 Heading)
+ *     → landing layout: hero + theme sections + the page copy (built-in blocks)
  *   - Everything else (policies, legal, text) → reading layout with table of contents;
  *     the page text itself is output unchanged.
  *
@@ -30,20 +31,8 @@ while ( have_posts() ) :
 		</main>
 		<?php
 
-	elseif ( medhub_has_medhub_blocks( $medhub_post ) ) :
-		?>
-		<main id="main" class="site-main site-main--landing">
-			<div class="container">
-				<?php get_template_part( 'template-parts/components/breadcrumb' ); ?>
-			</div>
-			<?php if ( ! has_block( 'medhub/hero', $medhub_post ) ) : ?>
-				<header class="page-head container">
-					<h1 class="page-head__title"><?php the_title(); ?></h1>
-				</header>
-			<?php endif; ?>
-			<?php the_content(); ?>
-		</main>
-		<?php
+	elseif ( medhub_is_designed_page( $medhub_post ) ) :
+		get_template_part( 'template-parts/layout/landing', null, array( 'post' => $medhub_post ) );
 
 	else :
 		$medhub_content = medhub_prose_toc( apply_filters( 'the_content', get_the_content() ) ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals -- core filter.

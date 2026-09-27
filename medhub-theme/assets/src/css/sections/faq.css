@@ -1,13 +1,13 @@
 /* ---------- FAQ (core Details blocks) ---------- */
 .faq__layout {
 	display: grid;
-	gap: var(--s-6);
+	gap: var(--s-2);
 }
 
 @media (min-width: 1024px) {
 	.faq__layout {
 		grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-		gap: var(--s-9);
+		gap: var(--s-8);
 	}
 
 	.faq__head {
@@ -21,18 +21,23 @@
 	border-top: 1px solid var(--c-line);
 }
 
-.faq__list .wp-block-details {
+/* FAQ toggles typed into a category/brand description share the same look. */
+.archive-more__copy details:first-of-type {
+	border-top: 1px solid var(--c-line);
+}
+
+:is(.faq__list .wp-block-details, .archive-more__copy details) {
 	border-bottom: 1px solid var(--c-line);
 }
 
-.faq__list .wp-block-details > summary {
+:is(.faq__list .wp-block-details, .archive-more__copy details) > summary {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	gap: var(--s-5);
-	min-height: 4rem;
-	padding-block: var(--s-4);
-	font-size: 1.125rem;
+	min-height: 3.5rem;
+	padding-block: var(--s-3);
+	font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
 	font-weight: 600;
 	letter-spacing: -0.015em;
 	line-height: 1.3;
@@ -40,11 +45,11 @@
 	cursor: pointer;
 }
 
-.faq__list .wp-block-details > summary::-webkit-details-marker {
+:is(.faq__list .wp-block-details, .archive-more__copy details) > summary::-webkit-details-marker {
 	display: none;
 }
 
-.faq__list .wp-block-details > summary::after {
+:is(.faq__list .wp-block-details, .archive-more__copy details) > summary::after {
 	content: '';
 	flex: none;
 	width: 2rem;
@@ -57,11 +62,11 @@
 	transition: transform var(--t-base) var(--ease), background-color var(--t-base) var(--ease);
 }
 
-.faq__list .wp-block-details[open] > summary::after {
+:is(.faq__list .wp-block-details, .archive-more__copy details)[open] > summary::after {
 	transform: rotate(45deg);
 }
 
-.faq__list .wp-block-details > :not(summary) {
+:is(.faq__list .wp-block-details, .archive-more__copy details) > :not(summary) {
 	margin: 0 0 var(--s-5);
 	max-width: 40rem;
 	color: var(--c-muted);

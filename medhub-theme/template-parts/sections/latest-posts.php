@@ -1,0 +1,70 @@
+<?php
+/**
+ * Latest guides (blog posts).
+ *
+ * Template part: get_template_part( 'template-parts/sections/latest-posts', null, $args ).
+ *
+ * @package MedHub
+ *
+ * @var array $args Section settings (defaults below).
+ *
+ */
+
+defined( 'ABSPATH' ) || exit;
+
+$attributes = wp_parse_args(
+	$args ?? array(),
+	array(
+		'eyebrow' => '',
+		'heading' => '',
+		'lead' => '',
+		'count' => 3,
+		'category' => '',
+	)
+);
+
+$posts = get_posts(
+	array(
+		'numberposts'         => max( 1, min( 6, (int) $attributes['count'] ) ),
+		'post_status'         => 'publish',
+		'ignore_sticky_posts' => true,
+		'suppress_filters'    => false,
+		'category_name'       => sanitize_title( $attributes['category'] ),
+	)
+);
+
+if ( ! $posts ) {
+	return;
+}
+
+$uid      = wp_unique_id( 'posts-' );
+$blog_id  = (int) get_option( 'page_for_posts' );
+$blog_url = $blog_id ? get_permalink( $blog_id ) : '';
+$cat_term = $attributes['category'] ? get_category_by_slug( sanitize_title( $attributes['category'] ) ) : null;
+if ( $cat_term ) {
+	$blog_url = get_category_link( $cat_term );
+}
+?>
+<section <?php echo 'class="' . esc_attr( 'section journal' ) . '"'; // phpcs:ignore WordPress.Security.EscapeOutput ?> aria-labelledby="<?php echo esc_attr( $uid ); ?>">
+	<div class="container">
+		<?php
+		medhub_section_header(
+			array(
+				'eyebrow'    => $attributes['eyebrow'],
+				'heading'    => $attributes['heading'] ? $attributes['heading'] : __( 'Guides', 'medhub' ),
+				'lede'       => $attributes['lead'],
+				'id'         => $uid,
+				'link_label' => $blog_url ? __( 'All guides', 'medhub' ) : '',
+				'link_url'   => $blog_url,
+			)
+		);
+		?>
+		<ul class="journal__grid" data-reveal-group>
+			<?php foreach ( $posts as $i => $post ) : ?>
+				<li class="journal__item<?php echo 0 === $i ? ' journal__item--lead' : ''; ?>">
+					<?php get_template_part( 'template-parts/cards/article', null, array( 'post' => $post, 'lead' => 0 === $i ) ); ?>
+				</li>
+			<?php endforeach; ?>
+		</ul>
+	</div>
+</section>

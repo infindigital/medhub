@@ -52,7 +52,7 @@
 .archive-body {
 	display: grid;
 	gap: var(--s-6);
-	padding-block: var(--s-6) var(--s-8);
+	padding-block: var(--s-5) clamp(2rem, 1.5rem + 2vw, 3.5rem);
 }
 
 @media (min-width: 1024px) {
@@ -122,7 +122,7 @@
 	min-width: 1.25rem;
 	height: 1.25rem;
 	border-radius: var(--r-pill);
-	background: var(--c-ink);
+	background: var(--c-red);
 	color: var(--c-paper);
 	font-size: 0.6875rem;
 }
@@ -148,7 +148,7 @@
 
 .chip--active {
 	gap: var(--s-2);
-	background: var(--c-aqua-soft);
+	background: var(--c-blush-soft);
 	border-color: transparent;
 }
 
@@ -168,7 +168,7 @@
 	margin-left: var(--s-3);
 	font-size: 0.875rem;
 	font-weight: 600;
-	color: var(--c-teal);
+	color: var(--c-red);
 }
 
 .pcard__action .button.added::after {
@@ -211,7 +211,7 @@
 }
 
 .woocommerce-pagination .page-numbers .current {
-	background: var(--c-ink);
+	background: var(--c-red);
 	border-color: var(--c-ink);
 	color: var(--c-paper);
 }
@@ -248,13 +248,28 @@
 @media (min-width: 1024px) {
 	.archive-more__grid {
 		grid-template-columns: minmax(0, 1fr) 20rem;
-		gap: var(--s-9);
+		gap: clamp(2rem, 1rem + 4vw, 5rem);
 	}
 }
 
 .archive-more__copy h2 {
 	margin-top: 0;
 	font-size: var(--fs-h2);
+}
+
+/* Headings typed into the description: sub-sections of the copy. */
+.archive-more__copy h2:not(:first-child) {
+	margin-top: clamp(2.5rem, 2rem + 2vw, 4rem);
+	font-size: var(--fs-h3);
+}
+
+.archive-more__copy h3 {
+	margin: var(--s-5) 0 var(--s-2);
+	font-size: 1.125rem;
+}
+
+.archive-more__copy h3 + p {
+	margin-top: 0;
 }
 
 .link-list {

@@ -21,8 +21,13 @@
 }
 
 /* Consecutive light sections share one rhythm rather than doubling the gap. */
-.section + .section:not(.rental, .cta) {
+.section + .section:not(.rental) {
 	padding-top: 0;
+}
+
+/* …except after a full-bleed dark band, which ends its own spacing. */
+.section.rental + .section {
+	padding-top: var(--section-y);
 }
 
 /* ---------- Section header ---------- */
@@ -32,7 +37,7 @@
 	align-items: flex-end;
 	justify-content: space-between;
 	gap: var(--s-4) var(--s-6);
-	margin-bottom: clamp(var(--s-6), 3vw, var(--s-7));
+	margin-bottom: var(--head-gap);
 }
 
 .section-head__text {
@@ -45,7 +50,7 @@
 }
 
 .section-head__lede {
-	margin-top: var(--s-4);
+	margin-top: var(--s-3);
 	font-size: var(--fs-lead);
 	color: var(--c-muted);
 	max-width: 38rem;

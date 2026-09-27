@@ -7,7 +7,13 @@
  */
 
 // Identify the environment. The theme and the safety guard both read this.
-define( 'WP_ENVIRONMENT_TYPE', 'local' );
+// (LocalWP may already define it further down; the guard avoids a duplicate-constant warning.)
+if ( ! defined( 'WP_ENVIRONMENT_TYPE' ) ) {
+	define( 'WP_ENVIRONMENT_TYPE', 'local' );
+}
+
+// Marks this install as the local copy. The safety guard does nothing without it.
+define( 'MEDHUB_LOCAL_COPY', true );
 
 // No scheduled jobs on page load (the safety guard also blocks due events).
 define( 'DISABLE_WP_CRON', true );

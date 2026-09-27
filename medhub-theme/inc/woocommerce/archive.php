@@ -275,13 +275,13 @@ function medhub_archive_subnav(): array {
 }
 
 /**
- * Archive heading: optional "Display heading" term field, else the term/shop title.
+ * Archive heading: the category/brand name (edited in Products › Categories / Brands),
+ * else the shop page title.
  */
 function medhub_archive_heading(): string {
 	$term = get_queried_object();
 	if ( $term instanceof WP_Term ) {
-		$custom = (string) get_term_meta( $term->term_id, 'medhub_heading', true );
-		return '' !== $custom ? $custom : $term->name;
+		return $term->name;
 	}
 	return (string) woocommerce_page_title( false );
 }
@@ -368,3 +368,24 @@ function medhub_active_filters(): array {
 function medhub_archive_clean_url(): string {
 	return remove_query_arg( array( 'filter_brand', 'stock', 'min_price', 'max_price' ), get_pagenum_link( 1, false ) );
 }
+
+/**
+ * Category and brand descriptions hold the landing copy shown below the products
+ * (headings, paragraphs, lists, FAQ toggles). WordPress normally keeps only inline tags
+ * (links, bold, italic) in term descriptions, so a few simple structural tags are allowed
+ * when a description is saved. No attributes other than the defaults (links) are allowed.
+ */
+add_filter(
+	'wp_kses_allowed_html',
+	static function ( $tags, $context ) {
+		if ( 'pre_term_description' !== $context ) {
+			return $tags;
+		}
+		foreach ( array( 'h2', 'h3', 'h4', 'p', 'ul', 'ol', 'li', 'details', 'summary', 'br' ) as $tag ) {
+			$tags[ $tag ] = $tags[ $tag ] ?? array();
+		}
+		return $tags;
+	},
+	10,
+	2
+);

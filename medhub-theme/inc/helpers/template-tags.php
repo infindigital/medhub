@@ -25,21 +25,26 @@ function medhub_accent_text( string $text ): string {
  * @param string $text Plain text from a block attribute.
  */
 function medhub_reveal_words( string $text ): string {
-	$parts = preg_split( '/(\*.+?\*)/u', $text, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY );
-	$html  = '';
-	$i     = 0;
+	$parts    = preg_split( '/(\*.+?\*)/u', $text, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY );
+	$segments = array();
+	$i        = 0;
 
+	// Words are joined with "&#32;" (an encoded space) rather than a literal space: HTML
+	// minifiers that strip whitespace between tags (e.g. the "Super Fast WP" plugin on
+	// medhub.ae) would otherwise glue the heading into one word, visually and for search engines.
 	foreach ( $parts as $part ) {
 		$accent = (bool) preg_match( '/^\*(.+)\*$/u', $part, $m );
 		$words  = preg_split( '/\s+/u', trim( $accent ? $m[1] : $part ), -1, PREG_SPLIT_NO_EMPTY );
-		$chunk  = '';
+		$spans  = array();
 		foreach ( $words as $word ) {
-			$chunk .= '<span class="word"><span style="--i:' . $i++ . '">' . esc_html( $word ) . '</span></span> ';
+			$spans[] = '<span class="word"><span style="--i:' . $i++ . '">' . esc_html( $word ) . '</span></span>';
 		}
-		$html .= $accent ? '<em>' . trim( $chunk ) . '</em> ' : $chunk;
+		if ( $spans ) {
+			$segments[] = $accent ? '<em>' . implode( '&#32;', $spans ) . '</em>' : implode( '&#32;', $spans );
+		}
 	}
 
-	return trim( $html );
+	return implode( '&#32;', $segments );
 }
 
 /**

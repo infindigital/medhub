@@ -23,7 +23,7 @@
 .badge--rent {
 	background: var(--c-ink);
 	border-color: transparent;
-	color: var(--c-aqua);
+	color: var(--c-blush-2);
 }
 
 /* ---------- Price ---------- */
@@ -53,7 +53,7 @@
 
 .price--quote {
 	font-size: 0.9375rem;
-	color: var(--c-teal);
+	color: var(--c-red);
 }
 
 .price .woocommerce-Price-currencySymbol {
@@ -254,7 +254,15 @@
 .pcard__action {
 	position: relative;
 	z-index: 2;
-	margin-top: 0.75rem;
+	margin-top: auto;
+	padding-top: 0.75rem;
+}
+
+/* Narrow cards: the add-to-cart button spans the card for an even grid. */
+@container (max-width: 16rem) {
+	.pcard__action .btn {
+		width: 100%;
+	}
 }
 
 @container (max-width: 13rem) {
@@ -308,7 +316,7 @@
 
 .acard__meta span {
 	font-weight: 600;
-	color: var(--c-teal);
+	color: var(--c-red);
 }
 
 .acard__title {

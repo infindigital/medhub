@@ -115,7 +115,7 @@ select.orderby:focus-visible,
 }
 
 .check input:checked {
-	background: var(--c-ink);
+	background: var(--c-red);
 	border-color: var(--c-ink);
 }
 
@@ -151,7 +151,7 @@ select.orderby:focus-visible,
 
 .woocommerce-message {
 	border-color: transparent;
-	background: var(--c-aqua-soft);
+	background: var(--c-blush-soft);
 }
 
 .woocommerce-error {
@@ -168,7 +168,7 @@ select.orderby:focus-visible,
 	min-height: 2.5rem;
 	padding: 0 1rem;
 	border-radius: var(--r-sm);
-	background: var(--c-ink);
+	background: var(--c-red);
 	color: var(--c-paper);
 	font-weight: 600;
 	font-size: 0.875rem;

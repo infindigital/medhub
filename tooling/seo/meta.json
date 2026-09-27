@@ -1,0 +1,51 @@
+{
+	"_about": "Rank Math SEO for pages and posts that had no custom title/description (2026-09-27). Applied by tooling/local/apply-seo.php. Copy is taken from each page's own content; no new claims. Keys: slug (safety check), title, description, keyword, noindex, post_title (renames the WordPress title/H1 only; URL unchanged).",
+	"templates": {
+		"title_separator": "|",
+		"pt_post_title": "%title% %page% %sep% MedHub",
+		"pt_page_title": "%title% %page% %sep% MedHub",
+		"pt_product_title": "%title% %page% %sep% MedHub",
+		"tax_product_cat_title": "%term% %page% %sep% MedHub",
+		"tax_product_brand_title": "%term% %page% %sep% MedHub",
+		"tax_category_title": "%term% Guides %page% %sep% MedHub"
+	},
+	"thumbnail_alt_from_title": [6063, 6065, 6067, 6069, 6230, 6233, 6237, 6240, 6506, 6570, 6600, 6622],
+	"items": {
+		"8": { "slug": "shop", "title": "Shop Medical Equipment in Dubai | MedHub", "description": "Browse MedHub's catalogue of oxygen concentrators, CPAP and BiPAP machines, patient-care and hospital equipment, with delivery across the UAE.", "keyword": "medical equipment shop Dubai" },
+		"10": { "slug": "checkout", "title": "Checkout | MedHub", "noindex": true },
+		"11": { "slug": "my-account", "title": "My Account | MedHub", "noindex": true },
+		"251": { "slug": "compare", "title": "Compare | MedHub", "noindex": true },
+		"262": { "slug": "shopping-cart", "title": "Shopping Cart | MedHub", "noindex": true },
+		"2965": { "slug": "order-tracking", "title": "Order Tracking | MedHub", "noindex": true },
+		"5797": { "slug": "yith-compare", "title": "Compare | MedHub", "noindex": true },
+		"5654": { "slug": "payment-confirmation", "title": "Payment Confirmation | MedHub", "description": "How MedHub confirms your payment after checkout through the secure payment gateway, starting with an on-screen confirmation of your order.", "noindex": true },
+
+		"3170": { "slug": "contact-us-medhub", "title": "Contact MedHub | Medical Equipment Shop in Deira", "description": "Contact MedHub by WhatsApp, phone or email, or visit our shop in Port Saeed, Deira, Dubai, for quotes on medical equipment to buy or rent.", "keyword": "contact MedHub Dubai" },
+
+		"4307": { "slug": "device-on-rent", "post_title": "Device on Rent", "title": "Medical Devices on Rent in Dubai | MedHub", "description": "Medical devices MedHub rents in Dubai, including the Inogen portable oxygen concentrator, DeVilbiss BLUE CPAP, Compact 525 and VacuAide suction unit.", "keyword": "medical devices on rent Dubai" },
+		"4331": { "slug": "inogen-portable-oxygen-concentrator", "title": "Inogen Portable Oxygen Concentrator | MedHub", "description": "Inogen portable oxygen concentrator features and specifications: pulse-dose Intelligent Delivery, carry bag and car/wall charger. Ask MedHub in Dubai.", "keyword": "Inogen portable oxygen concentrator" },
+		"4362": { "slug": "devilbiss-blue-cpap", "title": "DeVilbiss BLUE CPAP: Features & Specs | MedHub", "description": "DeVilbiss BLUE CPAP features and specifications: 3–20 cm H2O pressure, automatic altitude compensation, 0.9 kg and airline approved. Ask MedHub in Dubai.", "keyword": "DeVilbiss BLUE CPAP" },
+		"4381": { "slug": "compact-525-oxygen-concentrator", "title": "DeVilbiss Compact 525 Oxygen Concentrator | MedHub", "description": "Compact 525 oxygen concentrator features and specifications: 0.5–5 L/min flow, OSD sensor, 16.3 kg and 40 dBA. Ask MedHub in Dubai about buying or renting.", "keyword": "Compact 525 oxygen concentrator" },
+		"4391": { "slug": "vacuaide-portable-suction-unit", "title": "VacuAide Portable Suction Unit | MedHub", "description": "VacuAide portable suction unit features and specifications: up to 60 minutes internal battery, 100–240V and 12V DC power, built to ISO 10079-1. Ask MedHub.", "keyword": "VacuAide portable suction unit" },
+
+		"5644": { "slug": "terms-conditions", "title": "Terms & Conditions | MedHub", "description": "Terms for using medhub.ae, operated by LIFE CHOICE MEDICAL EQUIPMENT TRADING L.L.C, Dubai: governing law, payment methods, eligibility, pricing and currency.", "keyword": "MedHub terms and conditions" },
+		"4091": { "slug": "terms-and-conditions", "title": "Terms and Conditions of Sale | MedHub", "description": "Standard conditions of sale for orders with LIFE CHOICE MEDICAL EQUIPMENT TRADING L.L.C, Deira, Dubai (MedHub), including definitions and terms of sale.", "keyword": "MedHub conditions of sale" },
+		"5646": { "slug": "privacy-policy", "title": "Privacy Policy | MedHub", "description": "How MedHub (LIFE CHOICE MEDICAL EQUIPMENT TRADING L.L.C) collects, uses and protects your personal information when you visit or buy through medhub.ae.", "keyword": "MedHub privacy policy" },
+		"5648": { "slug": "cookie-policy", "title": "Cookie Policy | MedHub", "description": "The cookies medhub.ae uses, including essential cookies for login and checkout and analytics cookies, and how to accept or decline non-essential cookies.", "keyword": "MedHub cookie policy" },
+		"5650": { "slug": "delivery-policy", "title": "Delivery Policy: UAE Delivery for AED 25 | MedHub", "description": "MedHub delivers across the UAE for AED 25. Orders are processed within 24 hours of payment and delivered in 2–3 business days. Read the full delivery policy.", "keyword": "MedHub delivery policy" },
+		"5652": { "slug": "multiple-shipments-policy-if-applicable", "title": "Multiple Shipments Policy | MedHub", "description": "Multiple bookings, orders or shipments on medhub.ae may appear as separate postings on the cardholder's monthly statement. Read MedHub's policy.", "keyword": "multiple shipments policy" },
+		"5656": { "slug": "refund-policy", "title": "Refund and Return Policy | MedHub", "description": "MedHub accepts returns within 2 days of receiving an order when the listed conditions are met, such as a damaged or defective product. How to request a refund.", "keyword": "MedHub refund policy" },
+		"4093": { "slug": "return-policy", "title": "Return Policy | MedHub", "description": "How to set up a return with MedHub: the criteria a return must meet and the health products that cannot be returned. See also the refund and return policy.", "keyword": "MedHub return policy" },
+		"5658": { "slug": "cancellation-policy", "title": "Cancellation Policy | MedHub", "description": "When MedHub orders can be cancelled, how replacements work and which products cannot be cancelled. Card details are processed securely and never stored.", "keyword": "MedHub cancellation policy" },
+
+		"6063": { "slug": "medical-equipment-suppliers-in-dubai-complete-guide-to-oxygen-machines-cpap-respiratory-care", "title": "Medical Equipment Suppliers in Dubai: Buyer's Guide | MedHub", "description": "How to choose a medical equipment supplier in Dubai, with oxygen machines, CPAP, BiPAP and ventilator support explained for home respiratory care.", "keyword": "how to choose a medical equipment supplier in Dubai" },
+		"6065": { "slug": "cpap-in-dubai-your-complete-guide-to-sleep-apnea-treatment-and-cpap-machines", "title": "CPAP in Dubai: Sleep Apnea Treatment Guide | MedHub", "description": "A guide to CPAP therapy in Dubai: signs you may need it, machine types, brands, masks, prices and insurance, and how to start sleep apnea treatment.", "keyword": "sleep apnea treatment in Dubai" },
+		"6067": { "slug": "portable-oxygen-machine-in-dubai-your-complete-buyers-guide", "title": "Portable Oxygen Machine Buyer's Guide, Dubai | MedHub", "description": "Choosing a portable oxygen machine in Dubai: how portable concentrators work, the main types and brands, and what to check before you buy or rent one.", "keyword": "portable oxygen concentrator buying guide" },
+		"6069": { "slug": "bipap-in-dubai-your-complete-guide-to-bipap-machines-and-therapy", "title": "BiPAP vs CPAP: BiPAP Therapy Guide, Dubai | MedHub", "description": "What BiPAP is, how it differs from CPAP, who needs it, machine types, masks, prices and insurance cover for BiPAP therapy in Dubai.", "keyword": "BiPAP vs CPAP" },
+		"6230": { "slug": "travel-cpap-machine-in-dubai-best-portable-cpap-devices-for-sleep-apnea-on-the-go", "title": "Travel CPAP Machine in Dubai: Portable CPAP Guide | MedHub", "description": "Travel CPAP machines in Dubai: how they differ from standard CPAP, using one on a plane, prices, travel accessories and renting a travel CPAP.", "keyword": "Travel CPAP Machine in Dubai" },
+		"6233": { "slug": "infusion-pump-in-dubai-complete-guide-to-iv-infusion-devices-for-home-clinical-use", "title": "Infusion Pump in Dubai: Home & Clinical Guide | MedHub", "description": "Infusion pumps explained: the types available in Dubai, common home uses, accessories, and safety and hygiene for IV therapy at home.", "keyword": "infusion pump in Dubai" },
+
+		"6570": { "slug": "bipap-in-dubai-modes-explained", "keyword": "BiPAP modes explained" },
+		"6600": { "slug": "oxygen-concentrator-in-dubai-how-it-works", "keyword": "how an oxygen concentrator works" }
+	}
+}

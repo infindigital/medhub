@@ -21,7 +21,7 @@
 	height: 38rem;
 	right: -8rem;
 	top: -10rem;
-	background: radial-gradient(circle, rgb(167 232 216 / 0.55), transparent 65%);
+	background: radial-gradient(circle, rgb(var(--rgb-red) / 0.2), transparent 65%);
 }
 
 .hero--interactive::after {
@@ -29,7 +29,7 @@
 	height: 30rem;
 	left: -10rem;
 	bottom: -14rem;
-	background: radial-gradient(circle, rgb(232 225 211 / 0.9), transparent 65%);
+	background: radial-gradient(circle, rgb(var(--rgb-red) / 0.1), transparent 65%);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -65,7 +65,7 @@
 	width: 8px;
 	height: 8px;
 	border-radius: 50%;
-	background: var(--c-teal);
+	background: var(--c-red);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -74,7 +74,7 @@
 		position: absolute;
 		inset: -4px;
 		border-radius: 50%;
-		border: 2px solid var(--c-teal);
+		border: 2px solid var(--c-red);
 		animation: medhub-ping 2s var(--ease) infinite;
 	}
 }
@@ -182,7 +182,7 @@
 	z-index: 0;
 	width: 78%;
 	aspect-ratio: 1;
-	border: 1px dashed rgb(10 110 98 / 0.28);
+	border: 1px dashed rgb(var(--rgb-red) / 0.28);
 	border-radius: 50%;
 	transform: translate(-50%, -50%) translate(calc(var(--px, 0) * 8px), calc(var(--py, 0) * 8px));
 	pointer-events: none;
@@ -203,8 +203,8 @@
 		width: 10px;
 		height: 10px;
 		border-radius: 50%;
-		background: var(--c-teal);
-		box-shadow: 0 0 0 6px rgb(10 110 98 / 0.12);
+		background: var(--c-red);
+		box-shadow: 0 0 0 6px rgb(var(--rgb-red) / 0.12);
 		translate: -50% 0;
 	}
 
@@ -218,8 +218,8 @@
 	}
 
 	.hero__orbit--inner::after {
-		background: var(--c-aqua-2);
-		box-shadow: 0 0 0 6px rgb(143 220 201 / 0.25);
+		background: var(--c-blush-2);
+		box-shadow: 0 0 0 6px rgb(var(--rgb-red) / 0.25);
 	}
 }
 
@@ -288,7 +288,7 @@
 .hero__float .icon {
 	width: 1rem;
 	height: 1rem;
-	color: var(--c-teal);
+	color: var(--c-red);
 }
 
 .hero__float--0 {
@@ -396,7 +396,7 @@
 
 .hero__dot[aria-current='true']::before {
 	width: 1.25rem;
-	background: var(--c-ink);
+	background: var(--c-red);
 }
 
 .hero__pause {
@@ -451,8 +451,8 @@
 	.hero--interactive {
 		display: flex;
 		align-items: center;
-		min-height: calc(100svh - var(--header-h));
-		padding-block: clamp(1.25rem, 3.5vh, 3rem);
+		min-height: min(calc(100svh - var(--header-h)), 44rem);
+		padding-block: clamp(2rem, 5vh, 3.5rem);
 	}
 
 	.hero--interactive .hero__grid {
@@ -494,5 +494,30 @@
 
 	.hero__float--1 {
 		display: none;
+	}
+}
+
+/* Block editor preview (server-side render, no front-end JS): show the first product
+   slide and keep button colours from the admin link colour. Front end unaffected. */
+.editor-styles-wrapper .hero__slide:first-of-type,
+.block-editor-block-list__layout .hero__slide:first-of-type {
+	opacity: 1;
+	transform: none;
+}
+
+:is(.editor-styles-wrapper, .block-editor-block-list__layout) a.btn--primary {
+	color: var(--c-paper);
+}
+
+:is(.editor-styles-wrapper, .block-editor-block-list__layout) a.btn--secondary {
+	color: var(--c-ink);
+}
+
+/* Tablets (stacked layout): keep the product visual a sensible size. */
+@media (min-width: 600px) and (max-width: 899px) {
+	.hero--interactive .hero__visual {
+		width: 100%;
+		max-width: 26rem;
+		margin-inline: auto;
 	}
 }

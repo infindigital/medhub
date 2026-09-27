@@ -13,6 +13,7 @@ import { initShop } from './modules/shop.js';
 import { initProduct } from './modules/product.js';
 import { initDevForm } from './modules/devform.js';
 import { initInteractive } from './modules/interactive.js';
+import { initFx } from './modules/fx.js';
 
 document.documentElement.classList.add('js');
 
@@ -27,3 +28,4 @@ initShop();
 initProduct();
 initDevForm();
 initInteractive();
+initFx();

@@ -88,6 +88,33 @@ function medhub_resolve_link_card( string $line ): ?array {
 				'image'  => get_the_post_thumbnail( $post, 'thumbnail', $img_args ),
 			);
 
+		case 'postid':
+			$post = get_post( (int) $slug );
+			if ( ! $post || 'publish' !== $post->post_status || ! in_array( $post->post_type, array( 'page', 'post' ), true ) ) {
+				return null;
+			}
+			return array(
+				'type'   => 'post' === $post->post_type ? 'post' : 'page',
+				'label'  => $custom ? $custom : get_the_title( $post ),
+				'url'    => get_permalink( $post ),
+				'kicker' => 'post' === $post->post_type ? __( 'Article', 'medhub' ) : __( 'Guide', 'medhub' ),
+				'image'  => 'post' === $post->post_type ? get_the_post_thumbnail( $post, 'thumbnail', $img_args ) : '',
+			);
+
+		case 'url':
+			// Any other link typed in the editor (e.g. an external page).
+			$url = esc_url_raw( $slug );
+			if ( ! $url ) {
+				return null;
+			}
+			return array(
+				'type'   => 'page',
+				'label'  => $custom ? $custom : $url,
+				'url'    => $url,
+				'kicker' => __( 'Link', 'medhub' ),
+				'image'  => '',
+			);
+
 		case 'product':
 			$product = medhub_get_product_by_slug( $slug );
 			if ( ! $product || ! $product->is_visible() ) {

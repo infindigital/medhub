@@ -5,7 +5,7 @@
 	align-items: flex-end;
 	justify-content: space-between;
 	gap: var(--s-4) var(--s-6);
-	margin-bottom: clamp(var(--s-6), 3vw, var(--s-7));
+	margin-bottom: var(--head-gap);
 }
 
 .showcase__head .section-head {
@@ -37,7 +37,7 @@
 }
 
 .tabs__tab[aria-selected='true'] {
-	background: var(--c-ink);
+	background: var(--c-red);
 	color: var(--c-paper);
 }
 
@@ -56,5 +56,31 @@
 	from {
 		opacity: 0;
 		transform: translateY(8px);
+	}
+}
+
+/* Phones and tablets: featured products scroll sideways instead of a long stack. */
+@media (max-width: 1099px) {
+	.showcase .product-grid {
+		display: grid;
+		grid-auto-flow: column;
+		grid-template-columns: none;
+		grid-auto-columns: min(62%, 15rem);
+		gap: var(--s-3);
+		margin-inline: calc(var(--gutter) * -1);
+		padding: 0 var(--gutter) var(--s-3);
+		overflow-x: auto;
+		overscroll-behavior-x: contain;
+		scroll-snap-type: x mandatory;
+		scroll-padding-inline: var(--gutter);
+		scrollbar-width: none;
+	}
+
+	.showcase .product-grid::-webkit-scrollbar {
+		display: none;
+	}
+
+	.showcase .product-grid > li {
+		scroll-snap-align: start;
 	}
 }

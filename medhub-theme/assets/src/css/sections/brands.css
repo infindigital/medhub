@@ -24,8 +24,8 @@
 	justify-content: space-between;
 	gap: var(--s-4);
 	height: 100%;
-	min-height: 7.5rem;
-	padding: var(--s-5) var(--s-4);
+	min-height: clamp(5.25rem, 4.5rem + 2vw, 7rem);
+	padding: clamp(0.875rem, 0.6rem + 0.8vw, 1.5rem) clamp(0.75rem, 0.5rem + 0.6vw, 1rem);
 	border-right: 1px solid var(--c-line);
 	border-bottom: 1px solid var(--c-line);
 	color: var(--c-ink);

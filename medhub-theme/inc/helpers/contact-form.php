@@ -5,7 +5,6 @@
  * config/business.php → contact_form = ['provider' => 'wpforms'|'cf7'|null, 'id' => …]
  *
  *  - Provider configured AND its plugin active → that plugin's form (styled by the theme).
- *  - Otherwise, in the dev sandbox → a clearly marked development form that sends nothing.
  *  - Otherwise (staging/production without a confirmed form) → no form; the contact block
  *    shows the contact details instead. A raw shortcode is never printed.
  *
@@ -31,11 +30,6 @@ function medhub_contact_form_html(): string {
 		}
 	}
 
-	if ( defined( 'MEDHUB_SANDBOX' ) && true === MEDHUB_SANDBOX ) {
-		ob_start();
-		get_template_part( 'template-parts/forms/contact-dev' );
-		return (string) ob_get_clean();
-	}
 
 	return '';
 }

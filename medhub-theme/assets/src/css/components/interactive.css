@@ -11,7 +11,7 @@
 			right: 0;
 			z-index: calc(var(--z-header) + 1);
 			height: 3px;
-			background: linear-gradient(90deg, var(--c-teal), var(--c-aqua-2));
+			background: linear-gradient(90deg, var(--c-red), var(--c-blush-2));
 			transform-origin: 0 50%;
 			transform: scaleX(0);
 			animation: medhub-progress linear both;
@@ -39,7 +39,7 @@
 	inset: 0;
 	z-index: 0;
 	border-radius: inherit;
-	background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 50%), rgb(167 232 216 / 0.28), transparent 55%);
+	background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 50%), rgb(var(--rgb-red) / 0.1), transparent 55%);
 	opacity: 0;
 	transition: opacity var(--t-slow) var(--ease);
 	pointer-events: none;
@@ -58,7 +58,7 @@
 .tile--dark.has-spotlight::after,
 .is-dark.has-spotlight::after,
 .cta__panel.has-spotlight::after {
-	background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgb(167 232 216 / 0.18), transparent 60%);
+	background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgb(var(--rgb-red) / 0.3), transparent 60%);
 }
 
 /* Subtle 3D tilt on tiles (JS sets --rx/--ry). */
@@ -148,8 +148,8 @@
 	overflow: hidden;
 	padding-block: var(--s-5);
 	border-block: 1px solid var(--c-line);
-	background: var(--c-ink);
-	color: var(--c-on-dark);
+	background: var(--c-red);
+	color: #fff;
 	mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 }
 
@@ -172,7 +172,7 @@
 	align-items: flex-start;
 	gap: 0.25rem;
 	padding: 0 clamp(1.5rem, 3vw, 2.75rem);
-	color: var(--c-on-dark);
+	color: #fff;
 	font-size: clamp(1.5rem, 1rem + 2vw, 2.75rem);
 	font-weight: 600;
 	letter-spacing: -0.03em;
@@ -186,7 +186,7 @@
 	content: '✦';
 	margin-right: clamp(1.5rem, 3vw, 2.75rem);
 	margin-left: calc(clamp(1.5rem, 3vw, 2.75rem) * -1);
-	color: var(--c-aqua);
+	color: var(--c-blush);
 	font-size: 0.5em;
 	align-self: center;
 }
@@ -194,13 +194,13 @@
 .marquee__item sup {
 	font-size: 0.4em;
 	font-weight: 500;
-	color: var(--c-on-dark-muted);
+	color: var(--c-blush);
 	margin-top: 0.3em;
 }
 
 .marquee__item:hover,
 .marquee__item:focus-visible {
-	color: var(--c-aqua);
+	color: var(--c-blush);
 }
 
 .marquee__item:hover {

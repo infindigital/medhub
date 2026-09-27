@@ -40,7 +40,7 @@
 	font-style: italic;
 	font-size: 3.5rem;
 	line-height: 1;
-	color: var(--c-aqua);
+	color: var(--c-blush-2);
 }
 
 /* ---------- Rail (native scroll-snap + optional buttons) ---------- */

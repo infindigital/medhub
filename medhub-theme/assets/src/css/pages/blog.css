@@ -20,7 +20,7 @@
 .blog-body {
 	display: grid;
 	gap: var(--s-7);
-	padding-block: var(--s-7) var(--s-8);
+	padding-block: clamp(1.5rem, 1rem + 2vw, 3rem) clamp(2rem, 1.5rem + 2vw, 3.5rem);
 }
 
 .blog-grid {
@@ -88,7 +88,7 @@
 }
 
 .pagination .page-numbers.current {
-	background: var(--c-ink);
+	background: var(--c-red);
 	border-color: var(--c-ink);
 	color: var(--c-paper);
 }
@@ -106,7 +106,7 @@
 .article-head__cat a {
 	font-size: 0.875rem;
 	font-weight: 600;
-	color: var(--c-teal);
+	color: var(--c-red);
 	text-decoration: none;
 }
 
@@ -141,7 +141,7 @@
 }
 
 .reading--article {
-	padding-bottom: var(--s-8);
+	padding-bottom: clamp(2.5rem, 2rem + 2vw, 4rem);
 }
 
 .reading--article .reading__body {

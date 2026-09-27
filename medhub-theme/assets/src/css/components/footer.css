@@ -1,14 +1,14 @@
 /* ---------- Footer (light, so the red + black logo stays legible) ---------- */
 .site-footer {
-	padding-top: var(--s-9);
+	padding-top: clamp(3rem, 2rem + 3vw, 5rem);
 	background: var(--c-sand);
 	color: var(--c-ink);
 }
 
 .site-footer__top {
 	display: grid;
-	gap: var(--s-8);
-	padding-bottom: var(--s-8);
+	gap: clamp(2rem, 1.5rem + 2vw, 4rem);
+	padding-bottom: clamp(2rem, 1.5rem + 2vw, 4rem);
 }
 
 @media (min-width: 1024px) {
@@ -71,7 +71,7 @@
 }
 
 .footer-col a:hover {
-	color: var(--c-teal);
+	color: var(--c-red);
 	text-decoration: underline;
 }
 
@@ -99,4 +99,25 @@
 	border-top: 1px solid var(--c-line-strong);
 	color: var(--c-muted);
 	font-size: 0.8125rem;
+}
+
+/* Phones: WhatsApp + call side by side, links underneath. */
+@media (max-width: 639px) {
+	.site-footer__brand .contact-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--s-2) var(--s-4);
+	}
+
+	.site-footer__brand .contact-actions .btn:not(.btn--ghost) {
+		flex: 1 1 9rem;
+		min-width: 0;
+		padding-inline: var(--s-2);
+		font-size: 0.875rem;
+	}
+
+	.site-footer__brand .contact-actions .btn--ghost {
+		flex: 0 0 auto;
+		min-height: 2.25rem;
+	}
 }

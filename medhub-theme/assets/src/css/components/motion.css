@@ -1,0 +1,397 @@
+/* ---------- White & red interaction layer ---------- */
+
+/* Serif accent words in headings pick up the brand red. */
+h1 em,
+h2 em,
+h3 em,
+.hero__title em,
+.section-head__title em {
+	color: var(--c-red);
+}
+
+/* Eyebrows: red label with a pulsing dot. */
+.eyebrow {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	color: var(--c-red);
+}
+
+.eyebrow:not(.hero__eyebrow)::before {
+	content: '';
+	width: 0.4375rem;
+	height: 0.4375rem;
+	flex: none;
+	border-radius: 50%;
+	background: var(--c-red);
+	box-shadow: 0 0 0 0 rgb(var(--rgb-red) / 0.5);
+}
+
+:is(.cta, .rental, .is-dark, .tile--dark) .eyebrow:not(.hero__eyebrow)::before {
+	background: var(--c-blush-2);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.eyebrow:not(.hero__eyebrow)::before {
+		animation: medhub-eyebrow-ping 2.4s var(--ease) infinite;
+	}
+}
+
+@keyframes medhub-eyebrow-ping {
+	0% {
+		box-shadow: 0 0 0 0 rgb(var(--rgb-red) / 0.5);
+	}
+	70%,
+	100% {
+		box-shadow: 0 0 0 7px rgb(var(--rgb-red) / 0);
+	}
+}
+
+/* Section titles: a red rule draws in under the heading on scroll. */
+.section-head__title::after {
+	content: '';
+	display: block;
+	width: 3.5rem;
+	height: 3px;
+	margin-top: var(--s-3);
+	border-radius: 3px;
+	background: var(--c-red);
+	transform-origin: 0 50%;
+}
+
+@supports (animation-timeline: view()) {
+	@media (prefers-reduced-motion: no-preference) {
+		.section-head__title::after {
+			animation: medhub-rule linear both;
+			animation-timeline: view();
+			animation-range: entry 20% entry 90%;
+		}
+	}
+}
+
+@keyframes medhub-rule {
+	from {
+		transform: scaleX(0);
+	}
+	to {
+		transform: scaleX(1);
+	}
+}
+
+/* Header: frosted white once scrolled, nav links get a red underline. */
+.site-header.is-scrolled {
+	background: rgb(255 255 255 / 0.86);
+	box-shadow: 0 10px 30px -22px rgb(var(--rgb-ink) / 0.5);
+}
+
+@supports (backdrop-filter: blur(1px)) {
+	.site-header.is-scrolled {
+		backdrop-filter: saturate(1.6) blur(14px);
+	}
+}
+
+.primary-nav__link,
+.primary-nav__trigger {
+	position: relative;
+}
+
+.primary-nav__link::after,
+.primary-nav__trigger::after {
+	content: '';
+	position: absolute;
+	left: 0.75rem;
+	right: 0.75rem;
+	bottom: 0.3rem;
+	height: 2px;
+	border-radius: 2px;
+	background: var(--c-red);
+	transform: scaleX(0);
+	transform-origin: 100% 50%;
+	transition: transform var(--t-base) var(--ease);
+}
+
+.primary-nav__link:hover::after,
+.primary-nav__trigger:hover::after,
+.primary-nav__trigger[aria-expanded='true']::after,
+.primary-nav__link[aria-current='page']::after {
+	transform: scaleX(1);
+	transform-origin: 0 50%;
+}
+
+.primary-nav__link:hover,
+.primary-nav__trigger:hover,
+.primary-nav__trigger[aria-expanded='true'] {
+	background: var(--c-blush-soft);
+	color: var(--c-red);
+}
+
+.primary-nav__trigger[aria-expanded='true'] .icon {
+	color: var(--c-red);
+}
+
+/* Cart count pops when it changes (JS toggles .is-bumped). */
+@media (prefers-reduced-motion: no-preference) {
+	.cart-count.is-bumped {
+		animation: medhub-bump 0.5s var(--ease);
+	}
+}
+
+@keyframes medhub-bump {
+	40% {
+		transform: scale(1.45);
+	}
+}
+
+/* Buttons: light sweep across filled buttons + click ripple. */
+.btn--primary,
+.btn--accent {
+	position: relative;
+	overflow: hidden;
+	isolation: isolate;
+}
+
+.btn--primary::before,
+.btn--accent::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	background: linear-gradient(110deg, transparent 30%, rgb(255 255 255 / 0.35) 50%, transparent 70%);
+	transform: translateX(-120%);
+	pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.btn--primary:hover::before,
+	.btn--accent:hover::before {
+		transition: transform 0.7s var(--ease);
+		transform: translateX(120%);
+	}
+}
+
+.ripple {
+	position: absolute;
+	z-index: 0;
+	width: var(--d);
+	height: var(--d);
+	left: var(--x);
+	top: var(--y);
+	margin: calc(var(--d) / -2) 0 0 calc(var(--d) / -2);
+	border-radius: 50%;
+	background: currentColor;
+	opacity: 0.28;
+	transform: scale(0);
+	pointer-events: none;
+	animation: medhub-ripple 0.6s var(--ease) forwards;
+}
+
+@keyframes medhub-ripple {
+	to {
+		transform: scale(1);
+		opacity: 0;
+	}
+}
+
+/* Product cards: red edge, lift and a red glow on hover. */
+.pcard:hover,
+.pcard:focus-within {
+	border-color: rgb(var(--rgb-red) / 0.45);
+	box-shadow: 0 24px 48px -28px rgb(var(--rgb-red) / 0.45);
+	transform: translateY(-6px);
+}
+
+.pcard__title a {
+	background: linear-gradient(var(--c-red), var(--c-red)) 0 100% / 0 1px no-repeat;
+	transition: background-size var(--t-base) var(--ease), color var(--t-base) var(--ease);
+}
+
+.pcard:hover .pcard__title a {
+	color: var(--c-red);
+	background-size: 100% 1px;
+}
+
+/* Tiles and link cards share the red edge. */
+.tile,
+.link-card,
+.brand-tile,
+.contact-item {
+	transition:
+		border-color var(--t-base) var(--ease),
+		box-shadow var(--t-base) var(--ease),
+		transform 0.5s var(--ease);
+}
+
+:is(.tile:not(.tile--dark), .link-card, .brand-tile, .contact-item):hover {
+	border-color: rgb(var(--rgb-red) / 0.4);
+	box-shadow: 0 22px 44px -28px rgb(var(--rgb-red) / 0.4);
+}
+
+.tile__arrow {
+	transition: background-color var(--t-base) var(--ease), color var(--t-base) var(--ease), transform var(--t-base) var(--ease);
+}
+
+.tile:hover .tile__arrow {
+	background: var(--c-red);
+	color: #fff;
+	transform: rotate(-45deg);
+}
+
+/* Prose links: red underline that grows on hover. */
+.prose a:not([class]) {
+	color: var(--c-red);
+	text-decoration: none;
+	background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1px no-repeat;
+	transition: background-size var(--t-base) var(--ease);
+}
+
+.prose a:not([class]):hover {
+	background-size: 100% 2px;
+}
+
+/* ---------- Back to top with scroll-progress ring ---------- */
+.to-top {
+	position: fixed;
+	left: max(1rem, env(safe-area-inset-left));
+	bottom: max(1rem, env(safe-area-inset-bottom));
+	z-index: calc(var(--z-header) - 1);
+	display: grid;
+	place-items: center;
+	width: 3rem;
+	height: 3rem;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background: var(--c-surface);
+	color: var(--c-red);
+	box-shadow: 0 12px 28px -12px rgb(var(--rgb-ink) / 0.35);
+	cursor: pointer;
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(12px);
+	transition:
+		opacity var(--t-base) var(--ease),
+		transform var(--t-base) var(--ease),
+		visibility var(--t-base),
+		background-color var(--t-base) var(--ease),
+		color var(--t-base) var(--ease);
+}
+
+.to-top.is-visible {
+	opacity: 1;
+	visibility: visible;
+	transform: none;
+}
+
+.to-top:hover {
+	background: var(--c-red);
+	color: #fff;
+}
+
+.to-top__ring {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	transform: rotate(-90deg);
+}
+
+.to-top__track {
+	fill: none;
+	stroke: var(--c-line);
+	stroke-width: 2.5;
+}
+
+.to-top__bar {
+	fill: none;
+	stroke: var(--c-red);
+	stroke-width: 2.5;
+	stroke-linecap: round;
+	stroke-dasharray: 100;
+	stroke-dashoffset: calc(100 - var(--p, 0) * 100);
+}
+
+.to-top:hover .to-top__bar {
+	stroke: #fff;
+}
+
+.to-top__arrow {
+	position: relative;
+	width: 1.125rem;
+	height: 1.125rem;
+}
+
+/* ---------- More hover feedback ---------- */
+
+/* Brand wall: tile fills red on hover. */
+.brand-tile {
+	transition: background-color var(--t-base) var(--ease), color var(--t-base) var(--ease);
+}
+
+.brand-tile:hover,
+.brand-tile:focus-visible {
+	background: var(--c-red);
+	color: #fff;
+}
+
+.brand-tile:hover .brand-tile__count,
+.brand-tile:focus-visible .brand-tile__count {
+	color: var(--c-blush);
+}
+
+/* FAQ: red on hover/open, answers slide open where supported. */
+:is(.faq__list .wp-block-details, .archive-more__copy details) > summary {
+	transition: color var(--t-base) var(--ease);
+}
+
+:is(.faq__list .wp-block-details, .archive-more__copy details) > summary:hover,
+:is(.faq__list .wp-block-details, .archive-more__copy details)[open] > summary {
+	color: var(--c-red);
+}
+
+:is(.faq__list .wp-block-details, .archive-more__copy details)[open] > summary::after,
+:is(.faq__list .wp-block-details, .archive-more__copy details) > summary:hover::after {
+	background:
+		linear-gradient(#fff, #fff) center / 12px 1.5px no-repeat,
+		linear-gradient(#fff, #fff) center / 1.5px 12px no-repeat,
+		var(--c-red);
+}
+
+@supports selector(::details-content) {
+	@media (prefers-reduced-motion: no-preference) {
+		:is(.faq__list .wp-block-details, .archive-more__copy details) {
+			interpolate-size: allow-keywords;
+		}
+
+		:is(.faq__list .wp-block-details, .archive-more__copy details)::details-content {
+			block-size: 0;
+			overflow: hidden;
+			opacity: 0;
+			transition:
+				block-size var(--t-slow) var(--ease),
+				opacity var(--t-slow) var(--ease),
+				content-visibility var(--t-slow) allow-discrete;
+		}
+
+		:is(.faq__list .wp-block-details, .archive-more__copy details)[open]::details-content {
+			block-size: auto;
+			opacity: 1;
+		}
+	}
+}
+
+/* Footer links: red with a small slide. */
+.footer-col a {
+	transition: color var(--t-fast) var(--ease), translate var(--t-base) var(--ease);
+}
+
+.footer-col a:hover {
+	color: var(--c-red);
+	translate: 3px 0;
+}
+
+/* Social icons fill red. */
+.socials .icon-btn:hover {
+	border-color: var(--c-red);
+	background: var(--c-red);
+	color: #fff;
+}

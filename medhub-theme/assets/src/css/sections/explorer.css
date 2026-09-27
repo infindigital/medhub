@@ -158,8 +158,8 @@
 }
 
 .tile--dark .tile__arrow {
-	background: var(--c-aqua);
-	color: var(--c-ink);
+	background: var(--c-red);
+	color: #fff;
 }
 
 /* Dark tile: product photo sits on its own light plate instead of blending. */
