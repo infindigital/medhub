@@ -1,0 +1,14 @@
+{
+	"$schema": "https://openapi.vercel.sh/vercel.json",
+	"framework": null,
+	"installCommand": "echo 'no install needed'",
+	"buildCommand": "echo 'static preview: preview/ is generated locally by tooling/export/export-html.mjs'",
+	"outputDirectory": "preview",
+	"cleanUrls": false,
+	"headers": [
+		{
+			"source": "/(.*)",
+			"headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+		}
+	]
+}
