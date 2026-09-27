@@ -44,10 +44,12 @@ $attributes = wp_parse_args(
 // 3. otherwise the newest in-stock products with an image.
 // Steps 2 and 3 are limited to the block's Categories (product category slugs) when set,
 // so a landing page shows its own equipment. Nothing depends on a particular product existing.
+// Only cut-out product photos (transparent or plain white background) are used, so each
+// product floats in the arch instead of showing a photo backdrop.
 $limit    = max( 1, min( 6, (int) ( $attributes['limit'] ?? 4 ) ) );
 $cats     = array_values( array_filter( array_map( 'trim', explode( ',', (string) ( $attributes['categories'] ?? '' ) ) ) ) );
 $scope    = $cats ? array( 'category' => $cats ) : array();
-$usable   = static fn( $p ) => $p instanceof WC_Product && 'publish' === $p->get_status() && $p->is_in_stock() && $p->get_image_id() && $p->is_visible();
+$usable   = static fn( $p ) => $p instanceof WC_Product && 'publish' === $p->get_status() && $p->is_in_stock() && $p->get_image_id() && $p->is_visible() && medhub_image_is_cutout( (int) $p->get_image_id() );
 $slugs    = array_filter( array_map( 'trim', explode( ',', (string) ( $attributes['productSlugs'] ?? '' ) ) ) );
 $slugs    = $slugs ? $slugs : array_filter( array( (string) ( $attributes['productSlug'] ?? '' ) ) );
 $products = array_values( array_filter( array_map( 'medhub_get_product_by_slug', $slugs ), $usable ) );
@@ -61,7 +63,7 @@ foreach ( array( array( 'featured' => true ), array( 'orderby' => 'date', 'order
 		break;
 	}
 	$taken = array_map( static fn( $p ) => $p->get_id(), $products );
-	foreach ( medhub_get_products( array_merge( array( 'limit' => $limit * 3, 'stock_status' => 'instock' ), $scope, $fill ) ) as $candidate ) {
+	foreach ( medhub_get_products( array_merge( array( 'limit' => $limit * 10, 'stock_status' => 'instock' ), $scope, $fill ) ) as $candidate ) {
 		if ( count( $products ) < $limit && $usable( $candidate ) && ! in_array( $candidate->get_id(), $taken, true ) ) {
 			$products[] = $candidate;
 		}

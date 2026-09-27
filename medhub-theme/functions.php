@@ -19,6 +19,7 @@ define( 'MEDHUB_URI', get_template_directory_uri() );
 $medhub_modules = array(
 	'inc/helpers/business.php',
 	'inc/helpers/icons.php',
+	'inc/helpers/images.php',
 	'inc/helpers/template-tags.php',
 	'inc/helpers/departments.php',
 	'inc/helpers/link-cards.php',
